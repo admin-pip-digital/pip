@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pip - Look, they can't book you if they can't find you</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/image/favicon.png">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pip.digital">
-    <meta property="og:title" content="Pip - Digital Marketing & Web Design">
-    <meta property="og:description" content="Your growth is our success!">
-    <meta property="og:image" content="https://raw.githubusercontent.com/eraeric91/pip/main/assets/image/social-preview.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://pip.digital">
-    <meta property="twitter:title" content="Pip - Your growth is our success!">
-    <meta property="twitter:description" content="Your growth is our success!">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/eraeric91/pip/main/assets/image/social-preview.png">
-
-    <title>Pip - Your growth is our success!</title>
     <style>
         * {
             margin: 0;
@@ -31,121 +15,44 @@
         }
 
         body {
-            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.5;
-            color: #1d1d1d;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-weight: 400; /* Regular weight */
+            line-height: 1.6;
+            color: #333;
         }
 
+        /* Typography */
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Hedvig Letters Serif', Georgia, 'Times New Roman', serif;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 400;
-        }
-
-        h2 {
-            font-size: 2.0rem;
-            font-weight: 400;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            line-height: 1.5;
-        }
-
-        h4 {
-            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.5;
-            letter-spacing: 0.32px;
-            font-weight: 500;
-            text-transform: uppercase;
-            color: #1d1d1d;
+            font-family: 'Hedvig Letters Serif', Georgia, serif;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: #000000;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #333333;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: #000000;
-            border: 2px solid #000000;
-        }
-
-        .btn-secondary:hover {
-            background-color: #000000;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .menu-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .menu-icon span {
-            width: 24px;
-            height: 24px;
-            background-color: #000;
-            transition: all 0.3s ease;
-        }
-
-        .btn-small {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            padding: 0.4rem 0.8rem;
+            padding: 0 20px;
         }
 
         /* Header */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
+            background: #1757DA;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         nav {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 24px 16px;
-            height: 64px;
+        }
+
+        .logo {
+            font-family: 'Hedvig Letters Serif', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         .logo img {
@@ -155,420 +62,595 @@
 
         /* Hero Section */
         .hero {
-            background-color: white;
-            padding: 4rem 0;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
+            background: #1757DA;
+            color: white;
+            padding: 120px 0 0;
+            text-align: left;
+            position: relative;
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            margin-bottom: 1.5rem;
-            color: #000000;
-        }
-
-        .hero-text p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            color: #000000;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            max-width: 442px;
+            margin: 0 auto;
+            padding-bottom: 0;
+            text-align: left;
         }
 
         .hero-image {
-            text-align: center;
+            width: 100%;
+            max-width: 442px;
+            margin-left: auto;
+            margin-right: auto;
+            aspect-ratio: 1;
+            left: 50%;
+            z-index: 10;
         }
 
         .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* Value Proposition */
-        .value-prop {
-            background-color: white;
-            padding: 4rem 0;
+        .hero-content h1 {
+            font-size: 40px;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 442px;
+            font-weight: 400; /* Explicitly regular weight */
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .cta-button {
+            background: #CCDF50;
+            color: #000;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 1000px; /* Updated to 1000px for fully round buttons */
+            font-size: 1rem;
+            font-weight: 500; /* Updated to 500 */
+            text-transform: uppercase;
+            letter-spacing: 0.02em; /* 2% letter spacing (0.02em is equivalent to 2%) */
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin: 0 auto 3rem auto;
+            width: 100%;
             text-align: center;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            transition: background-color 0.3s ease;
         }
 
-        /* Values Section */
-        .values {
-            padding: 4rem 0;
-            background-color: white;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .value-card {
-            text-align: left;
-            padding: 2rem;
-            border-radius: 12px;
-            background-color: #f7f7f7;
-        }
-
-        .value-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: left;
-            justify-content: center;
+        .cta-button:hover {
+            background-color: #b8c946;
         }
 
         /* Workshop Section */
         .workshop {
-            background-color: #f7f7f7;
-            padding: 4rem 0;
+            background: #FFF;
+            color: #000;
+            padding: 30px 0 60px;
+            text-align: left;
+            position: relative;
+            z-index: 1;
         }
 
         .workshop-content {
+            max-width: 442px;
+            padding-top: 30px;
+            margin: 0 auto;
+        }
+
+        .workshop h2 {
+            font-size: 32px;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            color: #000;
+            line-height: 1.2; /* 120% line height */
+        }
+
+        .workshop p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #000;
+            font-weight: 400; /* Regular weight */
+        }
+
+        .workshop-features {
+            margin-bottom: 2rem; /* 32px space */
+            text-align: left;
+        }
+
+        .workshop-feature {
+            margin-bottom: 0.5rem;
+        }
+
+        .workshop-feature h3 {
+            color: #000;
+            font-size: 1rem;
+            margin-bottom: 0;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-weight: 400;
+        }
+
+        .cta-button-secondary {
+            background: white;
+            color: #000;
+            padding: 15px 30px;
+            border: 1px solid #000;
+            border-radius: 1000px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            text-decoration: none;
+            display: block; /* Changed from inline-block to block */
+            width: 100%; /* Added full width */
+            text-align: center; /* Added center alignment */
+            margin-bottom: 1rem; /* 16px space */
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button-secondary:hover {
+            background-color: #f0f0f0;
+        }
+
+        .workshop-caption {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-style: italic;
+        }
+
+        /* Problems Section */
+        .problems {
+            background: #FFF8E8;
+            padding: 80px 0;
+        }
+
+        .problems-content {
+            max-width: 442px;
+            margin: 0 auto;
+        }
+
+        .problems h2 {
+            text-align: left;
+            font-size: 32px;
+            margin-bottom: 2rem; /* 32px space */
+            color: #000;
+            font-weight: 300;
+        }
+
+        .problems-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            gap: 1rem; /* 16px space */
+            margin-bottom: 2rem; /* 32px space */
         }
 
-        .workshop-list {
-            list-style: none;
-            margin: 1.5rem 0;
+        .problem-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: none;
         }
 
-        .workshop-list li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 2rem;
+        .problem-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0;
+            color: #000;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-weight: 500;
         }
 
-        .workshop-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #10b981;
-            font-weight: bold;
+        .problem-card p {
+            color: #000;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0;
         }
 
-        .workshop-note {
-            font-size: 0.9rem;
-            color: #000000;
-            font-style: italic;
-            margin-top: 1rem;
+        .problem-statement {
+            text-align: left;
+            margin-bottom: 2rem; /* 32px space */
+            font-size: 1.2rem;
+            color: #000;
+            max-width: 442px;
+            font-weight: 400;
         }
 
-        /* Services Section */
-        .services {
-            padding: 4rem 0;
-            background-color: white;
+        .center-image {
+            width: 100%;
+            max-width: 442px;
+            aspect-ratio: 1;
+            margin: 3rem auto;
+            overflow: hidden;
         }
 
-        .services h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #000000;
+        .center-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+        /* Solution Section */
+        .solution {
+            background: #1757DA;
+            color: white;
+            padding: 80px 0;
+            text-align: left;
         }
 
-        .service-card {
-            background-color: #f7f7f7;
-            padding: 2.5rem;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .service-price {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #000000;
-            margin-bottom: 1rem;
-        }
-
-        /* Testimonial Section */
-        .testimonial {
-            background-color: #f7f7f7;
-            padding: 4rem 0;
-        }
-
-        .testimonial h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #000000;
-        }
-
-        .testimonial-card {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            max-width: 800px;
+        .solution-content {
+            max-width: 442px;
             margin: 0 auto;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .testimonial-header {
+        .solution h2 {
+            font-size: 32px;
+            margin-bottom: 2rem; /* 32px space */
+            font-weight: 300;
+            color: white;
+            text-align: left;
+        }
+
+        .solution-steps {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 1rem; /* 16px space */
+            margin-bottom: 2rem; /* 32px space */
         }
 
-        .star-icon {
-            width: 64px;
-            height: 64px;
-            margin-right: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .solution-step {
+            background: #1757DA;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 2px solid white;
+            backdrop-filter: none;
         }
 
-        .testimonial-text {
+        .solution-step h3 {
+            font-size: 20px;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .solution-step p {
+            color: white;
+            opacity: 1;
+            font-weight: 400;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Results Section */
+        .results {
+            background: #FFF;
+            padding: 0 0 80px;
+            text-align: center; /* Section centered */
+        }
+
+        .results-content {
+            max-width: 442px;
+            margin: 0 auto;
+            text-align: left; /* Content left-aligned */
+        }
+
+        .results h2 {
+            font-size: 32px;
+            margin-bottom: 2rem;
+            color: #000;
+            font-weight: 300;
+            text-align: left; /* Left-aligned text */
+        }
+
+        .stars {
+            font-size: 2rem;
+            color: #9C8BD1;
+            margin-bottom: 2rem;
+            text-align: left; /* Left-aligned text */
+        }
+
+        .testimonial {
+            max-width: 442px;
+            font-style: italic;
             font-size: 1.1rem;
-            line-height: 1.7;
-            color: #000000;
-            margin-bottom: 1.5rem;
+            color: #000;
+            margin-bottom: 2rem;
+            font-weight: 400; /* Regular weight */
+            text-align: left; /* Left-aligned text */
         }
 
         .testimonial-author {
-            font-weight: 600;
-            color: #000000;
+            font-weight: bold;
+            color: #000;
+            text-align: left; /* Left-aligned text */
         }
 
-        /* Case Study Section */
-        .case-study {
-            padding: 4rem 0;
-            background-color: white;
-        }
-
-        .case-study h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #000000;
-        }
-
-        .case-study-card {
-            background-color: #f7f7f7;
-            border-radius: 12px;
-            overflow: hidden;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .case-study-image {
+        .results-image {
             width: 100%;
-            height: 300px;
-            background-color: #e5e7eb;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            color: #000000;
-            font-size: 1.2rem;
+            max-width: 442px;
+            aspect-ratio: 1;
+            border-radius: 0 0 50% 50%;
+            margin: 0 auto 3rem;
+            overflow: hidden;
         }
 
-        .case-study-content {
-            padding: 2rem;
-        }
-
-        .case-study-content h3 {
-            margin-bottom: 1rem;
-            color: #000000;
-        }
-
-        .case-study-content p {
-            color: #000000;
-            margin-bottom: 1.5rem;
-        }
-
-        /* CTA Section */
-        .cta {
-            background-color: #f7f7f7;
-            color: #333;
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .cta h2 {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: #000000;
-        }
-
-        .cta-contact {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-top: 2rem;
-        }
-
-        .cta-contact a {
-            color: #000000;
-            text-decoration: none;
-        }
-
-        .cta .hero-buttons {
-            justify-content: center;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1f2937;
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .footer-logo {
-            margin: 0 auto;
-            margin-bottom: 32px;
-            height: 40px;
-            width: auto;
-        }
-
-        .footer-contact {
-            text-align: center;
-        }
-
-        .footer-contact p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-contact a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .footer-contact a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #374151;
-            color: white;
+        .results-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                padding: 0 1rem;
+                padding: 0 16px;
             }
 
-            h1 {
-                font-size: 2rem;
+            header {
+                padding: 0.75rem 0;
             }
 
-            h2 {
-                font-size: 1.75rem;
+            .hero {
+                padding: 100px 0 0;
             }
 
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
+            .hero-content h1 {
+                font-size: 28px;
+                line-height: 1.1;
             }
 
-            .hero-text {
-                order: 1;
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
 
             .hero-image {
-                order: 2;
+                width: 100vw;
+                max-width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                margin-right: calc(-50vw + 50%);
+            }
+
+            .workshop {
+                padding: 20px 0 40px;
             }
 
             .workshop-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                padding-top: 20px;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
+            .workshop h2 {
+                font-size: 24px;
             }
 
-            .values-grid {
-                grid-template-columns: 1fr;
+            .workshop p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
 
-            .hero-buttons {
-                justify-content: center;
+            .workshop-features {
+                margin-bottom: 1.5rem;
             }
 
-            .footer-content {
+            .problems {
+                padding: 60px 0;
+            }
+
+            .problems h2 {
+                font-size: 24px;
+                margin-bottom: 1.5rem;
+            }
+
+            .problems-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .problem-card {
+                padding: 1.25rem;
+            }
+
+            .problem-statement {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .center-image {
+                width: 100vw;
+                max-width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                margin-right: calc(-50vw + 50%);
+                margin: 2rem auto;
+            }
+
+            .solution {
+                padding: 60px 0;
+            }
+
+            .solution h2 {
+                font-size: 24px;
+                margin-bottom: 1.5rem;
+            }
+
+            .solution-steps {
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .solution-step {
+                padding: 1.25rem;
+            }
+
+            .solution-step h3 {
+                font-size: 18px;
+            }
+
+            .results {
+                padding: 0 0 60px;
+            }
+
+            .results h2 {
+                font-size: 24px;
+            }
+
+            .results-image {
+                width: 100vw;
+                max-width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                margin-right: calc(-50vw + 50%);
+                margin-bottom: 2rem;
+            }
+
+            .testimonial {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+            }
+
+            .cta-button-secondary {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 2rem 0;
+            }
+
+            footer .logo {
+                margin-bottom: 1.5rem;
+            }
+
+            footer .logo img {
+                height: 50px;
+            }
+
+            footer .email-link {
+                margin-bottom: 1rem;
+            }
+
+            .copy-notification {
+                bottom: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
             }
         }
 
-        /* Tooltip for email copy */
-        .email-tooltip {
-            position: relative;
-            cursor: pointer;
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 24px;
+            }
+
+            .workshop h2,
+            .problems h2,
+            .solution h2,
+            .results h2 {
+                font-size: 22px;
+            }
+
+            .problem-card {
+                padding: 1rem;
+            }
+
+            .solution-step {
+                padding: 1rem;
+            }
+
+            .solution-step h3 {
+                font-size: 16px;
+            }
+
+            .cta-button,
+            .cta-button-secondary {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
         }
 
-        .email-tooltip .tooltip-text {
-            visibility: hidden;
-            width: 140px;
-            background-color: #333;
+        /* Footer */
+        footer {
+            background: #3d3d3d;
             color: white;
             text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -70px;
-            opacity: 0;
-            transition: opacity 0.3s;
+            padding: 3rem 0;
         }
 
-        .email-tooltip.show .tooltip-text {
-            visibility: visible;
+        footer .logo {
+            margin-bottom: 2rem;
+        }
+
+        footer .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        footer .email-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            display: block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        footer .email-link:hover {
+            text-decoration: underline;
+        }
+
+        footer .copyright {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Copy notification */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #000;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .copy-notification.show {
+            transform: translateY(0);
             opacity: 1;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -577,10 +659,7 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="assets/logo/logo-black.svg" alt="Pip Logo" />
-            </div>
-            <div>
-                <a href="https://calendly.com/pip-digital/free-consultation" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Get a free consultation</a>
+                <img src="assets/logo/logo-white.svg" alt="pip logo" />
             </div>
         </nav>
     </header>
@@ -589,155 +668,123 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Your growth is our success!</h1>
-                    <h3>Whether you have a small business or a big idea, it's easy to get stuck and hard to find personalized help to increase and manage growth</h3>
-                    <p>Join our 90-minute discovery online workshop</p>
-                    <div class="hero-buttons">
-                        <a href="https://calendly.com/pip-digital/discovery-workshop" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a discovery workshop</a>
-                        <a href="https://calendly.com/pip-digital/free-consultation" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Get a free consultation</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="assets/image/hero.png" alt="Eric Moore and Anna Free" />
-                </div>
+                <h1>They can't book you if they can't find you.</h1>
+                <p>You're amazing at what you do, but your customers can't find you online – we'll fix that so the people who need your services actually book with YOU.</p>
+                <a href="#workshop" class="cta-button">Get a Free Consultation</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Value Proposition -->
-    <section class="value-prop">
-        <div class="container">
-            <div class="values-grid">
-                <div class="value-card">
-                    <img src="assets/illustration/small-sprout.png" alt="Sprout" style="max-width: 100px; height: auto;" />
-                    <h3>Who you'll meet</h3>
-                    <ul>
-                        <li>People dedicated to your success and growth</li>
-                        <li>Experts in the field of online marketing</li>
-                        <li>Growth coaches who care about what you and your business</li>
-                    </ul>
-                </div>
-                <div class="value-card">
-                    <img src="assets/illustration/fist-bump.png" alt="Fist bump" style="max-width: 100px; height: auto;" />
-                    <h3>What you'll discover</h3>
-                    <ul>
-                        <li>What's the greatest thing you have to offer?</li>
-                        <li>Why do people like you get stuck?</li>
-                        <li>What's your path to multiplied growth?</li>
-                    </ul>
-                </div>
-                <div class="value-card">
-                    <img src="assets/illustration/globe.png" alt="Globe" style="max-width: 100px; height: auto;" />
-                    <h3>What you'll receive</h3>
-                    <ul>
-                        <li>90-minutes of inspiration</li>
-                        <li>A personalized clear path forward within 24 hours</li>
-                        <li>More opportunities to grow your business the Pip way</li>
-                    </ul>
-                </div>
+            <div class="hero-image">
+                <img src="assets/image/hero.png" alt="Business owner" />
             </div>
         </div>
     </section>
 
     <!-- Workshop Section -->
-    <section class="workshop">
+    <section class="workshop" id="workshop">
         <div class="container">
             <div class="workshop-content">
-                <div>
-                    <h4>Start growing today</h4>
-                    <h2>Get started with a discovery workshop</h2>
-                    <p>Before investing in any solution, we'll spend 90 minutes figuring out what will actually drive growth for your business (included in all packages)</p>
-                    <ul class="workshop-list">
-                        <li>Discover your biggest untapped opportunities</li>
-                        <li>Map out which strategies to test first</li>
-                        <li>Move forward confidently with a clear action plan</li>
-                    </ul>
-                    <div class="hero-buttons">
-                        <a href="https://calendly.com/pip-digital/discovery-workshop?month=2025-07" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a discovery workshop</a>
+                <h2>Join a discovery workshop today!</h2>
+                <p>You and your team will spend 90 minutes with our Pip team to discover your goals and identify the barriers that stand in your way.</p>
+                
+                <p>We'll provide you with a plan to grow your business. Sign up for a workshop today!</p>
+                
+                <div class="workshop-features">
+                    <div class="workshop-feature">
+                        <h3>• Discover your biggest untapped opportunities</h3>
                     </div>
-                    <p class="workshop-note">*If you decide to move forward with one of our packages, we'll apply the price of the workshop toward your total project cost.</p>
+                    <div class="workshop-feature">
+                        <h3>• Map out which strategies to test first</h3>
+                    </div>
+                    <div class="workshop-feature">
+                        <h3>• Move forward confidently with a clear action plan</h3>
+                    </div>
                 </div>
-                <div class="hero-image">
-                    <img src="assets/illustration/discovery-workshop.png" alt="Squiggly mess turning into a straight line" style="max-width: 100%; height: auto;" />
+                
+                <div class="workshop-button-center">
+                    <a href="#contact" class="cta-button-secondary">Book a Workshop</a>
+                </div>
+                <p class="workshop-caption">*If you decide to move forward with one of our packages, we'll apply the price of the workshop toward your total project cost.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems">
+        <div class="container">
+            <div class="problems-content">
+                <h2>We've all been there:</h2>
+                
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <h3>Your ideal customers are searching right now</h3>
+                    </div>
+                    <div class="problem-card">
+                        <p>The internet barely knows you exist (we can fix that)</p>
+                    </div>
+                </div>
+
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <h3>They're finding other similar businesses before you</h3>
+                    </div>
+                    <div class="problem-card">
+                        <p>You're missing out on those sales every single day</p>
+                    </div>
+                </div>
+
+                <div class="problem-statement">
+                    <p>You shouldn't have to choose between being good at your job and finding people who need you</p>
+                </div>
+
+                <div class="center-image">
+                    <img src="assets/image/center.png" alt="Business owner" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Solution Section -->
+    <section class="solution">
         <div class="container">
-            <h4 style="text-align: center;">Our Services</h4>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/illustration/lightning-bolt.png" alt="Lightning bolt" style="width: 80px; height: 80px; object-fit: contain;" />
+            <div class="solution-content">
+                <h2>The simple system that gets you booked</h2>
+                
+                <div class="solution-steps">
+                    <div class="solution-step">
+                        <h3>Step one: Get found</h3>
+                        <p>We make sure when people search for what you do, they find YOU first</p>
                     </div>
-                    <h3>Website package</h3>
-                    <p>Design & build a custom website that drives action</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/illustration/sprout.png" alt="Sprout" style="width: 80px; height: 80px; object-fit: contain;" />
+                    <div class="solution-step">
+                        <h3>Step two: Drive traffic</h3>
+                        <p>We bring qualified customers who are ready to book directly to you</p>
                     </div>
-                    <h3>Growth package</h3>
-                    <p>Run campaigns to help your sales & brand awareness</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <img src="assets/illustration/bullseye.png" alt="Bullseye" style="width: 80px; height: 80px; object-fit: contain;" />
+                    <div class="solution-step">
+                        <h3>Step three: Convert bookings</h3>
+                        <p>We make it easy for them to say yes so you don't lose potential clients</p>
                     </div>
-                    <h3>All-in package</h3>
-                    <p>Build a complete digital business growth engine</p>
                 </div>
+
+                <a href="#contact" class="cta-button">Get a Free Consultation</a>
             </div>
         </div>
     </section>
 
-    <!-- Testimonial Section -->
-    <section class="testimonial">
+    <!-- Results Section -->
+    <section class="results">
         <div class="container">
-            <h3 style="text-align: center;">What our clients say</h3>
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <h3>"Eric & Anna have been fantastic to work with"</h3>
-                    <div class="star-icon">
-                        <img src="assets/illustration/star.png" alt="Star" style="width: 64px; height: 64px; object-fit: contain;" />
-                    </div>
+            <div class="results-content">
+                <div class="results-image">
+                    <img src="assets/image/testimonial.png" alt="Happy business owner" />
                 </div>
-                <div class="testimonial-text">
-                    They created a great website for my spa, handled our Facebook ads, and improved our Google SEO rankings. Their strategies brought in more customers and increased our revenue compared to last month. I appreciate their clear communication, honest advice, and the results they deliver. I'd recommend them to any business owner who wants real growth.
+                
+                <h2>Real results for real businesses</h2>
+                
+                <div class="stars">★ ★ ★ ★ ★</div>
+                
+                <div class="testimonial">
+                    "Eric & Anna have been fantastic to work with! They created a great website for my spa, handled our Facebook ads, and improved our Google SEO rankings. Their strategies brought in more customers and increased our revenue compared to last month. I appreciate their clear communication, honest advice, and the results they deliver. I'd recommend them to any business owner who wants real growth."
                 </div>
-                <div class="testimonial-author">– Wu, July 2025</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Study Section -->
-    <section class="case-study">
-        <div class="container">
-            <h3>Case Studies</h3>
-            <div class="case-study-card">
-                <div class="case-study-image">
-                    <img src="assets/image/optavia.png" alt="Optavia case study" style="width: 100%; height: 300px; object-fit: cover;" />
-                </div>
-                <div class="case-study-content">
-                    <h3>Two weeks, 22% better results: Design approach comparison</h3>
-                    <p>We designed and developed a landing page for a health & wellness company's new client-led acquisition channel</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-            <section class="cta">
-        <div class="container">
-            <h2>Ready to grow your business?</h2>
-            <p>Give us a call or book a workshop to get started today. We're excited to meet you and to help grow your business.</p>
-            <div class="hero-buttons">
-                <a href="https://calendly.com/pip-digital/discovery-workshop" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a discovery workshop</a>
-                <a href="https://calendly.com/pip-digital/free-consultation" class="btn btn-secondary">Get a free consultation</a>
+                
+                <div class="testimonial-author">– Wu, Spa Owner</div>
             </div>
         </div>
     </section>
@@ -745,36 +792,85 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assets/logo/logo-white.svg" alt="Pip Logo" style="width: 120px; height: 60px; object-fit: contain;" />
-                </div>
-                <div class="footer-contact">
-                    <p>Email, call or text anytime:</p>
-                    <p>
-                        <span class="email-tooltip" onclick="copyEmail()">
-                            hello@pip.digital
-                            <span class="tooltip-text">Email copied to clipboard</span>
-                        </span>
-                    </p>
-                    <p><a href="tel:(303)845-0746">(303)845-0746</a></p>
-                </div>
+            <div class="logo">
+                <img src="assets/logo/logo-white.svg" alt="pip logo" />
             </div>
-            <div class="footer-bottom">
-                <p>©2025 Pip Digital, LLC. All rights reserved.</p>
-            </div>
+            <a href="#" class="email-link" onclick="copyEmail(event)">HELLO@PIP.DIGITAL</a>
+            <p class="copyright">© <span id="current-year">2025</span> Pip, LLC. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Copy notification -->
+    <div id="copyNotification" class="copy-notification">
+        Email copied to clipboard!
+    </div>
+
     <script>
-        function copyEmail() {
-            navigator.clipboard.writeText('hello@pip.digital').then(function() {
-                const tooltip = document.querySelector('.email-tooltip');
-                tooltip.classList.add('show');
-                setTimeout(function() {
-                    tooltip.classList.remove('show');
-                }, 2000);
+        // Simple scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
+        });
+
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Copy email to clipboard
+        function copyEmail(event) {
+            event.preventDefault();
+            const email = 'hello@pip.digital';
+            
+            // Use modern clipboard API if available
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showCopyNotification();
+                }).catch(err => {
+                    // Fallback for older browsers
+                    fallbackCopy(email);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopy(email);
+            }
+        }
+
+        // Fallback copy method for older browsers
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyNotification();
+            } catch (err) {
+                console.error('Failed to copy email');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Show copy notification
+        function showCopyNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
         }
     </script>
 </body>
