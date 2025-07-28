@@ -17,9 +17,10 @@
 
         body {
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            font-weight: 400; /* Regular weight */
+            font-weight: 400;
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         /* Typography */
@@ -61,13 +62,14 @@
             width: auto;
         }
 
-        /* Hero Section */
+        /* Hero Section - FIXED */
         .hero {
             background: #1757DA;
             color: white;
             padding: 120px 0 0;
             text-align: left;
             position: relative;
+            overflow: hidden; /* Prevent content from spilling out */
         }
 
         .hero-content {
@@ -80,10 +82,8 @@
         .hero-image {
             width: 100%;
             max-width: 442px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto; /* Center the image */
             aspect-ratio: 1;
-            left: 50%;
             z-index: 10;
         }
 
@@ -105,7 +105,7 @@
             margin-bottom: 2rem;
             opacity: 0.9;
             max-width: 442px;
-            font-weight: 400; /* Explicitly regular weight */
+            font-weight: 400;
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
         }
 
@@ -114,11 +114,11 @@
             color: #000;
             padding: 15px 30px;
             border: none;
-            border-radius: 1000px; /* Updated to 1000px for fully round buttons */
+            border-radius: 1000px;
             font-size: 1rem;
-            font-weight: 500; /* Updated to 500 */
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.02em; /* 2% letter spacing (0.02em is equivalent to 2%) */
+            letter-spacing: 0.02em;
             cursor: pointer;
             text-decoration: none;
             display: block;
@@ -156,18 +156,18 @@
             margin-bottom: 1rem;
             font-weight: 300;
             color: #000;
-            line-height: 1.2; /* 120% line height */
+            line-height: 1.2;
         }
 
         .workshop p {
             font-size: 1.1rem;
             margin-bottom: 2rem;
             color: #000;
-            font-weight: 400; /* Regular weight */
+            font-weight: 400;
         }
 
         .workshop-features {
-            margin-bottom: 2rem; /* 32px space */
+            margin-bottom: 2rem;
             text-align: left;
         }
 
@@ -195,10 +195,10 @@
             letter-spacing: 0.02em;
             cursor: pointer;
             text-decoration: none;
-            display: block; /* Changed from inline-block to block */
-            width: 100%; /* Added full width */
-            text-align: center; /* Added center alignment */
-            margin-bottom: 1rem; /* 16px space */
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1rem;
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             transition: background-color 0.3s ease;
             min-height: 56px;
@@ -231,7 +231,7 @@
         .problems h2 {
             text-align: left;
             font-size: 32px;
-            margin-bottom: 2rem; /* 32px space */
+            margin-bottom: 2rem;
             color: #000;
             font-weight: 300;
         }
@@ -239,8 +239,8 @@
         .problems-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem; /* 16px space */
-            margin-bottom: 1rem; /* 16px space between grid rows */
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
         .problem-card {
@@ -268,7 +268,7 @@
 
         .problem-statement {
             text-align: left;
-            margin-bottom: 2rem; /* 32px space */
+            margin-bottom: 2rem;
             color: #000;
             max-width: 442px;
             font-weight: 400;
@@ -303,7 +303,7 @@
 
         .solution h2 {
             font-size: 32px;
-            margin-bottom: 2rem; /* 32px space */
+            margin-bottom: 2rem;
             font-weight: 300;
             color: white;
             text-align: left;
@@ -312,8 +312,8 @@
         .solution-steps {
             display: flex;
             flex-direction: column;
-            gap: 1rem; /* 16px space */
-            margin-bottom: 2rem; /* 32px space */
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
         .solution-step {
@@ -343,13 +343,13 @@
         .results {
             background: #FFF;
             padding: 0 0 80px;
-            text-align: center; /* Section centered */
+            text-align: center;
         }
 
         .results-content {
             max-width: 442px;
             margin: 0 auto;
-            text-align: left; /* Content left-aligned */
+            text-align: left;
         }
 
         .results h2 {
@@ -357,14 +357,14 @@
             margin-bottom: 2rem;
             color: #000;
             font-weight: 300;
-            text-align: left; /* Left-aligned text */
+            text-align: left;
         }
 
         .stars {
             font-size: 2rem;
             color: #9C8BD1;
             margin-bottom: 2rem;
-            text-align: left; /* Left-aligned text */
+            text-align: left;
         }
 
         .testimonial {
@@ -373,14 +373,14 @@
             font-size: 1.1rem;
             color: #000;
             margin-bottom: 2rem;
-            font-weight: 400; /* Regular weight */
-            text-align: left; /* Left-aligned text */
+            font-weight: 400;
+            text-align: left;
         }
 
         .testimonial-author {
             font-weight: bold;
             color: #000;
-            text-align: left; /* Left-aligned text */
+            text-align: left;
         }
 
         .results-image {
@@ -398,7 +398,7 @@
             object-fit: cover;
         }
 
-        /* Responsive Design */
+        /* Responsive Design - FIXED */
         @media (max-width: 768px) {
             .container {
                 padding: 0 16px;
@@ -408,11 +408,11 @@
                 padding: 100px 0 0;
             }
 
+            /* FIXED: Keep hero image within container bounds */
             .hero-image {
-                width: 100vw;
-                max-width: 100vw;
-                margin-left: calc(-50vw + 50%);
-                margin-right: calc(-50vw + 50%);
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto; /* Keep centered within container */
             }
 
             .workshop {
@@ -441,11 +441,10 @@
                 padding: 1.25rem;
             }
 
+            /* FIXED: Keep center image within container bounds */
             .center-image {
-                width: 100vw;
-                max-width: 100vw;
-                margin-left: calc(-50vw + 50%);
-                margin-right: calc(-50vw + 50%);
+                width: 100%;
+                max-width: 100%;
                 margin: 2rem auto;
             }
 
@@ -466,12 +465,11 @@
                 padding: 0 0 60px;
             }
 
+            /* FIXED: Keep results image within container bounds */
             .results-image {
-                width: 100vw;
-                max-width: 100vw;
-                margin-left: calc(-50vw + 50%);
-                margin-right: calc(-50vw + 50%);
-                margin-bottom: 2rem;
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto 2rem;
             }
 
             .cta-button {
@@ -509,7 +507,6 @@
 
         /* Extra small screens */
         @media (max-width: 480px) {
-
             .problem-card {
                 padding: 1rem;
             }
@@ -604,7 +601,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>They can't book you if they can't find you.</h1>
+                <h1>Look — They can't book you if they can't find you.</h1>
                 <p>You're amazing at what you do, but your customers can't find you online – we'll fix that so the people who need your services actually book with YOU.</p>
                 <a href="#workshop" class="cta-button">Get a Free Consultation</a>
             </div>
