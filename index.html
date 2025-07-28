@@ -127,6 +127,8 @@
             text-align: center;
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             transition: background-color 0.3s ease;
+            min-height: 56px;
+            box-sizing: border-box;
         }
 
         .cta-button:hover {
@@ -199,6 +201,8 @@
             margin-bottom: 1rem; /* 16px space */
             font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             transition: background-color 0.3s ease;
+            min-height: 56px;
+            box-sizing: border-box;
         }
 
         .cta-button-secondary:hover {
@@ -236,7 +240,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem; /* 16px space */
-            margin-bottom: 2rem; /* 32px space */
+            margin-bottom: 1rem; /* 16px space between grid rows */
         }
 
         .problem-card {
@@ -457,7 +461,7 @@
             }
 
             .problems-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 gap: 0.75rem;
                 margin-bottom: 1.5rem;
             }
