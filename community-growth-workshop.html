@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We help businesses get found online</title>
+    <link rel="icon" type="image/png" href="assets/image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .body-large {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Hedvig Letters Serif', Georgia, serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #1757DA;
+            color: white;
+            padding: 16px 0;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Hedvig Letters Serif', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Buttons */
+        .cta-button {
+            background: #CCDF50;
+            color: #000;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 1000px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 3rem auto;
+            width: 100%;
+            text-align: center;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            transition: background-color 0.3s ease;
+            min-height: 56px;
+        }
+
+        .cta-button:hover {
+            background-color: #b8c946;
+        }
+
+        .cta-button-secondary {
+            background: white;
+            color: #000;
+            padding: 15px 30px;
+            border: 1px solid #000;
+            border-radius: 1000px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            transition: background-color 0.3s ease;
+            min-height: 56px;
+        }
+
+        .cta-button-secondary:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #1757DA;
+            color: white;
+            padding: 48px 0 0;
+            text-align: left;
+            position: relative;
+            margin-bottom: 0;
+        }
+
+        .hero-content {
+            max-width: 442px;
+            margin: 0 auto;
+            padding-bottom: 0;
+            text-align: left;
+        }
+
+        .hero-content h1 {
+            font-size: 40px;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 442px;
+            margin: 0 auto;
+            aspect-ratio: 1;
+            z-index: 10;
+            display: block;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Workshop Section */
+        .workshop {
+            background: #FFF;
+            color: #000;
+            padding: 30px 0 60px;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        .workshop-content {
+            max-width: 442px;
+            padding-top: 30px;
+            margin: 0 auto;
+        }
+
+        .workshop h2 {
+            font-size: 32px;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            color: #000;
+            line-height: 1.2;
+        }
+
+        .workshop p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #000;
+            font-weight: 400;
+        }
+
+        .workshop-features {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .workshop-feature {
+            margin-bottom: 0.5rem;
+        }
+
+        .workshop-feature h3 {
+            color: #000;
+            font-size: 1rem;
+            margin-bottom: 0;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-weight: 400;
+        }
+
+        .workshop-caption {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-style: italic;
+        }
+
+        /* Problems Section */
+        .problems {
+            background: #FFF8E8;
+            padding: 80px 0;
+            margin-top: 0;
+        }
+
+        .problems-content {
+            max-width: 442px;
+            margin: 0 auto;
+        }
+
+        .problems h2 {
+            text-align: left;
+            font-size: 32px;
+            margin-bottom: 2rem;
+            color: #000;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            min-height: 120px;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .problem-card > *:last-child {
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .problem-card h3 {
+            margin-bottom: 0;
+            color: #000;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            font-weight: 500;
+        }
+
+        .problem-card p {
+            color: #000;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .problem-statement {
+            text-align: left;
+            margin-bottom: 2rem;
+            color: #000;
+            max-width: 442px;
+            font-weight: 400;
+        }
+
+        .center-image {
+            width: 100%;
+            max-width: 442px;
+            margin: 3rem auto;
+            overflow: hidden;
+        }
+
+        .center-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: #1757DA;
+            color: white;
+            padding: 80px 0;
+            text-align: left;
+        }
+
+        .solution-content {
+            max-width: 442px;
+            margin: 0 auto;
+        }
+
+        .solution h2 {
+            font-size: 32px;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            color: white;
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .solution-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .solution-step {
+            background: #1757DA;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 2px solid white;
+        }
+
+        .solution-step h3 {
+            font-size: 20px;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .solution-step p {
+            color: white;
+            opacity: 1;
+            font-weight: 400;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Results Section */
+        .results {
+            background: #FFF;
+            padding: 0 0 80px;
+            text-align: center;
+        }
+
+        .results-content {
+            max-width: 442px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .results h2 {
+            font-size: 32px;
+            margin-bottom: 2rem;
+            color: #000;
+            font-weight: 300;
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .stars {
+            font-size: 2rem;
+            color: #9C8BD1;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .testimonial {
+            max-width: 442px;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #000;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #000;
+            text-align: left;
+        }
+
+        .results-image {
+            width: 100%;
+            max-width: 442px;
+            aspect-ratio: 1;
+            border-radius: 0 0 50% 50%;
+            margin: 0 auto 3rem;
+            overflow: hidden;
+        }
+
+        .results-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            background: #3d3d3d;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        footer .logo {
+            margin-bottom: 2rem;
+        }
+
+        footer .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        footer .email-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            display: block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        footer .email-link:hover {
+            text-decoration: underline;
+        }
+
+        footer .copyright {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Copy Notification */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #000;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .copy-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 60px 0 0;
+            }
+
+            .hero-image {
+                width: 100vw;
+                max-width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                margin-right: calc(-50vw + 50%);
+            }
+
+            .workshop {
+                padding: 20px 0 40px;
+            }
+
+            .workshop-content {
+                padding-top: 20px;
+            }
+
+            .workshop-features {
+                margin-bottom: 1.5rem;
+            }
+
+            .problems {
+                padding: 60px 0;
+            }
+
+            .problems-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .problem-card {
+                padding: 1.25rem;
+                min-height: 100px;
+            }
+
+            .center-image {
+                width: 100vw;
+                max-width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                margin-right: calc(-50vw + 50%);
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .solution {
+                padding: 60px 0;
+            }
+
+            .solution-steps {
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .solution-step {
+                padding: 1.25rem;
+            }
+
+            .results {
+                padding: 0 0 60px;
+            }
+
+            .results-image {
+                width: 100vw;
+                max-width: 100vw;
+                margin-left: calc(-50vw + 50%);
+                margin-right: calc(-50vw + 50%);
+                margin-top: 0;
+                margin-bottom: 2rem;
+            }
+
+            .cta-button {
+                padding: 12px 24px;
+                margin-bottom: 2rem;
+            }
+
+            .cta-button-secondary {
+                padding: 12px 24px;
+            }
+
+            footer {
+                padding: 2rem 0;
+            }
+
+            footer .logo {
+                margin-bottom: 1.5rem;
+            }
+
+            footer .logo img {
+                height: 40px;
+            }
+
+            footer .email-link {
+                margin-bottom: 1rem;
+            }
+
+            .copy-notification {
+                bottom: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .problem-card {
+                padding: 1rem;
+                min-height: 90px;
+            }
+
+            .solution-step {
+                padding: 1rem;
+            }
+
+            .cta-button,
+            .cta-button-secondary {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="assets/logo/logo-white.svg" alt="pip logo" />
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="body-large">You're already the expert — we just help customers looking for you to find you online</p>
+                <br>
+                <h1>Join a 90-minute online group workshop</h1>
+                <br>
+                <p>Before investing in any solution, spend 90 minutes with our team figuring out what will actually drive growth for your business.</p>
+                <br>
+                <a href="https://calendly.com/pip-digital/community-growth-workshop" target="_blank" rel="noopener noreferrer" class="cta-button">Reserve your spot</a>
+                <p class="body-large">We'll only be having 4 group workshops in August. Book today!</p>
+                <br>
+
+                <div class="solution-steps">
+                    <div class="solution-step">
+                        <h3>What you'll walk away with</h3>
+                        <p>Your biggest untapped opportunities for getting more customers online</p>
+                        <p>Which growth strategy to test first (and which you should avoid)</p>
+                        <p>A clear action plan you can start implementing immediately</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="assets/image/hero.png" alt="Business owner" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems">
+        <div class="container">
+            <div class="problems-content">
+                <p>A little about us</p>
+                <br>
+                <h2>We do enterprise-quality work for businesses that deserve it</h2>
+                <p>Hey friends 👋 We're Eric & Anna. We decided to start Pip to use the skills we've learned over the years to help smaller businesses to grow. We're a small Utah-based agency in South Jordan, but we work with clients all over the place.</p>
+            </div>
+
+            <div class="center-image">
+                <img src="assets/image/profile.png" alt="Illustration of Eric and Anna" />
+            </div>
+
+            <div class="problems-content">
+                <h3>Some of the companies we've worked with:</h3>
+                <br>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <img src="assets/logo/vivint.svg" alt="Vivint logo">
+                        <p>vivint.</p>
+                    </div>
+                    <div class="problem-card">
+                        <img src="assets/logo/university-of-utah.svg" alt="University of Utah logo">
+                        <p>University of Utah</p>
+                    </div>
+                    <div class="problem-card">
+                        <img src="assets/logo/doterra.svg" alt="doTERRA logo">
+                        <p>doterra</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <div class="results-content">
+                <div class="results-image">
+                    <img src="assets/image/group-workshop.png" alt="A group having an engaging conversation" />
+                </div>
+                
+                <h2>Real results for real businesses</h2>
+                
+                <div class="stars">★ ★ ★ ★ ★</div>
+                
+                <div class="testimonial">
+                    "Eric & Anna have been fantastic to work with! They created a great website for my spa, handled our Facebook ads, and improved our Google SEO rankings. Their strategies brought in more customers and increased our revenue compared to last month. I appreciate their clear communication, honest advice, and the results they deliver. I'd recommend them to any business owner who wants real growth."
+                </div>
+                
+                <div class="testimonial-author">– Wu, Spa Owner</div>
+                <br>
+                <br>
+                <a href="https://calendly.com/pip-digital/community-growth-workshop" target="_blank" rel="noopener noreferrer" class="cta-button-secondary">Reserve your spot</a>
+
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/logo/logo-white.svg" alt="pip logo" />
+            </div>
+            <a href="#" class="email-link" onclick="copyEmail(event)">HELLO@PIP.DIGITAL</a>
+            <p class="copyright">© <span id="current-year">2025</span> Pip, LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Copy notification -->
+    <div id="copyNotification" class="copy-notification">
+        Email copied to clipboard!
+    </div>
+
+    <script>
+        // Simple scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Copy email to clipboard
+        function copyEmail(event) {
+            event.preventDefault();
+            const email = 'hello@pip.digital';
+            
+            // Use modern clipboard API if available
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showCopyNotification();
+                }).catch(err => {
+                    // Fallback for older browsers
+                    fallbackCopy(email);
+                });
+            } else {
+                // Fallback for older browsers
+                fallbackCopy(email);
+            }
+        }
+
+        // Fallback copy method for older browsers
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyNotification();
+            } catch (err) {
+                console.error('Failed to copy email');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Show copy notification
+        function showCopyNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
