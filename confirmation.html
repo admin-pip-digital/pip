@@ -4,6 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="Join our 90-minute online group workshop to discover your biggest untapped opportunities for getting more customers online. Expert digital marketing guidance from Pip Digital.">
+
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="90-Minute Growth Workshop | Pip Digital">
+    <meta property="og:description" content="Join our 90-minute online group workshop to discover your biggest untapped opportunities for getting more customers online.">
+    <meta property="og:image" content="https://pip.digital/assets/image/hero.png">
+    <meta property="og:url" content="https://pip.digital">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="90-Minute Growth Workshop | Pip Digital">
+    <meta name="twitter:description" content="Join our 90-minute online group workshop to discover your biggest untapped opportunities for getting more customers online.">
+    <meta name="twitter:image" content="https://pip.digital/assets/image/hero.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pip.digital">
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Pip Digital",
+    "url": "https://pip.digital",
+    "logo": "https://pip.digital/assets/logo/logo-white.svg",
+    "description": "Digital marketing agency helping businesses get found online",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "South Jordan",
+        "addressRegion": "UT",
+        "addressCountry": "US"
+    }
+    }
+    </script>
+
     <link rel="icon" type="image/png" href="assets/image/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -370,6 +408,14 @@
             object-fit: cover;
         }
 
+        .legal-links {
+            margin-bottom: 24px;
+        }
+
+        .legal-links a {
+            color: white;
+        }
+
         /* Responsive Design - FIXED */
         @media (max-width: 768px) {
             .container {
@@ -608,6 +654,9 @@
                 <img src="assets/logo/logo-white.svg" alt="pip logo" />
             </div>
             <a href="#" class="email-link" onclick="copyEmail(event)">HELLO@PIP.DIGITAL</a>
+            <p class="legal-links">
+                <a href="/terms-of-service">Terms & Conditions</a> | <a href="/privacy-policy">Privacy Policy</a>
+            </p>
             <p class="copyright">© <span id="current-year">2025</span> Pip, LLC. All rights reserved.</p>
         </div>
     </footer>
