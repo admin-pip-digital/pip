@@ -540,6 +540,59 @@
             opacity: 1;
         }
 
+        .cookie-banner {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 16px;
+            max-width: 442px;
+            width: calc(100% - 48px);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .cookie-banner.hidden {
+            transform: translateX(-50%) translateY(100px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .banner-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+            color: #000;
+            line-height: 1.4;
+        }
+
+        .accept-button {
+            background: #ccdf50;
+            color: black;
+            border: none;
+            height: 56px;
+            padding: 0 24px;
+            border-radius: 120px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .accept-button:hover {
+            background: #b8c946;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -571,6 +624,17 @@
 
             .problems {
                 padding: 60px 0;
+            }
+
+            .problems-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .problem-card {
+                padding: 1.25rem;
+                min-height: 100px;
             }
 
             .center-image {
@@ -642,7 +706,12 @@
         }
 
         @media (max-width: 480px) {
-          
+            .problem-card {
+                padding: 1rem;
+                min-height: 90px;
+                gap: 0.5rem;
+            }
+
             .solution-step {
                 padding: 1rem;
             }
@@ -651,6 +720,17 @@
             .cta-button-secondary {
                 padding: 10px 20px;
             }
+
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .accept-button {
+                width: 100%;
+            }
+
         }
     </style>
 </head>
@@ -715,7 +795,7 @@
             </div>
 
             <div class="problems-content">
-                <p class="body-large">Some companies we've worked with:</p>
+                <h3>Some of the companies we've worked with:</h3>
                 <br>
                 <div class="problems-grid">
                     <div class="problem-card">
@@ -772,6 +852,13 @@
     <!-- Copy notification -->
     <div id="copyNotification" class="copy-notification">
         Email copied to clipboard!
+    </div>
+
+    <div class="cookie-banner" id="cookieBanner">
+    <div class="banner-text">
+        This site uses cookies for analytics and to improve your experience. By continuing to browse, you accept our use of cookies.
+    </div>
+    <button class="accept-button" onclick="dismissBanner()">GOT IT</button>
     </div>
 
     <script>
@@ -841,6 +928,23 @@
                 notification.classList.remove('show');
             }, 2000);
         }
+
+        // Cookies banner behavior
+        function dismissBanner() {
+            const banner = document.getElementById('cookieBanner');
+            banner.classList.add('hidden');
+            
+            // Store acceptance in localStorage so it doesn't show again
+            localStorage.setItem('cookieAccepted', 'true');
+        }
+
+        // Check if user already accepted cookies
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('cookieAccepted') === 'true') {
+                document.getElementById('cookieBanner').classList.add('hidden');
+            }
+        });
+
     </script>
 </body>
 </html>
