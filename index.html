@@ -4,6 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - We help businesses get found online</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="Join our 90-minute online group workshop to discover your biggest untapped opportunities for getting more customers online. Expert digital marketing guidance from Pip Digital.">
+
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="90-Minute Growth Workshop | Pip Digital">
+    <meta property="og:description" content="Join our 90-minute online group workshop to discover your biggest untapped opportunities for getting more customers online.">
+    <meta property="og:image" content="https://pip.digital/assets/image/hero.png">
+    <meta property="og:url" content="https://pip.digital">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="90-Minute Growth Workshop | Pip Digital">
+    <meta name="twitter:description" content="Join our 90-minute online group workshop to discover your biggest untapped opportunities for getting more customers online.">
+    <meta name="twitter:image" content="https://pip.digital/assets/image/hero.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pip.digital">
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Pip Digital",
+    "url": "https://pip.digital",
+    "logo": "https://pip.digital/assets/logo/logo-white.svg",
+    "description": "Digital marketing agency helping businesses get found online",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "South Jordan",
+        "addressRegion": "UT",
+        "addressCountry": "US"
+    }
+    }
+    </script>
+
     <link rel="icon" type="image/png" href="assets/image/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -529,6 +567,60 @@
                 padding: 10px 16px;
                 font-size: 0.9rem;
             }
+
+        .cookie-banner {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 16px;
+            max-width: 442px;
+            width: calc(100% - 48px);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .cookie-banner.hidden {
+            transform: translateX(-50%) translateY(100px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .banner-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+            color: #000;
+            line-height: 1.4;
+        }
+
+        .accept-button {
+            background: #ccdf50;
+            color: black;
+            border: none;
+            height: 56px;
+            padding: 0 24px;
+            border-radius: 120px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .accept-button:hover {
+            background: #b8c946;
+        }
+
         }
 
         /* Extra small screens */
@@ -546,6 +638,17 @@
             .cta-button-secondary {
                 padding: 10px 20px;
             }
+
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .accept-button {
+                width: 100%;
+            }
+            
         }
 
         /* Footer */
@@ -773,6 +876,13 @@
         Email copied to clipboard!
     </div>
 
+    <div class="cookie-banner" id="cookieBanner">
+    <div class="banner-text">
+        This site uses cookies for analytics and to improve your experience. By continuing to browse, you accept our use of cookies.
+    </div>
+    <button class="accept-button" onclick="dismissBanner()">GOT IT</button>
+    </div>
+
     <script>
         // Simple scroll for CTA buttons
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -840,6 +950,23 @@
                 notification.classList.remove('show');
             }, 2000);
         }
+
+        // Cookies banner behavior
+        function dismissBanner() {
+            const banner = document.getElementById('cookieBanner');
+            banner.classList.add('hidden');
+            
+            // Store acceptance in localStorage so it doesn't show again
+            localStorage.setItem('cookieAccepted', 'true');
+        }
+
+        // Check if user already accepted cookies
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('cookieAccepted') === 'true') {
+                document.getElementById('cookieBanner').classList.add('hidden');
+            }
+        });
+
     </script>
 </body>
 </html>
