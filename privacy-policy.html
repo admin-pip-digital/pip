@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17308801022"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17308801022');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MPR5BJMC');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
+    <title>Home - We help businesses get found online</title>
 
     <!-- Meta Description -->
-    <meta name="description" content="Join our 90-minute online group workshop to discover your biggest untapped opportunities for getting more customers online. Expert digital marketing guidance from Pip Digital.">
+    <meta name="description" content="Look, they can't book you if they can't find you. Get your business online today — your customers are searching! Expert digital marketing guidance from Pip Digital.">
 
     <!-- Open Graph tags for social sharing -->
-    <meta property="og:title" content="90-Minute Growth Workshop | Pip Digital">
-    <meta property="og:description" content="Join our 90-minute online group workshop to discover your biggest untapped opportunities for getting more customers online.">
+    <meta property="og:title" content="Get found online | Pip Digital">
+    <meta property="og:description" content="They can't book you if they can't find you.">
     <meta property="og:image" content="https://pip.digital/assets/image/hero.png">
     <meta property="og:url" content="https://pip.digital">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="90-Minute Growth Workshop | Pip Digital">
-    <meta name="twitter:description" content="Join our 90-minute online group workshop to discover your biggest untapped opportunities for getting more customers online.">
+    <meta name="twitter:title" content="Get found online | Pip Digital">
+    <meta name="twitter:description" content="Get found online. They can't book you if they can't find you.">
     <meta name="twitter:image" content="https://pip.digital/assets/image/hero.png">
 
     <!-- Canonical URL -->
@@ -46,14 +65,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MPR5BJMC');</script>
-    <!-- End Google Tag Manager -->
 
     <style>
         * {
@@ -107,6 +118,52 @@
             width: auto;
         }
 
+        /* Hero Section */
+        .hero {
+            background: #1757DA;
+            color: white;
+            padding: 24px 0 0;
+            text-align: left;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 442px;
+            margin: 0 auto;
+            padding-bottom: 0;
+            text-align: left;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 442px;
+            margin: 0 auto;
+            aspect-ratio: 1;
+            z-index: 10;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content h1 {
+            font-size: 40px;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 442px;
+            font-weight: 400;
+            font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+
         .cta-button {
             background: #CCDF50;
             color: #000;
@@ -139,7 +196,7 @@
         .workshop {
             background: #FFF;
             color: #000;
-            padding: 24px 0 60px;
+            padding: 30px 0 60px;
             text-align: left;
             position: relative;
             z-index: 1;
@@ -160,7 +217,7 @@
         }
 
         .workshop p {
-            font-size: 16px;
+            font-size: 1.1rem;
             margin-bottom: 2rem;
             color: #000;
             font-weight: 400;
@@ -408,6 +465,59 @@
             object-fit: cover;
         }
 
+        .cookie-banner {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 16px;
+            max-width: 442px;
+            width: calc(100% - 48px);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .cookie-banner.hidden {
+            transform: translateX(-50%) translateY(100px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .banner-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+            color: #000;
+            line-height: 1.4;
+        }
+
+        .accept-button {
+            background: #ccdf50;
+            color: black;
+            border: none;
+            height: 56px;
+            padding: 0 24px;
+            border-radius: 120px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .accept-button:hover {
+            background: #b8c946;
+        }
+
         .legal-links {
             margin-bottom: 24px;
         }
@@ -518,6 +628,7 @@
                 padding: 10px 16px;
                 font-size: 0.9rem;
             }
+
         }
 
         /* Extra small screens */
@@ -531,6 +642,17 @@
             .cta-button-secondary {
                 padding: 10px 20px;
             }
+
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .accept-button {
+                width: 100%;
+            }
+            
         }
 
         /* Footer */
@@ -615,77 +737,127 @@
         </nav>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Look — They can't book you if they can't find you.</h1>
+                <p>You're amazing at what you do, but your customers can't find you online – we'll fix that so the people who need your services actually book with YOU.</p>
+                <a href="https://calendly.com/pip-digital/free-consultation" target="_blank" rel="noopener noreferrer" class="cta-button">Get a Free Consultation</a>
+            </div>
+            <div class="hero-image">
+                <img src="assets/image/hero.png" alt="Business owner" />
+            </div>
+        </div>
+    </section>
+
     <!-- Workshop Section -->
     <section class="workshop" id="workshop">
         <div class="container">
             <div class="workshop-content">
-                <h2>Privacy policy, Pip Digital LLC</h2>
-                <p>Effective Date: May 31, 2025</p>
-                <p>
-                    Information We Collect
-                    Personal Information
-                    When you schedule a consultation, workshop, or other services through our website, we collect:
-                    Name and contact information (email, phone number)
-                    Business information (business name, products/services offered, years in business)
-                    Growth vision and business goals
-                    Payment information (processed securely through Calendly)
-                    Automatically Collected Information
-                    When you visit our website, we automatically collect:
-                    Website usage data (pages visited, time spent, clicks)
-                    Device and browser information
-                    IP address and location data
-                    Referral sources and search terms
-                    How We Collect Information
-                    We collect information through:
-                    Calendly forms when you book consultations or workshops
-                    Google Analytics to understand website usage
-                    Facebook Pixel for advertising and analytics
-                    Cookies to improve your browsing experience
-                    How We Use Your Information
-                    We use your information to:
-                    Provide our business consulting and workshop services
-                    Schedule and conduct consultations and workshops
-                    Follow up on leads and maintain client relationships
-                    Improve our website and services
-                    Send relevant marketing communications
-                    Process payments for our services
-                    Analyze website performance and user behavior
-                    How We Store and Share Information
-                    Internal Storage
-                    We store client and lead information in Notion for internal team management and service delivery.
-                    Third-Party Services
-                    We share information with:
-                    Calendly - for scheduling and payment processing
-                    Google Analytics - for website analytics
-                    Facebook/Meta - for advertising and analytics
-                    Payment processors - for secure payment handling (through Calendly)
-                    We do not sell, rent, or trade your personal information to third parties for marketing purposes.
-                    Cookies and Tracking
-                    Our website uses cookies and similar technologies to:
-                    Analyze website traffic and usage patterns
-                    Improve user experience
-                    Enable advertising and retargeting
-                    Remember your preferences
-                    You can control cookies through your browser settings, though some features may not work properly if cookies are disabled.
-                    Data Security
-                    We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no internet transmission is completely secure, and we cannot guarantee absolute security.
-                    Your Rights
-                    You have the right to:
-                    Access the personal information we have about you
-                    Request correction of inaccurate information
-                    Request deletion of your information
-                    Opt out of marketing communications
-                    Withdraw consent for data processing
-                    Data Retention
-                    We retain your information for as long as necessary to provide our services and comply with legal obligations. Client information is typically retained throughout our business relationship and for a reasonable period thereafter.
-                    Updates to This Policy
-                    We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on our website with an updated effective date.
-                    Contact Us
-                    If you have questions about this privacy policy or our data practices, please contact us at:
-                    Email: hello@pip.digital
-                    This privacy policy was last updated on August 1, 2025.
-                </p>
+                <h2>Join a discovery workshop today!</h2>
+                <p>You and your team will spend 90 minutes with our Pip team to discover your goals and identify the barriers that stand in your way.</p>
                 
+                <p>We'll provide you with a plan to grow your business. Sign up for a workshop today!</p>
+                
+                <div class="workshop-features">
+                    <div class="workshop-feature">
+                        <h3>• Discover your biggest untapped opportunities</h3>
+                    </div>
+                    <div class="workshop-feature">
+                        <h3>• Map out which strategies to test first</h3>
+                    </div>
+                    <div class="workshop-feature">
+                        <h3>• Move forward confidently with a clear action plan</h3>
+                    </div>
+                </div>
+                
+                <div class="workshop-button-center">
+                    <a href="https://calendly.com/pip-digital/discovery-workshop" target="_blank" rel="noopener noreferrer" class="cta-button-secondary">Book a Workshop – $395.00</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems">
+        <div class="container">
+            <div class="problems-content">
+                <h2>We've all been there:</h2>
+                
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <h3>Your ideal customers are searching right now</h3>
+                    </div>
+                    <div class="problem-card">
+                        <p>The internet barely knows you exist (we can fix that)</p>
+                    </div>
+                </div>
+
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <h3>They're finding other similar businesses before you</h3>
+                    </div>
+                    <div class="problem-card">
+                        <p>You're missing out on those sales every single day</p>
+                    </div>
+                </div>
+
+                <div class="problem-statement">
+                    <p>You shouldn't have to choose between being good at your job and finding people who need you</p>
+                </div>
+
+                <div class="center-image">
+                    <img src="assets/image/center.png" alt="Business owner" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <div class="solution-content">
+                <h2>The simple system that gets you booked</h2>
+                
+                <div class="solution-steps">
+                    <div class="solution-step">
+                        <h3>Step one: Get found</h3>
+                        <p>We make sure when people search for what you do, they find YOU first</p>
+                    </div>
+                    <div class="solution-step">
+                        <h3>Step two: Drive traffic</h3>
+                        <p>We bring qualified customers who are ready to book directly to you</p>
+                    </div>
+                    <div class="solution-step">
+                        <h3>Step three: Convert bookings</h3>
+                        <p>We make it easy for them to say yes so you don't lose potential clients</p>
+                    </div>
+                </div>
+
+                <a href="https://calendly.com/pip-digital/free-consultation" target="_blank" rel="noopener noreferrer" class="cta-button">Get a Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results">
+        <div class="container">
+            <div class="results-content">
+                <div class="results-image">
+                    <img src="assets/image/group-workshop.png" alt="Happy business owner" />
+                </div>
+                
+                <h2>Real results for real businesses</h2>
+                
+                <div class="stars">★ ★ ★ ★ ★</div>
+                
+                <div class="testimonial">
+                    "Eric & Anna have been fantastic to work with! They created a great website for my spa, handled our Facebook ads, and improved our Google SEO rankings. Their strategies brought in more customers and increased our revenue compared to last month. I appreciate their clear communication, honest advice, and the results they deliver. I'd recommend them to any business owner who wants real growth."
+                </div>
+                
+                <div class="testimonial-author">– Wu, Spa Owner</div>
             </div>
         </div>
     </section>
@@ -707,6 +879,13 @@
     <!-- Copy notification -->
     <div id="copyNotification" class="copy-notification">
         Email copied to clipboard!
+    </div>
+
+    <div class="cookie-banner" id="cookieBanner">
+    <div class="banner-text">
+        This site uses cookies for analytics and to improve your experience. By continuing to browse, you accept our use of cookies.
+    </div>
+    <button class="accept-button" onclick="dismissBanner()">GOT IT</button>
     </div>
 
     <script>
@@ -776,6 +955,23 @@
                 notification.classList.remove('show');
             }, 2000);
         }
+
+        // Cookies banner behavior
+        function dismissBanner() {
+            const banner = document.getElementById('cookieBanner');
+            banner.classList.add('hidden');
+            
+            // Store acceptance in localStorage so it doesn't show again
+            localStorage.setItem('cookieAccepted', 'true');
+        }
+
+        // Check if user already accepted cookies
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('cookieAccepted') === 'true') {
+                document.getElementById('cookieBanner').classList.add('hidden');
+            }
+        });
+
     </script>
 </body>
 </html>
