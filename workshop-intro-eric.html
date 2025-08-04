@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Group Workshop - Pip</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    body {
+        font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 400;
+        line-height: 1.5;
+        color: white;
+        background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%);
+        min-height: 100vh;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .logo {
+        font-family: 'Hedvig Letters Serif', serif;
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 20px;
+        margin-top: 15px;
+        max-height: 35px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .logo::after {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background: #10B981;
+        border-radius: 50%;
+        margin-left: 3px;
+        margin-bottom: 5px;
+    }
+
+    h1 {
+        font-family: 'Hedvig Letters Serif', serif;
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .subtitle {
+        font-size: 16px;
+        margin-bottom: 25px;
+        opacity: 0.9;
+        font-weight: 400;
+        line-height: 1.4;
+    }
+
+    .video-container {
+        margin-bottom: 25px;
+        border-radius: 16px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .placeholder-video {
+        width: 100%;
+        height: 160px;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 14px;
+        border-radius: 16px;
+        border: 2px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    .cta-button {
+        background: #10B981;
+        color: white;
+        border: none;
+        padding: 20px 40px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 50px;
+        width: 100%;
+        margin-bottom: 40px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        line-height: 1.5;
+    }
+
+    .cta-button:hover {
+        background: #059669;
+        transform: translateY(-2px);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .form-group:last-of-type {
+        margin-bottom: 40px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: white;
+        line-height: 1.5;
+    }
+
+    input {
+        width: 100%;
+        padding: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #10B981;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .submit-button {
+        background: white;
+        color: #1757DA;
+        border: none;
+        padding: 16px 32px;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 50px;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        line-height: 1.5;
+    }
+
+    .submit-button:hover {
+        background: #F9FAFB;
+        transform: translateY(-2px);
+    }
+
+    .testimonial-section {
+        background: white;
+        color: black;
+        border-radius: 16px;
+        padding: 30px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .testimonial-header {
+        font-family: 'Hedvig Letters Serif', serif;
+        font-size: 22px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        color: black;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    .stars {
+        margin-bottom: 20px;
+    }
+
+    .star {
+        color: #A855F7;
+        font-size: 24px;
+        margin: 0 2px;
+    }
+
+    .testimonial {
+        font-style: italic;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        color: #374151;
+        text-align: left;
+    }
+
+    .testimonial-author {
+        font-weight: 500;
+        color: black;
+        font-style: normal;
+        text-align: left;
+        display: block;
+        line-height: 1.5;
+    }
+
+    .benefits {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 30px;
+        text-align: left;
+        margin-bottom: 40px;
+    }
+
+    .benefits h3 {
+        font-family: 'Hedvig Letters Serif', serif;
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: white;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        text-align: center;
+    }
+
+    .benefit-item {
+        margin-bottom: 16px;
+        padding-left: 20px;
+        position: relative;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+    }
+
+    .benefit-item::before {
+        content: "•";
+        color: #CCDF50;
+        font-size: 20px;
+        position: absolute;
+        left: 0;
+    }
+
+    @media (min-width: 768px) {
+        .container {
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 42px;
+        }
+
+        .logo {
+            font-size: 40px;
+            max-height: 40px;
+            line-height: 1.2;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="logo">pip</div>
+
+    <h1>Join a free online group workshop</h1>
+    
+    <p class="subtitle">You're already the expert at what you do – Pip just helps you get customers online</p>
+
+    <div class="video-container">
+        <!-- Replace this placeholder with your actual video -->
+        <div class="placeholder-video">
+            📹 Your intro video goes here<br>
+            <small style="opacity: 0.7; margin-top: 8px; display: block;">
+                Replace with: &lt;video controls&gt;&lt;source src="/assets/video/workshop-intro.mp4"&gt;&lt;/video&gt;
+            </small>
+        </div>
+    </div>
+
+    <form action="#" method="POST" id="signup-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        
+        <button type="submit" class="cta-button">RESERVE YOUR SPOT</button>
+    </form>
+
+    <div class="benefits">
+        <h3>What you'll walk away with</h3>
+        <div class="benefit-item">Your biggest untapped opportunities for getting more customers online</div>
+        <div class="benefit-item">Which growth strategy to test first (and which you should avoid)</div>
+        <div class="benefit-item">A clear action plan you can start implementing immediately</div>
+    </div>
+
+    <div class="testimonial-section">
+        <h3 class="testimonial-header">We helped a local massage spa double their monthly revenue in two months</h3>
+        <div class="stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+        </div>
+        <blockquote class="testimonial">
+            "Eric & Anna have been fantastic to work with! They created a great website for my spa, handled our Facebook ads, and improved our Google SEO rankings. Their strategies brought in more customers and increased our revenue compared to last month. I appreciate their clear communication, honest advice, and the results they deliver. I'd recommend them to any business owner who wants real growth."
+        </blockquote>
+        <cite class="testimonial-author">- Wu, Spa Owner</cite>
+    </div>
+</div>
+
+<script>
+    // Basic form handling - replace with your actual form handler
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Form submitted! Replace this with your actual form handler.');
+    });
+</script>
+
+</body>
+</html>
