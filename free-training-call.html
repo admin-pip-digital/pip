@@ -371,7 +371,7 @@
                     <p><strong>Enter your info below and we’ll send you the link to join and some materials to help you prepare. We hope to see you soon!</strong></p>
                 </div>
 
-                <form class="signup-form" id="workshopForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfC_2urlD48wSJhwP_m1AluiXQ8gYPr5h_FDASsM6-erMxOjg/formResponse" method="POST" target="hidden_iframe">
+                <form class="signup-form" id="workshopForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfC_2urlD48wSJhwP_m1AluiXQ8gYPr5h_FDASsM6-erMxOjg/formResponse" method="POST">
                     <div class="form-group">
                         <input type="text" class="form-input" placeholder="First name" name="entry.1705742309" required>
                     </div>
@@ -380,7 +380,6 @@
                     </div>
                     <button type="submit" class="signup-button">SIGN ME UP</button>
                 </form>
-                <iframe name="hidden_iframe" style="display:none;"></iframe>
             </div>
         </div>
     </main>
@@ -443,14 +442,10 @@
     <script>
         // Handle form submission
         document.getElementById('workshopForm').addEventListener('submit', function(e) {
-            // Let the form submit to Google Forms naturally
-            // Show success message after a brief delay
-            setTimeout(function() {
-                alert('Thanks for signing up! We\'ll send you the meeting details soon.');
-                // Reset form after submission
-                document.getElementById('workshopForm').reset();
-            }, 1000);
-        });
+        setTimeout(function() {
+        window.location.href = '/confirmation';
+        }, 500);
+    });
     </script>
 </body>
 </html>
