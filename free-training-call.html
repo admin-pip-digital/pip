@@ -106,15 +106,16 @@
 
         .form-title {
             color: #000;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 500;
+            line-height: 1.2;
             margin-bottom: 1rem;
             text-align: left;
         }
 
         .form-details {
             color: #000;
-            font-size: 14px;
+            font-size: 16px;
             margin-bottom: 1.5rem;
             text-align: left;
         }
@@ -227,6 +228,8 @@
 
         /* Results Section */
         .results-section {
+            background-color: white;
+            color: black;
             padding: 3rem 0;
         }
 
@@ -366,14 +369,16 @@
                     <p><strong>Date:</strong> Wednesday, August 27, 2025</p>
                     <p><strong>Time:</strong> 10:00AM – 11:00AM</p>
                     <p><strong>Where:</strong> Video call (Google Meet)</p>
+                    <br>
+                    <p><strong>Enter your info below and we’ll send you the link to join and some materials to help you prepare. We hope to see you soon!</strong></p>
                 </div>
 
                 <form class="signup-form" id="workshopForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfC_2urlD48wSJhwP_m1AluiXQ8gYPr5h_FDASsM6-erMxOjg/formResponse" method="POST" target="hidden_iframe">
                     <div class="form-group">
-                        <input type="text" class="form-input" placeholder="FIRST NAME" name="entry.1705742309" required>
+                        <input type="text" class="form-input" placeholder="First name" name="entry.1705742309" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-input" placeholder="EMAIL" name="entry.1975949516" required>
+                        <input type="email" class="form-input" placeholder="Email" name="entry.1975949516" required>
                     </div>
                     <button type="submit" class="signup-button">SIGN ME UP</button>
                 </form>
@@ -415,7 +420,6 @@
     <!-- Results Section -->
     <section class="results-section">
         <div class="container">
-            <img src="assets/image/group-workshop.png" alt="Group workshop" class="results-image">
             
             <h2 class="results-headline">Real results for real businesses</h2>
             
@@ -425,7 +429,7 @@
             
             <p class="testimonial-author">– Wu, Spa Owner</p>
 
-            <button type="button" class="final-cta" onclick="document.getElementById('workshopForm').scrollIntoView()">RESERVE YOUR SPOT - $195.00</button>
+            <button type="button" class="final-cta" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to top of page</button>
         </div>
     </section>
 
