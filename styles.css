@@ -290,7 +290,6 @@ section.color {
     text-align: left;
     border: 1px solid var(--white);
     border-radius: 16px;
-    margin-bottom: var(--space-xl);
 }
 
 .two-column-row {
@@ -298,7 +297,6 @@ section.color {
   margin: 0 auto;
   display: flex;
   gap: 16px;
-  margin: 0 24px 16px 24px;
 }
 
 .two-column-row > * {
