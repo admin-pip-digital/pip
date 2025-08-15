@@ -121,10 +121,8 @@
                         <li>Capture leads</li>
                     </ul>
                     <br>
-                    <div>
-                        <a href="services/online-presence-builder.html">
-                            <button class="secondary" style="width: 100%">Learn more</button>    
-                        </a>
+                    <div class="button">
+                        <button class="secondary learn-more-btn" style="width: 100%" data-service="starter">Learn more</button>
                     </div>
                 </div>
                 
@@ -138,10 +136,8 @@
                         <li>Convery bookings</li>
                     </ul>
                     <br>
-                    <div>
-                        <a href="services/booking-growth-system.html">
-                            <button class="secondary" style="width: 100%">Learn more</button>    
-                        </a>
+                    <div class="button">
+                        <button class="secondary learn-more-btn" style="width: 100%" data-service="booster">Learn more</button>
                     </div>
                 </div>
 
@@ -155,14 +151,32 @@
                         <li>Optimize conversions</li>
                     </ul>
                     <br>
-                    <div>
-                        <a href="services/revenue-multiplier.html">
-                            <button class="secondary" style="width: 100%">Learn more</button>    
-                        </a>
+                    <div class="button">
+                        <button class="secondary learn-more-btn" style="width: 100%" data-service="multiplier">Learn more</button>
                     </div>
+                </div>
+
             </div>
 
+        <!-- Slide-in Overlay -->
+        <div class="slide-in-overlay" id="slideInOverlay"></div>
+
+        <!-- Slide-in Panel -->
+        <div class="slide-in-panel" id="slideInPanel">
+        <div class="slide-in-header">
+            <div></div> <!-- Empty div for spacing -->
+            <button class="close-btn" id="closeBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
         </div>
+        
+        <div class="slide-in-content" id="slideInContent">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
     
     </section>
 
@@ -388,6 +402,227 @@
             });
         }
     });
+
+        const serviceData = {
+            starter: {
+                category: 'Growth starter - Starts at $1,500.00/mo',
+                title: 'Online Presence Builder',
+                subtitle: 'Build a foundation for growth',
+                perfectFor: 'Local service businesses just starting their online journey',
+                benefits: [
+                    {
+                        title: 'Get visible',
+                        detail: 'We establish your online presence so local customers can discover your business when they need your services'
+                    },
+                    {
+                        title: 'Generate interest',
+                        detail: 'We will create targeted campaigns to attract your ideal customers who are actively looking for what you offer'
+                    },
+                    {
+                        title: 'Capture leads',
+                        detail: 'We make it simple for prospects to contact you and take the next step toward becoming clients'
+                    }
+                ],
+                included: [
+                    {
+                        title: 'Google Business Profile optimization',
+                        detail: 'We set up your business page on Google so when people search for you, they see your hours, location, photos, and reviews all in one place.'
+                    },
+                    {
+                        title: 'Basic local SEO',
+                        detail: 'We help your website show up when people in your area search for the services you offer.'
+                    },
+                    {
+                        title: 'Simple landing page',
+                        detail: 'We build a simple webpage designed specifically to get people to book with you or take advantage of your deals.'
+                    },
+                    {
+                        title: 'One advertising platform (usually Google Ads to start)',
+                        detail: 'We create and run ads that show up when people search on Google, then we watch how they are doing and make them better.'
+                    },
+                    {
+                        title: 'Basic conversion tracking',
+                        detail: 'We set up systems to see exactly which ads are bringing you actual customers, not just website visitors.'
+                    }
+                ]
+            },
+            booster: {
+                category: 'Growth booster - Starts at $2,500/mo',
+                title: 'Booking Growth System',
+                subtitle: 'Scale your business to sustainable growth',
+                perfectFor: 'Growing businesses ready to scale beyond basic local marketing',
+                benefits: [
+                    {
+                        title: 'Get found',
+                        detail: 'We make sure when people search for what you do, they find YOU first'
+                    },
+                    {
+                        title: 'Drive traffic',
+                        detail: 'We will bring qualified customers who are ready to book directly to you'
+                    },
+                    {
+                        title: 'Convert bookings',
+                        detail: 'We make it easy for them to schedule so you do not lose potential clients'
+                    }
+                ],
+                included: [
+                    {
+                        title: 'Everything from Online Presence Builder',
+                        detail: 'All the foundational elements from our starter package, plus advanced features below.'
+                    },
+                    {
+                        title: 'Additional advertising platform (usually Facebook & Instagram)',
+                        detail: 'We create and run ads on Facebook and Instagram, then keep an eye on them to make sure they are working well.'
+                    },
+                    {
+                        title: 'More sophisticated landing pages/funnels',
+                        detail: 'We build smarter webpages that guide people step-by-step toward booking with you, like a path that leads them where you want them to go.'
+                    },
+                    {
+                        title: 'Enhanced tracking and analytics',
+                        detail: 'We give you detailed reports about what is working and what is not, so you can see where your money is best spent.'
+                    },
+                    {
+                        title: 'A/B testing capabilities',
+                        detail: 'We test two different versions of the same ad or webpage to see which one gets better results, then use the winner.'
+                    }
+                ]
+            },
+            multiplier: {
+                category: 'Growth multiplier - Starts at $5,000.00/mo',
+                title: 'Revenue Multiplier',
+                subtitle: 'Dominate your market and maximize growth',
+                perfectFor: 'Established businesses ready to dominate their market and scale rapidly',
+                benefits: [
+                    {
+                        title: 'Own your space',
+                        detail: 'We ensure you are the obvious choice across every platform where your customers spend time'
+                    },
+                    {
+                        title: 'Drive premium traffic',
+                        detail: 'We will attract high-value clients who are eager to invest in your premium services'
+                    },
+                    {
+                        title: 'Optimize conversions',
+                        detail: 'We create seamless systems that turn visitors into booked clients while you focus on delivery'
+                    }
+                ],
+                included: [
+                    {
+                        title: 'Everything from Online Presence Builder & Booking Growth System',
+                        detail: 'All features from our previous packages, plus enterprise-level capabilities below.'
+                    },
+                    {
+                        title: 'Multi-platform campaigns',
+                        detail: 'We run your ads across several different websites and apps at the same time, all working together.'
+                    },
+                    {
+                        title: 'Advanced automation',
+                        detail: 'We set up systems that automatically respond to customers and manage your ads without you having to do it manually.'
+                    },
+                    {
+                        title: 'Custom audiences and retargeting',
+                        detail: 'We show ads to people who already visited your website or are similar to your best customers.'
+                    },
+                    {
+                        title: 'Comprehensive reporting and optimization',
+                        detail: 'We give you detailed reports and constantly make improvements based on what we learn from the data.'
+                    }
+                ]
+            }
+        };
+
+        function openSlideIn(serviceType) {
+            const data = serviceData[serviceType];
+            if (!data) return;
+
+            const content = `
+                <div class="service-header">
+                    <div class="service-category">${data.category}</div>
+                    <h1 class="service-title">${data.title}</h1>
+                    <p class="service-subtitle">${data.subtitle}</p>
+                    
+                    <div class="perfect-for">
+                        <h4>Perfect for</h4>
+                        <p>${data.perfectFor}</p>
+                    </div>
+                </div>
+
+                <div class="benefits-section">
+                    <h2 class="section-title">What you'll get</h2>
+                    ${data.benefits.map(benefit => `
+                        <div class="benefit-item">
+                            <div class="benefit-title">${benefit.title}:</div>
+                            <div class="benefit-detail">${benefit.detail}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="included-section">
+                    <h2 class="section-title">What's included</h2>
+                    ${data.included.map(item => `
+                        <div class="included-item">
+                            <div class="included-title">${item.title}:</div>
+                            <div class="included-detail">${item.detail}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="cta-section">
+                    <button class="cta-btn">Get a free consultation</button>
+                </div>
+            `;
+
+            document.getElementById('slideInContent').innerHTML = content;
+            document.getElementById('slideInOverlay').classList.add('active');
+            document.getElementById('slideInPanel').classList.add('active');
+            
+            // Lock background scrolling
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            document.body.classList.add('slide-in-open');
+        }
+
+        function closeSlideIn() {
+            document.getElementById('slideInOverlay').classList.remove('active');
+            document.getElementById('slideInPanel').classList.remove('active');
+            
+            // Restore background scrolling
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            document.body.classList.remove('slide-in-open');
+        }
+
+        // Event listeners
+        document.querySelectorAll('.learn-more-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const serviceType = e.target.getAttribute('data-service');
+                openSlideIn(serviceType);
+            });
+        });
+
+        document.getElementById('closeBtn').addEventListener('click', closeSlideIn);
+        document.getElementById('backBtn').addEventListener('click', closeSlideIn);
+
+        // Close on overlay click
+        document.getElementById('slideInOverlay').addEventListener('click', closeSlideIn);
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSlideIn();
+            }
+        });
+
+        // Handle CTA button clicks
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('cta-btn')) {
+                // Replace with your actual consultation booking logic
+                window.open('https://calendly.com/pip-digital/free-consultation', '_blank');
+                closeSlideIn();
+            }
+        });
+
     </script>
 
 </body>
