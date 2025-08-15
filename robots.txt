@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Block access to assets folder if it contains only CSS/JS/images
+
+# Remove this line if you want search engines to index your assets
+
+Disallow: /assets/
+
+# Allow all important pages
+
+Allow: /index.html
+Allow: /about.html
+Allow: /services.html
+Allow: /work.html
+Allow: /blog.html
+
+# Sitemap location
+
+Sitemap: https://pip.digital/sitemap.xml
