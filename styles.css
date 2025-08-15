@@ -82,7 +82,7 @@ body {
     text-align: center;
     padding: 16px 24px;
     position: relative;
-    z-index: 1000;
+    z-index: 999;
 }
 
 a {
@@ -402,6 +402,10 @@ footer {
     nav {
     padding: 8px 16px 8px 24px;
     }
+    
+    .logo img {
+    height: 32px;
+    }
 
     .marketing-banner {
     font-size: 14px;
@@ -471,6 +475,7 @@ footer {
         padding: 24px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         gap: 32px;
+        z-index: 1000;
     }
 
     .nav-links.active {
