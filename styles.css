@@ -421,6 +421,10 @@ footer {
     section {
     padding: var(--space-2xl) 0;
     }
+    
+    section.hero {
+    margin: 56px;
+    }
 
     .image {
     width: 100%;
