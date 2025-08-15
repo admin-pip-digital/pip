@@ -640,6 +640,7 @@ footer {
 
     .two-column-row {
     flex-direction: column; /* Stack vertically on mobile */
+    margin: 0 24px;
     }
 
     .text-block {
