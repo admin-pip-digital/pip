@@ -379,7 +379,7 @@ footer {
 }
 
 .faq-answer {
-    background-color: var(--cream);
+    background-color: var(--white);
     max-height: 0;
     overflow: hidden;
 }
