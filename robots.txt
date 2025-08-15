@@ -1,21 +1,18 @@
 User-agent: *
-Allow: /
-
-# Block technical and utility pages
-
-Disallow: /assets/
-Disallow: /confirmation.html
-Disallow: /privacy-policy.html
-Disallow: /terms-of-service.html
-Disallow: /styles.css
 
 # Allow all important pages
 
+Allow: /
 Allow: /index.html
 Allow: /about.html
 Allow: /services.html
 Allow: /work.html
 Allow: /blog.html
+
+# Block technical and utility pages
+
+Disallow: /assets/
+Disallow: /styles.css
 
 # Sitemap location
 
