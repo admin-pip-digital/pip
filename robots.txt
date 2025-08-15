@@ -1,11 +1,13 @@
 User-agent: *
 Allow: /
 
-# Block access to assets folder if it contains only CSS/JS/images
-
-# Remove this line if you want search engines to index your assets
+# Block technical and utility pages
 
 Disallow: /assets/
+Disallow: /confirmation.html
+Disallow: /privacy-policy.html
+Disallow: /terms-of-service.html
+Disallow: /styles.css
 
 # Allow all important pages
 
