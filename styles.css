@@ -405,6 +405,7 @@ footer {
     
     .logo img {
     height: 32px;
+    width: auto;
     }
 
     .marketing-banner {
