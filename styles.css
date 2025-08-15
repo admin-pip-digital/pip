@@ -398,6 +398,10 @@ footer {
     --font-size-subheading: 18px;
     --font-size-body: 16px;
     }
+    
+    nav {
+    padding: 8px 16px 8px 24px;
+    }
 
     .marketing-banner {
     font-size: 14px;
