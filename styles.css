@@ -73,7 +73,6 @@ body {
     font-family: var(--font-body);
     font-size: var(--font-size-body);
     line-height: var(--line-height-normal);
-    background-color: var(--cream);
 }
 
 .marketing-banner {
@@ -178,12 +177,22 @@ nav {
     margin: auto 0;
 }
 
+.breadcrumb {
+    margin-bottom: 32px;
+}
+
+.breadcrumb span {
+    margin: 0 8px;
+    color: #666;
+}
+
 /* Button styling */
 button {
     text-align: center;
+    text-transform: uppercase;
     font-family: 'Comfortaa', sans-serif;
-    font-size: 20px;
     font-weight: 900;
+    font-size: 16px;
     color: black;
     background-color: var(--green);
     border: 0;
@@ -256,8 +265,8 @@ section.hero {
     margin-top: 86px;
 }
 
-section.white {
-    background-color: var(--white);
+section.cream {
+    background-color: var(--cream);
     color: black;
     max-width: 100%;
 }
@@ -363,7 +372,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: var(--cream);
+    background-color: var(--white);
     cursor: pointer;
     margin: 0;
     font-weight: var(--font-weight-bold);
@@ -379,7 +388,7 @@ footer {
 }
 
 .faq-answer {
-    background-color: var(--white);
+    background-color: var(--light-10);
     max-height: 0;
     overflow: hidden;
 }
@@ -623,7 +632,7 @@ footer {
 
     button {
     width: 100%;
-    font-size: 16px;
+    font-size: 14px;
     }
 
     section {
