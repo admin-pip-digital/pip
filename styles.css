@@ -79,9 +79,10 @@ body {
     background-color: var(--red);
     color: var(--white);
     text-align: center;
-    padding: 16px 24px;
+    padding: 12px 24px;
     position: relative;
     z-index: 999;
+    margin-top: 86px;
 }
 
 a {
@@ -262,7 +263,6 @@ section.hero {
     background-color: var(--blue);
     color: var(--white);
     max-width: 100%;
-    margin-top: 86px;
 }
 
 section.cream {
@@ -628,6 +628,7 @@ footer {
     .marketing-banner {
     font-size: 14px;
     padding: 8px 24px;
+    margin-top: 56px;
     }
 
     button {
@@ -637,10 +638,6 @@ footer {
 
     section {
     padding: var(--space-2xl) 0;
-    }
-    
-    section.hero {
-    margin-top: 56px;
     }
 
     .image {
