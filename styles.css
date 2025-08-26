@@ -289,7 +289,7 @@ section.color {
     background-color: var(--white);
     text-align: left;
     border: 1px solid var(--light-20);
-    border-radius: 16px;
+    border-radius: 8px;
 }
 
 .card-outline {
@@ -297,7 +297,7 @@ section.color {
     padding: var(--space-lg) var(--space-md);
     text-align: left;
     border: 1px solid var(--white);
-    border-radius: 16px;
+    border-radius: 8px;
 }
 
 .two-column-row {
@@ -428,7 +428,7 @@ footer {
             z-index: 1001;
             transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             overflow-y: auto;
-            border-radius: 16px 0 0 16px;
+            border-radius: 8px 0 0 8px;
         }
 
         .slide-in-panel.active {
@@ -514,7 +514,7 @@ footer {
         .perfect-for {
             background: var(--cream);
             padding: var(--space-lg) var(--space-lg);
-            border-radius: 16px;
+            border-radius: 8px;
             border-left: 4px solid var(--green);
             margin-bottom: var(--space-xl);
         }
@@ -582,7 +582,7 @@ footer {
         .cta-section {
             background: var(--cream);
             padding: var(--space-xl);
-            border-radius: 16px;
+            border-radius: 8px;
             text-align: center;
             margin: var(--space-xl) calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg));
         }
