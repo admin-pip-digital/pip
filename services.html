@@ -341,7 +341,7 @@
 
         const serviceData = {
             starter: {
-                category: 'Quick Starter - Starts at $1,495.00/mo',
+                category: 'Quick Starter',
                 title: 'Quick Starter',
                 subtitle: 'Build a foundation for growth',
                 perfectFor: 'Local service businesses just starting their online journey',
@@ -383,7 +383,7 @@
                 ]
             },
             booster: {
-                category: 'Growth Booster - Starts at $2,495.00/mo',
+                category: 'Growth Booster',
                 title: 'Growth Booster',
                 subtitle: 'Scale your business to sustainable growth',
                 perfectFor: 'Growing businesses ready to scale beyond basic local marketing',
@@ -425,7 +425,7 @@
                 ]
             },
             multiplier: {
-                category: 'Growth multiplier - Starts at $4,995.00/mo',
+                category: 'Growth multiplier',
                 title: 'Multiplier',
                 subtitle: 'Dominate your market and maximize growth',
                 perfectFor: 'Established businesses ready to dominate their market and scale rapidly',
@@ -529,8 +529,8 @@
             document.body.classList.remove('slide-in-open');
         }
 
-        // Event listeners
-        document.querySelectorAll('.learn-more-btn').forEach(btn => {
+            // Fixed code
+        document.querySelectorAll('button[data-service]').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const serviceType = e.target.getAttribute('data-service');
                 openSlideIn(serviceType);
