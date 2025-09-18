@@ -4,9 +4,9 @@ User-agent: *
 
 Allow: /
 Allow: /index.html
-Allow: /about.html
-Allow: /services.html
 Allow: /work.html
+Allow: /about.html
+Allow: /contact.html
 Allow: /blog.html
 
 # Block technical and utility pages
