@@ -147,12 +147,6 @@ p {
   z-index: 1;
 }
 
-/* Make sure your content appears above the pattern */
-.hero > * {
-  position: relative;
-  z-index: 2;
-}
-
 .hero img {
     width: 100%;
     height: auto;
