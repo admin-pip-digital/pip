@@ -33,9 +33,12 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 100;
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
-        .clear-btn {
+        .clear-btn, .room-btn {
             background: #ff4444;
             color: white;
             border: none;
@@ -45,17 +48,106 @@
             font-size: 14px;
         }
 
+        .room-btn {
+            background: #4444ff;
+        }
+
         .clear-btn:hover {
             background: #cc3333;
+        }
+
+        .room-btn:hover {
+            background: #3333cc;
+        }
+
+        .room-info {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .connection-status {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            background: #e0e0e0;
+            color: #666;
+        }
+
+        .connection-status.connected {
+            background: #90EE90;
+            color: #006400;
+        }
+
+        .connection-status.host {
+            background: #FFD700;
+            color: #B8860B;
+        }
+
+        #roomModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .modal-btn {
+            background: #4444ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
         }
     </style>
 </head>
 <body>
     <div class="toolbar">
         <button class="clear-btn" onclick="clearCanvas()">Clear</button>
+        <button class="room-btn" onclick="showRoomModal()">Join Room</button>
+        <div class="room-info" id="roomInfo">Room: Not connected</div>
+        <div class="connection-status" id="connectionStatus">Offline</div>
     </div>
     
     <canvas id="whiteboard"></canvas>
+
+    <div id="roomModal" style="display: none;">
+        <div class="modal-content">
+            <h3>Join Collaborative Session</h3>
+            <input type="text" id="roomInput" class="modal-input" placeholder="Enter 4-digit room code" maxlength="4">
+            <div>
+                <button class="modal-btn" onclick="createRoom()">Create New Room</button>
+                <button class="modal-btn" onclick="joinRoom()">Join Room</button>
+            </div>
+            <small>Share the room code with others to collaborate!</small>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/peerjs@1.5.0/dist/peerjs.min.js"></script>
 
     <script>
         const canvas = document.getElementById('whiteboard');
@@ -65,6 +157,12 @@
         let lastX = 0;
         let lastY = 0;
         let currentPath = [];
+
+        // P2P variables
+        let peer = null;
+        let connections = [];
+        let isHost = false;
+        let currentRoom = null;
 
         // Set canvas size to full window
         function resizeCanvas() {
@@ -152,6 +250,15 @@
             if (isDrawing) {
                 e.preventDefault();
                 isDrawing = false;
+                
+                // Broadcast the completed path to peers
+                if (currentPath.length > 0) {
+                    broadcastData({
+                        type: 'draw',
+                        path: currentPath
+                    });
+                }
+                
                 currentPath = [];
             }
         }
@@ -171,6 +278,171 @@
         // Clear canvas function
         function clearCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Broadcast clear to all connected peers
+            broadcastData({ type: 'clear' });
+        }
+
+        // P2P Functions
+        function showRoomModal() {
+            document.getElementById('roomModal').style.display = 'flex';
+        }
+
+        function hideRoomModal() {
+            document.getElementById('roomModal').style.display = 'none';
+        }
+
+        function generateRoomCode() {
+            return Math.floor(1000 + Math.random() * 9000).toString();
+        }
+
+        function createRoom() {
+            const roomCode = generateRoomCode();
+            document.getElementById('roomInput').value = roomCode;
+            startAsHost(roomCode);
+        }
+
+        function joinRoom() {
+            const roomCode = document.getElementById('roomInput').value.trim();
+            if (roomCode.length === 4) {
+                connectToRoom(roomCode);
+            } else {
+                alert('Please enter a 4-digit room code');
+            }
+        }
+
+        function startAsHost(roomCode) {
+            currentRoom = roomCode;
+            isHost = true;
+            
+            peer = new Peer('room-' + roomCode, {
+                host: 'peerjs-server.herokuapp.com',
+                port: 443,
+                secure: true
+            });
+
+            peer.on('open', function(id) {
+                updateUI();
+                hideRoomModal();
+                
+                peer.on('connection', function(conn) {
+                    console.log('New peer connected');
+                    connections.push(conn);
+                    setupConnection(conn);
+                    updateConnectionStatus();
+                });
+            });
+
+            peer.on('error', function(err) {
+                console.error('Peer error:', err);
+                alert('Failed to create room. Try again.');
+            });
+        }
+
+        function connectToRoom(roomCode) {
+            currentRoom = roomCode;
+            isHost = false;
+            
+            peer = new Peer({
+                host: 'peerjs-server.herokuapp.com',
+                port: 443,
+                secure: true
+            });
+
+            peer.on('open', function(id) {
+                const conn = peer.connect('room-' + roomCode);
+                connections.push(conn);
+                setupConnection(conn);
+                updateUI();
+                hideRoomModal();
+            });
+
+            peer.on('error', function(err) {
+                console.error('Peer error:', err);
+                alert('Failed to join room. Check the room code.');
+            });
+        }
+
+        function setupConnection(conn) {
+            conn.on('open', function() {
+                console.log('Connection established');
+                updateConnectionStatus();
+            });
+
+            conn.on('data', function(data) {
+                handleIncomingData(data);
+            });
+
+            conn.on('close', function() {
+                connections = connections.filter(c => c !== conn);
+                updateConnectionStatus();
+            });
+        }
+
+        function broadcastData(data) {
+            connections.forEach(conn => {
+                if (conn.open) {
+                    conn.send(data);
+                }
+            });
+        }
+
+        function handleIncomingData(data) {
+            if (data.type === 'draw') {
+                // Draw the received path
+                drawReceivedPath(data.path);
+            } else if (data.type === 'clear') {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        function drawReceivedPath(path) {
+            if (path.length < 2) return;
+            
+            ctx.strokeStyle = '#3d3d3d';
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            if (path.length === 2) {
+                ctx.beginPath();
+                ctx.moveTo(path[0].x, path[0].y);
+                ctx.lineTo(path[1].x, path[1].y);
+                ctx.stroke();
+            } else {
+                for (let i = 1; i < path.length - 1; i++) {
+                    const p1 = path[i - 1];
+                    const p2 = path[i];
+                    const p3 = path[i + 1];
+                    
+                    const midX1 = (p1.x + p2.x) / 2;
+                    const midY1 = (p1.y + p2.y) / 2;
+                    const midX2 = (p2.x + p3.x) / 2;
+                    const midY2 = (p2.y + p3.y) / 2;
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(midX1, midY1);
+                    ctx.quadraticCurveTo(p2.x, p2.y, midX2, midY2);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('roomInfo').textContent = `Room: ${currentRoom}`;
+        }
+
+        function updateConnectionStatus() {
+            const statusEl = document.getElementById('connectionStatus');
+            if (isHost) {
+                statusEl.textContent = `Host (${connections.length} connected)`;
+                statusEl.className = 'connection-status host';
+            } else if (connections.length > 0 && connections[0].open) {
+                statusEl.textContent = 'Connected';
+                statusEl.className = 'connection-status connected';
+            } else {
+                statusEl.textContent = 'Connecting...';
+                statusEl.className = 'connection-status';
+            }
         }
 
         // Prevent scrolling on touch devices
