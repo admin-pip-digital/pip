@@ -40,6 +40,34 @@
         align-items: center;
     }
 
+    .tool-btn {
+        background: #f0f0f0;
+        color: #333;
+        border: none;
+        padding: 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tool-btn.active {
+        background: #4444ff;
+        color: white;
+    }
+
+    .tool-btn:hover {
+        background: #e0e0e0;
+    }
+
+    .tool-btn.active:hover {
+        background: #3333cc;
+    }
+
     .clear-btn {
         background: #ff4444;
         color: white;
@@ -72,6 +100,8 @@
 </head>
 <body>
     <div class="toolbar">
+        <button class="tool-btn active" id="drawBtn" onclick="setMode('draw')" title="Draw">✏️</button>
+        <button class="tool-btn" id="moveBtn" onclick="setMode('move')" title="Move">✋</button>
         <button class="clear-btn" onclick="clearAll()">Clear</button>
         <div class="status" id="status">Loading...</div>
     </div>
@@ -99,6 +129,7 @@
     let lastPinchDistance = 0;
     let lastPanX = 0;
     let lastPanY = 0;
+    let currentMode = 'draw'; // 'draw' or 'move'
     
     // Canvas dimensions
     const CANVAS_WIDTH = 10000;
@@ -113,8 +144,25 @@
         panX = (CANVAS_WIDTH - window.innerWidth) / 2;
         panY = (CANVAS_HEIGHT - window.innerHeight) / 2;
         
+        updateCursor();
         drawGrid();
         redrawAll();
+    }
+    
+    // Set mode and update UI
+    function setMode(mode) {
+        currentMode = mode;
+        
+        // Update button states
+        document.getElementById('drawBtn').classList.toggle('active', mode === 'draw');
+        document.getElementById('moveBtn').classList.toggle('active', mode === 'move');
+        
+        updateCursor();
+    }
+    
+    // Update cursor based on current mode
+    function updateCursor() {
+        canvas.style.cursor = currentMode === 'draw' ? 'crosshair' : 'grab';
     }
     
     // Draw light grid
@@ -380,10 +428,11 @@
         
         e.preventDefault();
         
-        if (e.shiftKey || (e.touches && e.touches.length === 1 && e.touches[0].force > 0.5)) {
-            // Pan mode
+        if (currentMode === 'move') {
+            // Move mode
             isPanning = true;
             isDrawing = false;
+            canvas.style.cursor = 'grabbing';
             const coords = getCoords(e);
             lastPanX = coords.x;
             lastPanY = coords.y;
@@ -452,6 +501,7 @@
         if (isPanning) {
             e.preventDefault();
             isPanning = false;
+            updateCursor(); // Reset cursor
             return;
         }
         
@@ -502,20 +552,20 @@
     
     // Prevent scrolling but allow button interactions
     document.body.addEventListener('touchstart', function(e) {
-        // Don't prevent if touching the clear button
-        if (!e.target.closest('.clear-btn')) {
+        // Don't prevent if touching toolbar buttons
+        if (!e.target.closest('.toolbar')) {
             e.preventDefault();
         }
     }, { passive: false });
     
     document.body.addEventListener('touchend', function(e) {
-        if (!e.target.closest('.clear-btn')) {
+        if (!e.target.closest('.toolbar')) {
             e.preventDefault();
         }
     }, { passive: false });
     
     document.body.addEventListener('touchmove', function(e) {
-        if (!e.target.closest('.clear-btn')) {
+        if (!e.target.closest('.toolbar')) {
             e.preventDefault();
         }
     }, { passive: false });
