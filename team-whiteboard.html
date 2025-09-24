@@ -351,13 +351,11 @@
         async function createRoom() {
             const roomCode = generateRoomCode();
             document.getElementById('roomInput').value = roomCode;
-            await joinRoom(roomCode);
+            await joinRoom();
         }
 
-        async function joinRoom(roomCode = null) {
-            if (!roomCode) {
-                roomCode = document.getElementById('roomInput').value.trim();
-            }
+        async function joinRoom() {
+            const roomCode = document.getElementById('roomInput').value.trim();
             
             if (roomCode.length !== 4) {
                 alert('Please enter a 4-digit room code');
