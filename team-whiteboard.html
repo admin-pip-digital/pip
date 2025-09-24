@@ -102,6 +102,27 @@
             border-radius: 8px;
             text-align: center;
             max-width: 300px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: #000;
         }
 
         .modal-input {
@@ -137,6 +158,7 @@
 
     <div id="roomModal" style="display: none;">
         <div class="modal-content">
+            <button class="modal-close" onclick="hideRoomModal()">×</button>
             <h3>Join Collaborative Session</h3>
             <input type="text" id="roomInput" class="modal-input" placeholder="Enter 4-digit room code" maxlength="4">
             <div>
@@ -147,7 +169,7 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-peer/9.11.1/simplepeer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/supabase-js/2.38.0/supabase.min.js"></script>
 
     <script>
         const canvas = document.getElementById('whiteboard');
@@ -158,11 +180,13 @@
         let lastY = 0;
         let currentPath = [];
 
-        // P2P variables
-        let peer = null;
-        let connections = [];
-        let isHost = false;
+        // Supabase configuration - REPLACE WITH YOUR CREDENTIALS
+        const SUPABASE_URL = 'https://cdzcggonkteatjnzvyfs.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkemNnZ29ua3RlYXRqbnp2eWZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg2NzU1MDgsImV4cCI6MjA3NDI1MTUwOH0.K5X5S5ArM1W_bF04mZX7D4DC3uRxQtxl39Z5YWOZgDk';
+        
+        let supabase = null;
         let currentRoom = null;
+        let realtimeChannel = null;
 
         // Set canvas size to full window
         function resizeCanvas() {
@@ -251,12 +275,9 @@
                 e.preventDefault();
                 isDrawing = false;
                 
-                // Broadcast the completed path to peers
+                // Save the completed path to Supabase
                 if (currentPath.length > 0) {
-                    broadcastData({
-                        type: 'draw',
-                        path: currentPath
-                    });
+                    saveStroke(currentPath);
                 }
                 
                 currentPath = [];
@@ -275,15 +296,47 @@
         canvas.addEventListener('touchend', stopDrawing);
         canvas.addEventListener('touchcancel', stopDrawing);
 
+        // Close modal when clicking outside
+        document.getElementById('roomModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideRoomModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideRoomModal();
+            }
+        });
+
         // Clear canvas function
-        function clearCanvas() {
+        async function clearCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // Broadcast clear to all connected peers
-            broadcastData({ type: 'clear' });
+            
+            if (currentRoom && supabase) {
+                // Delete all strokes for this room
+                await supabase
+                    .from('drawing_strokes')
+                    .delete()
+                    .eq('room_code', currentRoom);
+            }
         }
 
-        // P2P Functions
+        // Initialize Supabase
+        function initSupabase() {
+            if (SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE') {
+                alert('Please update the Supabase credentials in the code!');
+                return false;
+            }
+            
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            return true;
+        }
+
+        // Supabase Functions
         function showRoomModal() {
+            if (!initSupabase()) return;
             document.getElementById('roomModal').style.display = 'flex';
         }
 
@@ -295,103 +348,106 @@
             return Math.floor(1000 + Math.random() * 9000).toString();
         }
 
-        function createRoom() {
+        async function createRoom() {
             const roomCode = generateRoomCode();
             document.getElementById('roomInput').value = roomCode;
-            startAsHost(roomCode);
+            await joinRoom(roomCode);
         }
 
-        function joinRoom() {
-            const roomCode = document.getElementById('roomInput').value.trim();
-            if (roomCode.length === 4) {
-                connectToRoom(roomCode);
-            } else {
+        async function joinRoom(roomCode = null) {
+            if (!roomCode) {
+                roomCode = document.getElementById('roomInput').value.trim();
+            }
+            
+            if (roomCode.length !== 4) {
                 alert('Please enter a 4-digit room code');
+                return;
             }
-        }
 
-        function startAsHost(roomCode) {
             currentRoom = roomCode;
-            isHost = true;
             
-            // Use a simple approach with no external servers
-            updateUI();
-            hideRoomModal();
-            
-            // For now, just show that we're ready to receive connections
-            updateConnectionStatus();
-            
-            // Display connection instructions
-            setTimeout(() => {
-                alert(`Room ${roomCode} created! 
+            try {
+                // Load existing strokes for this room
+                await loadExistingStrokes(roomCode);
                 
-Note: Due to P2P server limitations, here's how to connect:
-1. Share this room code: ${roomCode}
-2. Others should join using the same code
-3. Connection will be established automatically
-
-This is a simplified version - full P2P requires more complex signaling.`);
-            }, 100);
-        }
-
-        function connectToRoom(roomCode) {
-            currentRoom = roomCode;
-            isHost = false;
-            
-            updateUI();
-            hideRoomModal();
-            updateConnectionStatus();
-            
-            setTimeout(() => {
-                alert(`Attempting to join room ${roomCode}...
-
-Note: This demo shows the UI but P2P connection needs a signaling server.
-For a production version, you'd want to use:
-- Socket.io with a simple Node.js server
-- Firebase Realtime Database
-- Or Supabase for the simplest solution`);
-            }, 100);
-        }
-
-        function tryDefaultServer(roomCode, asHost) {
-            // Simplified fallback
-            if (asHost) {
-                startAsHost(roomCode);
-            } else {
-                connectToRoom(roomCode);
+                // Subscribe to real-time updates
+                subscribeToRoom(roomCode);
+                
+                updateUI();
+                hideRoomModal();
+                updateConnectionStatus(true);
+                
+            } catch (error) {
+                console.error('Failed to join room:', error);
+                alert('Failed to join room. Please try again.');
             }
         }
 
-        function setupConnection(conn) {
-            conn.on('open', function() {
-                console.log('Connection established');
-                updateConnectionStatus();
-            });
+        async function loadExistingStrokes(roomCode) {
+            const { data: strokes, error } = await supabase
+                .from('drawing_strokes')
+                .select('stroke_data')
+                .eq('room_code', roomCode)
+                .order('created_at', { ascending: true });
 
-            conn.on('data', function(data) {
-                handleIncomingData(data);
-            });
+            if (error) {
+                console.error('Error loading strokes:', error);
+                return;
+            }
 
-            conn.on('close', function() {
-                connections = connections.filter(c => c !== conn);
-                updateConnectionStatus();
-            });
-        }
-
-        function broadcastData(data) {
-            connections.forEach(conn => {
-                if (conn.open) {
-                    conn.send(data);
-                }
+            // Draw all existing strokes
+            strokes.forEach(stroke => {
+                drawReceivedPath(stroke.stroke_data);
             });
         }
 
-        function handleIncomingData(data) {
-            if (data.type === 'draw') {
-                // Draw the received path
-                drawReceivedPath(data.path);
-            } else if (data.type === 'clear') {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function subscribeToRoom(roomCode) {
+            // Unsubscribe from previous channel if exists
+            if (realtimeChannel) {
+                supabase.removeChannel(realtimeChannel);
+            }
+
+            // Subscribe to new strokes in this room
+            realtimeChannel = supabase
+                .channel(`room-${roomCode}`)
+                .on('postgres_changes', 
+                    { 
+                        event: 'INSERT', 
+                        schema: 'public', 
+                        table: 'drawing_strokes',
+                        filter: `room_code=eq.${roomCode}`
+                    }, 
+                    (payload) => {
+                        drawReceivedPath(payload.new.stroke_data);
+                    }
+                )
+                .on('postgres_changes',
+                    {
+                        event: 'DELETE',
+                        schema: 'public', 
+                        table: 'drawing_strokes',
+                        filter: `room_code=eq.${roomCode}`
+                    },
+                    (payload) => {
+                        // Clear canvas when strokes are deleted
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+                )
+                .subscribe();
+        }
+
+        async function saveStroke(strokeData) {
+            if (!currentRoom || !supabase) return;
+            
+            const { error } = await supabase
+                .from('drawing_strokes')
+                .insert({
+                    room_code: currentRoom,
+                    stroke_data: strokeData
+                });
+
+            if (error) {
+                console.error('Failed to save stroke:', error);
             }
         }
 
@@ -431,16 +487,13 @@ For a production version, you'd want to use:
             document.getElementById('roomInfo').textContent = `Room: ${currentRoom}`;
         }
 
-        function updateConnectionStatus() {
+        function updateConnectionStatus(connected = false) {
             const statusEl = document.getElementById('connectionStatus');
-            if (isHost) {
-                statusEl.textContent = `Host (${connections.length} connected)`;
-                statusEl.className = 'connection-status host';
-            } else if (connections.length > 0 && connections[0].open) {
+            if (connected) {
                 statusEl.textContent = 'Connected';
                 statusEl.className = 'connection-status connected';
             } else {
-                statusEl.textContent = 'Connecting...';
+                statusEl.textContent = 'Offline';
                 statusEl.className = 'connection-status';
             }
         }
