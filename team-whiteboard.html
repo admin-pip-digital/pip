@@ -101,99 +101,477 @@
 </head>
 <body>
     <div class="toolbar">
-        <button class="tool-btn active" id="drawBtn">Draw</button>
-        <button class="tool-btn" id="moveBtn">Move</button>
-        <button class="clear-btn" id="clearBtn">Clear</button>
-        <div class="status" id="status">Live</div>
+        <button class="tool-btn active" id="drawBtn" onclick="setMode('draw')" title="Draw Mode">Draw</button>
+        <button class="tool-btn" id="moveBtn" onclick="setMode('move')" title="Move Mode">Move</button>
+        <button class="clear-btn" onclick="clearAll()">Clear</button>
+        <div class="status" id="status">Loading...</div>
     </div>
     
     <canvas id="whiteboard"></canvas>
 
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-        console.log('Script starting...');
-        
-        // Test that elements exist
-        console.log('Draw button:', document.getElementById('drawBtn'));
-        console.log('Move button:', document.getElementById('moveBtn'));
-        console.log('Clear button:', document.getElementById('clearBtn'));
+        // Supabase credentials
+        const SUPABASE_URL = 'https://cdzcggonkteatjnzvyfs.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkemNnZ29ua3RlYXRqbnp2eWZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg2NzU1MDgsImV4cCI6MjA3NDI1MTUwOH0.K5X5S5ArM1W_bF04mZX7D4DC3uRxQtxl39Z5YWOZgDk';
         
         const canvas = document.getElementById('whiteboard');
         const ctx = canvas.getContext('2d');
-        let currentMode = 'draw';
+        let isDrawing = false;
+        let isPanning = false;
+        let currentPath = [];
+        let supabase = null;
         
+        // Canvas transform state
+        let scale = 1;
+        let panX = 0;
+        let panY = 0;
+        let lastPinchDistance = 0;
+        let lastPanX = 0;
+        let lastPanY = 0;
+        let currentMode = 'draw'; // 'draw' or 'move'
+        
+        // Canvas dimensions
+        const CANVAS_WIDTH = 10000;
+        const CANVAS_HEIGHT = 10000;
+
         // Setup canvas
         function setupCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            ctx.strokeStyle = '#3d3d3d';
-            ctx.lineWidth = 5;
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-            console.log('Canvas setup complete');
+            
+            // Start centered on the large canvas
+            panX = (CANVAS_WIDTH - window.innerWidth) / 2;
+            panY = (CANVAS_HEIGHT - window.innerHeight) / 2;
+            
+            updateCursor();
+            drawGrid();
+            redrawAll();
         }
         
-        // Set mode
+        // Set mode and update UI
         function setMode(mode) {
-            console.log('Setting mode to:', mode);
             currentMode = mode;
             
-            const drawBtn = document.getElementById('drawBtn');
-            const moveBtn = document.getElementById('moveBtn');
+            // Update button states
+            document.getElementById('drawBtn').classList.toggle('active', mode === 'draw');
+            document.getElementById('moveBtn').classList.toggle('active', mode === 'move');
             
-            if (drawBtn && moveBtn) {
-                drawBtn.classList.toggle('active', mode === 'draw');
-                moveBtn.classList.toggle('active', mode === 'move');
-                canvas.style.cursor = mode === 'draw' ? 'crosshair' : 'grab';
-                console.log('Mode set successfully');
-            } else {
-                console.error('Buttons not found!');
+            updateCursor();
+        }
+        
+        // Update cursor based on current mode
+        function updateCursor() {
+            canvas.style.cursor = currentMode === 'draw' ? 'crosshair' : 'grab';
+        }
+        
+        // Draw light grid
+        function drawGrid() {
+            ctx.save();
+            ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const gridSize = 50 * scale;
+            const startX = (-panX * scale) % gridSize;
+            const startY = (-panY * scale) % gridSize;
+            
+            ctx.strokeStyle = '#f0f0f0';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            
+            // Vertical lines
+            for (let x = startX; x < canvas.width; x += gridSize) {
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+            }
+            
+            // Horizontal lines
+            for (let y = startY; y < canvas.height; y += gridSize) {
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+            }
+            
+            ctx.stroke();
+            ctx.restore();
+        }
+        
+        // Apply current transform
+        function applyTransform() {
+            ctx.setTransform(scale, 0, 0, scale, -panX * scale, -panY * scale);
+        }
+        
+        // Redraw all strokes
+        async function redrawAll() {
+            drawGrid();
+            if (!supabase) return;
+            
+            try {
+                const { data, error } = await supabase
+                    .from('drawing_strokes')
+                    .select('stroke_data')
+                    .order('created_at');
+
+                if (error) {
+                    console.error('Redraw error:', error);
+                    return;
+                }
+
+                ctx.save();
+                applyTransform();
+                ctx.strokeStyle = '#3d3d3d';
+                ctx.fillStyle = '#3d3d3d';
+                ctx.lineWidth = 5;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                
+                data.forEach(stroke => drawPathDirect(stroke.stroke_data));
+                ctx.restore();
+            } catch (error) {
+                console.error('Redraw failed:', error);
             }
         }
-        
-        // Clear canvas
-        function clearCanvas() {
-            console.log('Clearing canvas');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Initialize everything
+        async function init() {
+            setupCanvas();
+            
+            if (SUPABASE_URL === 'https://cdzcggonkteatjnzvyfs.supabase.co') {
+                try {
+                    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                    await loadExistingDrawings();
+                    subscribeToUpdates();
+                    document.getElementById('status').textContent = 'Live';
+                    document.getElementById('status').className = 'status live';
+                } catch (error) {
+                    document.getElementById('status').textContent = 'Connection failed';
+                    console.error('Init error:', error);
+                }
+            } else {
+                document.getElementById('status').textContent = 'Add Supabase credentials';
+                return;
+            }
         }
-        
-        // Simple drawing
-        let isDrawing = false;
-        let startX, startY;
-        
-        function startDrawing(e) {
-            if (currentMode !== 'draw') return;
-            isDrawing = true;
-            startX = e.offsetX;
-            startY = e.offsetY;
+
+        // Load existing drawings from database
+        async function loadExistingDrawings() {
+            const { data, error } = await supabase
+                .from('drawing_strokes')
+                .select('stroke_data')
+                .order('created_at');
+
+            if (error) {
+                console.error('Load error:', error);
+                return;
+            }
+
+            // Drawings will be rendered in redrawAll()
         }
-        
-        function draw(e) {
-            if (!isDrawing || currentMode !== 'draw') return;
+
+        // Subscribe to real-time updates
+        function subscribeToUpdates() {
+            const channel = supabase
+                .channel('whiteboard-updates')
+                .on('postgres_changes', {
+                    event: 'INSERT',
+                    schema: 'public',
+                    table: 'drawing_strokes'
+                }, (payload) => {
+                    console.log('New drawing received:', payload);
+                    ctx.save();
+                    applyTransform();
+                    ctx.strokeStyle = '#3d3d3d';
+                    ctx.fillStyle = '#3d3d3d';
+                    ctx.lineWidth = 5;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    drawPathDirect(payload.new.stroke_data);
+                    ctx.restore();
+                })
+                .on('postgres_changes', {
+                    event: 'DELETE',
+                    schema: 'public',
+                    table: 'drawing_strokes'
+                }, (payload) => {
+                    console.log('Clear received');
+                    redrawAll();
+                })
+                .subscribe((status) => {
+                    console.log('Subscription status:', status);
+                });
+        }
+
+        // Draw a path directly (without transform applied)
+        function drawPathDirect(path) {
+            if (path.length === 0) return;
+            
+            if (path.length === 1) {
+                // Single point - draw a dot
+                const point = path[0];
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 2.5, 0, 2 * Math.PI);
+                ctx.fill();
+                return;
+            }
+
             ctx.beginPath();
-            ctx.moveTo(startX, startY);
-            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.moveTo(path[0].x, path[0].y);
+
+            for (let i = 1; i < path.length - 2; i++) {
+                const xc = (path[i].x + path[i + 1].x) / 2;
+                const yc = (path[i].y + path[i + 1].y) / 2;
+                ctx.quadraticCurveTo(path[i].x, path[i].y, xc, yc);
+            }
+            
+            if (path.length > 2) {
+                ctx.quadraticCurveTo(
+                    path[path.length - 2].x, 
+                    path[path.length - 2].y, 
+                    path[path.length - 1].x, 
+                    path[path.length - 1].y
+                );
+            } else {
+                ctx.lineTo(path[1].x, path[1].y);
+            }
+            
             ctx.stroke();
-            startX = e.offsetX;
-            startY = e.offsetY;
         }
-        
-        function stopDrawing() {
+
+        // Clear all drawings
+        async function clearAll() {
+            if (supabase) {
+                try {
+                    await supabase.from('drawing_strokes').delete().neq('id', 0);
+                } catch (error) {
+                    console.error('Clear failed:', error);
+                }
+            }
+            redrawAll(); // This will show just the grid
+        }
+
+        // Save stroke to database
+        async function saveStroke(path) {
+            if (!supabase || path.length === 0) return;
+            
+            await supabase.from('drawing_strokes').insert({
+                stroke_data: path
+            });
+        }
+
+        // Get mouse/touch coordinates in canvas space
+        function getCoords(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            
+            // Convert screen coordinates to canvas coordinates
+            const screenX = clientX - rect.left;
+            const screenY = clientY - rect.top;
+            
+            // Convert to world coordinates
+            const worldX = (screenX / scale) + panX;
+            const worldY = (screenY / scale) + panY;
+            
+            return { x: worldX, y: worldY };
+        }
+
+        // Handle zoom
+        function handleZoom(deltaY, centerX, centerY) {
+            const zoomFactor = deltaY > 0 ? 0.9 : 1.1;
+            const newScale = Math.max(0.1, Math.min(3, scale * zoomFactor));
+            
+            if (newScale !== scale) {
+                // Zoom towards the center point
+                const worldX = (centerX / scale) + panX;
+                const worldY = (centerY / scale) + panY;
+                
+                scale = newScale;
+                
+                panX = worldX - (centerX / scale);
+                panY = worldY - (centerY / scale);
+                
+                redrawAll();
+            }
+        }
+
+        // Handle pinch zoom
+        function handlePinch(e) {
+            if (e.touches.length !== 2) return;
+            
+            const touch1 = e.touches[0];
+            const touch2 = e.touches[1];
+            const distance = Math.sqrt(
+                Math.pow(touch2.clientX - touch1.clientX, 2) +
+                Math.pow(touch2.clientY - touch1.clientY, 2)
+            );
+            
+            if (lastPinchDistance > 0) {
+                const rect = canvas.getBoundingClientRect();
+                const centerX = ((touch1.clientX + touch2.clientX) / 2) - rect.left;
+                const centerY = ((touch1.clientY + touch2.clientY) / 2) - rect.top;
+                
+                const deltaY = distance < lastPinchDistance ? 1 : -1;
+                handleZoom(deltaY, centerX, centerY);
+            }
+            
+            lastPinchDistance = distance;
+        }
+
+        // Drawing functions
+        function startDrawing(e) {
+            if (e.touches && e.touches.length > 1) {
+                // Multi-touch - handle pinch
+                isPanning = false;
+                isDrawing = false;
+                handlePinch(e);
+                return;
+            }
+            
+            e.preventDefault();
+            
+            if (currentMode === 'move') {
+                // Move mode
+                isPanning = true;
+                isDrawing = false;
+                canvas.style.cursor = 'grabbing';
+                const coords = getCoords(e);
+                lastPanX = coords.x;
+                lastPanY = coords.y;
+            } else {
+                // Draw mode
+                isDrawing = true;
+                isPanning = false;
+                const coords = getCoords(e);
+                currentPath = [coords];
+            }
+        }
+
+        function draw(e) {
+            if (e.touches && e.touches.length > 1) {
+                handlePinch(e);
+                return;
+            }
+            
+            e.preventDefault();
+            
+            if (isPanning) {
+                const coords = getCoords(e);
+                const deltaX = coords.x - lastPanX;
+                const deltaY = coords.y - lastPanY;
+                
+                panX -= deltaX;
+                panY -= deltaY;
+                
+                // Keep within bounds
+                panX = Math.max(0, Math.min(CANVAS_WIDTH - canvas.width/scale, panX));
+                panY = Math.max(0, Math.min(CANVAS_HEIGHT - canvas.height/scale, panY));
+                
+                redrawAll();
+                return;
+            }
+            
+            if (!isDrawing) return;
+            
+            const coords = getCoords(e);
+            currentPath.push(coords);
+            
+            // Draw locally in real-time
+            if (currentPath.length > 1) {
+                ctx.save();
+                applyTransform();
+                ctx.strokeStyle = '#3d3d3d';
+                ctx.lineWidth = 5;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                
+                ctx.beginPath();
+                const prev = currentPath[currentPath.length - 2];
+                ctx.moveTo(prev.x, prev.y);
+                ctx.lineTo(coords.x, coords.y);
+                ctx.stroke();
+                ctx.restore();
+            }
+        }
+
+        function stopDrawing(e) {
+            if (e.touches && e.touches.length > 1) {
+                lastPinchDistance = 0;
+                return;
+            }
+            
+            if (isPanning) {
+                e.preventDefault();
+                isPanning = false;
+                updateCursor(); // Reset cursor
+                return;
+            }
+            
+            if (!isDrawing) return;
+            e.preventDefault();
             isDrawing = false;
+            
+            if (currentPath.length === 1) {
+                // Single click - draw a dot
+                const point = currentPath[0];
+                ctx.save();
+                applyTransform();
+                ctx.fillStyle = '#3d3d3d';
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 2.5, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.restore();
+                saveStroke(currentPath);
+            } else if (currentPath.length > 1) {
+                // Regular stroke
+                saveStroke(currentPath);
+            }
+            
+            currentPath = [];
         }
-        
+
         // Event listeners
         canvas.addEventListener('mousedown', startDrawing);
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
         
-        // Button event listeners
-        document.getElementById('drawBtn').addEventListener('click', () => setMode('draw'));
-        document.getElementById('moveBtn').addEventListener('click', () => setMode('move'));
-        document.getElementById('clearBtn').addEventListener('click', clearCanvas);
+        // Mouse wheel zoom
+        canvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const centerX = e.clientX - rect.left;
+            const centerY = e.clientY - rect.top;
+            handleZoom(e.deltaY, centerX, centerY);
+        });
+
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+        canvas.addEventListener('touchcancel', stopDrawing);
+
+        window.addEventListener('resize', setupCanvas);
         
-        // Initialize
-        setupCanvas();
-        console.log('Initialization complete');
+        // Prevent scrolling but allow button interactions
+        document.body.addEventListener('touchstart', function(e) {
+            // Don't prevent if touching toolbar buttons
+            if (!e.target.closest('.toolbar')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        document.body.addEventListener('touchend', function(e) {
+            if (!e.target.closest('.toolbar')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        document.body.addEventListener('touchmove', function(e) {
+            if (!e.target.closest('.toolbar')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Start the app
+        init();
     </script>
 </body>
 </html>
