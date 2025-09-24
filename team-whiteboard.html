@@ -315,12 +315,14 @@
             isHost = true;
             
             peer = new Peer('room-' + roomCode, {
-                host: 'peerjs-server.herokuapp.com',
+                host: 'broker-api.peerjs.com',
                 port: 443,
-                secure: true
+                secure: true,
+                path: '/myapp'
             });
 
             peer.on('open', function(id) {
+                console.log('Host created with ID:', id);
                 updateUI();
                 hideRoomModal();
                 
@@ -334,7 +336,12 @@
 
             peer.on('error', function(err) {
                 console.error('Peer error:', err);
-                alert('Failed to create room. Try again.');
+                // Try with default PeerJS server as fallback
+                if (err.type === 'server-error') {
+                    tryDefaultServer(roomCode, true);
+                } else {
+                    alert('Failed to create room: ' + err.message);
+                }
             });
         }
 
@@ -343,12 +350,14 @@
             isHost = false;
             
             peer = new Peer({
-                host: 'peerjs-server.herokuapp.com',
+                host: 'broker-api.peerjs.com',
                 port: 443,
-                secure: true
+                secure: true,
+                path: '/myapp'
             });
 
             peer.on('open', function(id) {
+                console.log('Client created with ID:', id);
                 const conn = peer.connect('room-' + roomCode);
                 connections.push(conn);
                 setupConnection(conn);
@@ -358,7 +367,46 @@
 
             peer.on('error', function(err) {
                 console.error('Peer error:', err);
-                alert('Failed to join room. Check the room code.');
+                // Try with default PeerJS server as fallback
+                if (err.type === 'server-error') {
+                    tryDefaultServer(roomCode, false);
+                } else {
+                    alert('Failed to join room: ' + err.message);
+                }
+            });
+        }
+
+        function tryDefaultServer(roomCode, asHost) {
+            console.log('Trying default PeerJS server...');
+            
+            if (asHost) {
+                peer = new Peer('room-' + roomCode);
+                peer.on('open', function(id) {
+                    console.log('Host created with default server:', id);
+                    updateUI();
+                    hideRoomModal();
+                    
+                    peer.on('connection', function(conn) {
+                        connections.push(conn);
+                        setupConnection(conn);
+                        updateConnectionStatus();
+                    });
+                });
+            } else {
+                peer = new Peer();
+                peer.on('open', function(id) {
+                    console.log('Client created with default server:', id);
+                    const conn = peer.connect('room-' + roomCode);
+                    connections.push(conn);
+                    setupConnection(conn);
+                    updateUI();
+                    hideRoomModal();
+                });
+            }
+            
+            peer.on('error', function(err) {
+                console.error('Default server also failed:', err);
+                alert('Connection failed. Please try again later.');
             });
         }
 
