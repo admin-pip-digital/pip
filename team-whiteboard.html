@@ -38,7 +38,7 @@
             align-items: center;
         }
 
-        .clear-btn, .room-btn {
+        .clear-btn {
             background: #ff4444;
             color: white;
             border: none;
@@ -48,24 +48,11 @@
             font-size: 14px;
         }
 
-        .room-btn {
-            background: #4444ff;
-        }
-
         .clear-btn:hover {
             background: #cc3333;
         }
 
-        .room-btn:hover {
-            background: #3333cc;
-        }
-
-        .room-info {
-            font-size: 12px;
-            color: #666;
-        }
-
-        .connection-status {
+        .status {
             font-size: 12px;
             padding: 4px 8px;
             border-radius: 12px;
@@ -73,433 +60,209 @@
             color: #666;
         }
 
-        .connection-status.connected {
+        .status.live {
             background: #90EE90;
             color: #006400;
-        }
-
-        .connection-status.host {
-            background: #FFD700;
-            color: #B8860B;
-        }
-
-        #roomModal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            max-width: 300px;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-close:hover {
-            color: #000;
-        }
-
-        .modal-input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        .modal-btn {
-            background: #4444ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
         }
     </style>
 </head>
 <body>
     <div class="toolbar">
-        <button class="clear-btn" onclick="clearCanvas()">Clear</button>
-        <button class="room-btn" onclick="showRoomModal()">Join Room</button>
-        <div class="room-info" id="roomInfo">Room: Not connected</div>
-        <div class="connection-status" id="connectionStatus">Offline</div>
+        <button class="clear-btn" onclick="clearAll()">Clear</button>
+        <div class="status" id="status">Loading...</div>
     </div>
     
     <canvas id="whiteboard"></canvas>
 
-    <div id="roomModal" style="display: none;">
-        <div class="modal-content">
-            <button class="modal-close" onclick="hideRoomModal()">×</button>
-            <h3>Join Collaborative Session</h3>
-            <input type="text" id="roomInput" class="modal-input" placeholder="Enter 4-digit room code" maxlength="4">
-            <div>
-                <button class="modal-btn" onclick="createRoom()">Create New Room</button>
-                <button class="modal-btn" onclick="joinRoom()">Join Room</button>
-            </div>
-            <small>Share the room code with others to collaborate!</small>
-        </div>
-    </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/supabase-js/2.38.0/supabase.min.js"></script>
-
     <script>
+        // Supabase credentials
+        const SUPABASE_URL = 'https://cdzcggonkteatjnzvyfs.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkemNnZ29ua3RlYXRqbnp2eWZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg2NzU1MDgsImV4cCI6MjA3NDI1MTUwOH0.K5X5S5ArM1W_bF04mZX7D4DC3uRxQtxl39Z5YWOZgDk';
+        
         const canvas = document.getElementById('whiteboard');
         const ctx = canvas.getContext('2d');
-        
         let isDrawing = false;
-        let lastX = 0;
-        let lastY = 0;
         let currentPath = [];
-
-        // Supabase configuration - REPLACE WITH YOUR CREDENTIALS
-        const SUPABASE_URL = 'https://cdzcggonkteatjnzvyfs.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkemNnZ29ua3RlYXRqbnp2eWZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg2NzU1MDgsImV4cCI6MjA3NDI1MTUwOH0.K5X5S5ArM1W_bF04mZX7D4DC3uRxQtxl39Z5YWOZgDk';
-        
         let supabase = null;
-        let currentRoom = null;
-        let realtimeChannel = null;
 
-        // Set canvas size to full window
-        function resizeCanvas() {
+        // Setup canvas
+        function setupCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            
-            // Set drawing properties
             ctx.strokeStyle = '#3d3d3d';
             ctx.lineWidth = 5;
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
         }
 
-        // Initialize canvas
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        // Get coordinates from mouse or touch event
-        function getCoordinates(e) {
-            const rect = canvas.getBoundingClientRect();
-            if (e.touches) {
-                return {
-                    x: e.touches[0].clientX - rect.left,
-                    y: e.touches[0].clientY - rect.top
-                };
+        // Initialize everything
+        async function init() {
+            setupCanvas();
+            
+            if (SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE') {
+                document.getElementById('status').textContent = 'Add Supabase credentials';
+                return;
             }
+            
+            try {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                await loadExistingDrawings();
+                subscribeToUpdates();
+                document.getElementById('status').textContent = 'Live';
+                document.getElementById('status').className = 'status live';
+            } catch (error) {
+                document.getElementById('status').textContent = 'Connection failed';
+                console.error('Init error:', error);
+            }
+        }
+
+        // Load existing drawings from database
+        async function loadExistingDrawings() {
+            const { data, error } = await supabase
+                .from('drawing_strokes')
+                .select('stroke_data')
+                .order('created_at');
+
+            if (error) {
+                console.error('Load error:', error);
+                return;
+            }
+
+            data.forEach(stroke => drawPath(stroke.stroke_data));
+        }
+
+        // Subscribe to real-time updates
+        function subscribeToUpdates() {
+            supabase
+                .channel('whiteboard')
+                .on('postgres_changes', {
+                    event: 'INSERT',
+                    schema: 'public',
+                    table: 'drawing_strokes'
+                }, (payload) => {
+                    drawPath(payload.new.stroke_data);
+                })
+                .on('postgres_changes', {
+                    event: 'DELETE',
+                    schema: 'public',
+                    table: 'drawing_strokes'
+                }, () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                })
+                .subscribe();
+        }
+
+        // Draw a path (smooth curves)
+        function drawPath(path) {
+            if (path.length < 2) return;
+
+            ctx.beginPath();
+            ctx.moveTo(path[0].x, path[0].y);
+
+            for (let i = 1; i < path.length - 2; i++) {
+                const xc = (path[i].x + path[i + 1].x) / 2;
+                const yc = (path[i].y + path[i + 1].y) / 2;
+                ctx.quadraticCurveTo(path[i].x, path[i].y, xc, yc);
+            }
+            
+            if (path.length > 2) {
+                ctx.quadraticCurveTo(
+                    path[path.length - 2].x, 
+                    path[path.length - 2].y, 
+                    path[path.length - 1].x, 
+                    path[path.length - 1].y
+                );
+            } else {
+                ctx.lineTo(path[1].x, path[1].y);
+            }
+            
+            ctx.stroke();
+        }
+
+        // Save stroke to database
+        async function saveStroke(path) {
+            if (!supabase || path.length === 0) return;
+            
+            await supabase.from('drawing_strokes').insert({
+                stroke_data: path
+            });
+        }
+
+        // Clear all drawings
+        async function clearAll() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (supabase) {
+                await supabase.from('drawing_strokes').delete().neq('id', 0);
+            }
+        }
+
+        // Get mouse/touch coordinates
+        function getCoords(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
             return {
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top
+                x: clientX - rect.left,
+                y: clientY - rect.top
             };
         }
 
-        // Start drawing
+        // Drawing functions
         function startDrawing(e) {
             e.preventDefault();
             isDrawing = true;
-            const coords = getCoordinates(e);
-            [lastX, lastY] = [coords.x, coords.y];
-            currentPath = [{x: coords.x, y: coords.y}];
+            const coords = getCoords(e);
+            currentPath = [coords];
         }
 
-        // Draw smooth line
         function draw(e) {
             if (!isDrawing) return;
             e.preventDefault();
             
-            const coords = getCoordinates(e);
+            const coords = getCoords(e);
+            currentPath.push(coords);
             
-            if (currentPath.length === 0) {
-                // First point
-                currentPath.push({x: coords.x, y: coords.y});
-                return;
-            }
-            
-            currentPath.push({x: coords.x, y: coords.y});
-            
-            if (currentPath.length >= 3) {
-                // Get the last three points
-                const len = currentPath.length;
-                const p1 = currentPath[len - 3];
-                const p2 = currentPath[len - 2];
-                const p3 = currentPath[len - 1];
-                
-                // Calculate midpoints for smooth curve
-                const midX1 = (p1.x + p2.x) / 2;
-                const midY1 = (p1.y + p2.y) / 2;
-                const midX2 = (p2.x + p3.x) / 2;
-                const midY2 = (p2.y + p3.y) / 2;
-                
+            // Draw locally in real-time
+            if (currentPath.length > 1) {
                 ctx.beginPath();
-                ctx.moveTo(midX1, midY1);
-                ctx.quadraticCurveTo(p2.x, p2.y, midX2, midY2);
-                ctx.stroke();
-            } else if (currentPath.length === 2) {
-                // Draw initial line segment
-                ctx.beginPath();
-                ctx.moveTo(currentPath[0].x, currentPath[0].y);
-                ctx.lineTo(currentPath[1].x, currentPath[1].y);
+                const prev = currentPath[currentPath.length - 2];
+                ctx.moveTo(prev.x, prev.y);
+                ctx.lineTo(coords.x, coords.y);
                 ctx.stroke();
             }
         }
 
-        // Stop drawing
         function stopDrawing(e) {
-            if (isDrawing) {
-                e.preventDefault();
-                isDrawing = false;
-                
-                // Save the completed path to Supabase
-                if (currentPath.length > 0) {
-                    saveStroke(currentPath);
-                }
-                
-                currentPath = [];
+            if (!isDrawing) return;
+            e.preventDefault();
+            isDrawing = false;
+            
+            if (currentPath.length > 1) {
+                saveStroke(currentPath);
             }
+            currentPath = [];
         }
 
-        // Mouse events
+        // Event listeners
         canvas.addEventListener('mousedown', startDrawing);
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mouseup', stopDrawing);
         canvas.addEventListener('mouseout', stopDrawing);
 
-        // Touch events
         canvas.addEventListener('touchstart', startDrawing);
         canvas.addEventListener('touchmove', draw);
         canvas.addEventListener('touchend', stopDrawing);
-        canvas.addEventListener('touchcancel', stopDrawing);
 
-        // Close modal when clicking outside
-        document.getElementById('roomModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                hideRoomModal();
-            }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                hideRoomModal();
-            }
-        });
-
-        // Clear canvas function
-        async function clearCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            if (currentRoom && supabase) {
-                // Delete all strokes for this room
-                await supabase
-                    .from('drawing_strokes')
-                    .delete()
-                    .eq('room_code', currentRoom);
-            }
-        }
-
-        // Initialize Supabase
-        function initSupabase() {
-            if (SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE') {
-                alert('Please update the Supabase credentials in the code!');
-                return false;
-            }
-            
-            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            return true;
-        }
-
-        // Supabase Functions
-        function showRoomModal() {
-            if (!initSupabase()) return;
-            document.getElementById('roomModal').style.display = 'flex';
-        }
-
-        function hideRoomModal() {
-            document.getElementById('roomModal').style.display = 'none';
-        }
-
-        function generateRoomCode() {
-            return Math.floor(1000 + Math.random() * 9000).toString();
-        }
-
-        async function createRoom() {
-            const roomCode = generateRoomCode();
-            document.getElementById('roomInput').value = roomCode;
-            await joinRoom();
-        }
-
-        async function joinRoom() {
-            const roomCode = document.getElementById('roomInput').value.trim();
-            
-            if (roomCode.length !== 4) {
-                alert('Please enter a 4-digit room code');
-                return;
-            }
-
-            currentRoom = roomCode;
-            
-            try {
-                // Load existing strokes for this room
-                await loadExistingStrokes(roomCode);
-                
-                // Subscribe to real-time updates
-                subscribeToRoom(roomCode);
-                
-                updateUI();
-                hideRoomModal();
-                updateConnectionStatus(true);
-                
-            } catch (error) {
-                console.error('Failed to join room:', error);
-                alert('Failed to join room. Please try again.');
-            }
-        }
-
-        async function loadExistingStrokes(roomCode) {
-            const { data: strokes, error } = await supabase
-                .from('drawing_strokes')
-                .select('stroke_data')
-                .eq('room_code', roomCode)
-                .order('created_at', { ascending: true });
-
-            if (error) {
-                console.error('Error loading strokes:', error);
-                return;
-            }
-
-            // Draw all existing strokes
-            strokes.forEach(stroke => {
-                drawReceivedPath(stroke.stroke_data);
-            });
-        }
-
-        function subscribeToRoom(roomCode) {
-            // Unsubscribe from previous channel if exists
-            if (realtimeChannel) {
-                supabase.removeChannel(realtimeChannel);
-            }
-
-            // Subscribe to new strokes in this room
-            realtimeChannel = supabase
-                .channel(`room-${roomCode}`)
-                .on('postgres_changes', 
-                    { 
-                        event: 'INSERT', 
-                        schema: 'public', 
-                        table: 'drawing_strokes',
-                        filter: `room_code=eq.${roomCode}`
-                    }, 
-                    (payload) => {
-                        drawReceivedPath(payload.new.stroke_data);
-                    }
-                )
-                .on('postgres_changes',
-                    {
-                        event: 'DELETE',
-                        schema: 'public', 
-                        table: 'drawing_strokes',
-                        filter: `room_code=eq.${roomCode}`
-                    },
-                    (payload) => {
-                        // Clear canvas when strokes are deleted
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    }
-                )
-                .subscribe();
-        }
-
-        async function saveStroke(strokeData) {
-            if (!currentRoom || !supabase) return;
-            
-            const { error } = await supabase
-                .from('drawing_strokes')
-                .insert({
-                    room_code: currentRoom,
-                    stroke_data: strokeData
-                });
-
-            if (error) {
-                console.error('Failed to save stroke:', error);
-            }
-        }
-
-        function drawReceivedPath(path) {
-            if (path.length < 2) return;
-            
-            ctx.strokeStyle = '#3d3d3d';
-            ctx.lineWidth = 5;
-            ctx.lineCap = 'round';
-            ctx.lineJoin = 'round';
-
-            if (path.length === 2) {
-                ctx.beginPath();
-                ctx.moveTo(path[0].x, path[0].y);
-                ctx.lineTo(path[1].x, path[1].y);
-                ctx.stroke();
-            } else {
-                for (let i = 1; i < path.length - 1; i++) {
-                    const p1 = path[i - 1];
-                    const p2 = path[i];
-                    const p3 = path[i + 1];
-                    
-                    const midX1 = (p1.x + p2.x) / 2;
-                    const midY1 = (p1.y + p2.y) / 2;
-                    const midX2 = (p2.x + p3.x) / 2;
-                    const midY2 = (p2.y + p3.y) / 2;
-                    
-                    ctx.beginPath();
-                    ctx.moveTo(midX1, midY1);
-                    ctx.quadraticCurveTo(p2.x, p2.y, midX2, midY2);
-                    ctx.stroke();
-                }
-            }
-        }
-
-        function updateUI() {
-            document.getElementById('roomInfo').textContent = `Room: ${currentRoom}`;
-        }
-
-        function updateConnectionStatus(connected = false) {
-            const statusEl = document.getElementById('connectionStatus');
-            if (connected) {
-                statusEl.textContent = 'Connected';
-                statusEl.className = 'connection-status connected';
-            } else {
-                statusEl.textContent = 'Offline';
-                statusEl.className = 'connection-status';
-            }
-        }
-
-        // Prevent scrolling on touch devices
+        window.addEventListener('resize', setupCanvas);
+        
+        // Prevent scrolling
         document.body.addEventListener('touchstart', e => e.preventDefault());
         document.body.addEventListener('touchend', e => e.preventDefault());
         document.body.addEventListener('touchmove', e => e.preventDefault());
+
+        // Start the app
+        init();
     </script>
 </body>
 </html>
