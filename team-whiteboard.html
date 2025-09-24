@@ -39,7 +39,7 @@
         padding: 10px;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        z-index: 100;
+        z-index: 1000;
         display: flex;
         gap: 10px;
         align-items: center;
@@ -105,6 +105,8 @@
 </head>
 <body>
     <div class="toolbar">
+        <button class="tool-btn active" id="drawBtn" onclick="setMode('draw')" title="Draw Mode">Draw</button>
+        <button class="tool-btn" id="moveBtn" onclick="setMode('move')" title="Move Mode">Move</button>
         <button class="clear-btn" onclick="clearAll()">Clear</button>
         <div class="status" id="status">Loading...</div>
     </div>
@@ -132,6 +134,7 @@
     let lastPinchDistance = 0;
     let lastPanX = 0;
     let lastPanY = 0;
+    let currentMode = 'draw'; // 'draw' or 'move'
     
     // Canvas dimensions
     const CANVAS_WIDTH = 10000;
@@ -146,8 +149,25 @@
         panX = (CANVAS_WIDTH - window.innerWidth) / 2;
         panY = (CANVAS_HEIGHT - window.innerHeight) / 2;
         
+        updateCursor();
         drawGrid();
         redrawAll();
+    }
+    
+    // Set mode and update UI
+    function setMode(mode) {
+        currentMode = mode;
+        
+        // Update button states
+        document.getElementById('drawBtn').classList.toggle('active', mode === 'draw');
+        document.getElementById('moveBtn').classList.toggle('active', mode === 'move');
+        
+        updateCursor();
+    }
+    
+    // Update cursor based on current mode
+    function updateCursor() {
+        canvas.style.cursor = currentMode === 'draw' ? 'crosshair' : 'grab';
     }
     
     // Draw light grid
@@ -220,20 +240,20 @@
     async function init() {
         setupCanvas();
         
-        if (SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE') {
+        if (SUPABASE_URL === 'https://cdzcggonkteatjnzvyfs.supabase.co') {
+            try {
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                await loadExistingDrawings();
+                subscribeToUpdates();
+                document.getElementById('status').textContent = 'Live';
+                document.getElementById('status').className = 'status live';
+            } catch (error) {
+                document.getElementById('status').textContent = 'Connection failed';
+                console.error('Init error:', error);
+            }
+        } else {
             document.getElementById('status').textContent = 'Add Supabase credentials';
             return;
-        }
-        
-        try {
-            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-            await loadExistingDrawings();
-            subscribeToUpdates();
-            document.getElementById('status').textContent = 'Live';
-            document.getElementById('status').className = 'status live';
-        } catch (error) {
-            document.getElementById('status').textContent = 'Connection failed';
-            console.error('Init error:', error);
         }
     }
 
@@ -413,10 +433,11 @@
         
         e.preventDefault();
         
-        if (e.shiftKey || (e.touches && e.touches.length === 1 && e.touches[0].force > 0.5)) {
-            // Pan mode
+        if (currentMode === 'move') {
+            // Move mode
             isPanning = true;
             isDrawing = false;
+            canvas.style.cursor = 'grabbing';
             const coords = getCoords(e);
             lastPanX = coords.x;
             lastPanY = coords.y;
@@ -485,6 +506,7 @@
         if (isPanning) {
             e.preventDefault();
             isPanning = false;
+            updateCursor(); // Reset cursor
             return;
         }
         
@@ -535,20 +557,20 @@
     
     // Prevent scrolling but allow button interactions
     document.body.addEventListener('touchstart', function(e) {
-        // Don't prevent if touching the clear button
-        if (!e.target.closest('.clear-btn')) {
+        // Don't prevent if touching toolbar buttons
+        if (!e.target.closest('.toolbar')) {
             e.preventDefault();
         }
     }, { passive: false });
     
     document.body.addEventListener('touchend', function(e) {
-        if (!e.target.closest('.clear-btn')) {
+        if (!e.target.closest('.toolbar')) {
             e.preventDefault();
         }
     }, { passive: false });
     
     document.body.addEventListener('touchmove', function(e) {
-        if (!e.target.closest('.clear-btn')) {
+        if (!e.target.closest('.toolbar')) {
             e.preventDefault();
         }
     }, { passive: false });
