@@ -134,27 +134,42 @@
 
         // Subscribe to real-time updates
         function subscribeToUpdates() {
-            supabase
-                .channel('whiteboard')
+            const channel = supabase
+                .channel('whiteboard-updates')
                 .on('postgres_changes', {
                     event: 'INSERT',
                     schema: 'public',
                     table: 'drawing_strokes'
                 }, (payload) => {
+                    console.log('New drawing received:', payload);
                     drawPath(payload.new.stroke_data);
                 })
                 .on('postgres_changes', {
                     event: 'DELETE',
                     schema: 'public',
                     table: 'drawing_strokes'
-                }, () => {
+                }, (payload) => {
+                    console.log('Clear received');
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                 })
-                .subscribe();
+                .subscribe((status) => {
+                    console.log('Subscription status:', status);
+                });
         }
 
         // Draw a path (smooth curves)
         function drawPath(path) {
+            if (path.length === 0) return;
+            
+            if (path.length === 1) {
+                // Single point - draw a dot
+                const point = path[0];
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 2.5, 0, 2 * Math.PI);
+                ctx.fill();
+                return;
+            }
+
             if (path.length < 2) return;
 
             ctx.beginPath();
@@ -238,9 +253,18 @@
             e.preventDefault();
             isDrawing = false;
             
-            if (currentPath.length > 1) {
+            if (currentPath.length === 1) {
+                // Single click - draw a dot
+                const point = currentPath[0];
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 2.5, 0, 2 * Math.PI);
+                ctx.fill();
+                saveStroke(currentPath);
+            } else if (currentPath.length > 1) {
+                // Regular stroke
                 saveStroke(currentPath);
             }
+            
             currentPath = [];
         }
 
