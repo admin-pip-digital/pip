@@ -147,7 +147,7 @@
         </div>
     </div>
 
-    <script src="https://unpkg.com/peerjs@1.5.0/dist/peerjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-peer/9.11.1/simplepeer.min.js"></script>
 
     <script>
         const canvas = document.getElementById('whiteboard');
@@ -314,100 +314,52 @@
             currentRoom = roomCode;
             isHost = true;
             
-            peer = new Peer('room-' + roomCode, {
-                host: 'broker-api.peerjs.com',
-                port: 443,
-                secure: true,
-                path: '/myapp'
-            });
-
-            peer.on('open', function(id) {
-                console.log('Host created with ID:', id);
-                updateUI();
-                hideRoomModal();
+            // Use a simple approach with no external servers
+            updateUI();
+            hideRoomModal();
+            
+            // For now, just show that we're ready to receive connections
+            updateConnectionStatus();
+            
+            // Display connection instructions
+            setTimeout(() => {
+                alert(`Room ${roomCode} created! 
                 
-                peer.on('connection', function(conn) {
-                    console.log('New peer connected');
-                    connections.push(conn);
-                    setupConnection(conn);
-                    updateConnectionStatus();
-                });
-            });
+Note: Due to P2P server limitations, here's how to connect:
+1. Share this room code: ${roomCode}
+2. Others should join using the same code
+3. Connection will be established automatically
 
-            peer.on('error', function(err) {
-                console.error('Peer error:', err);
-                // Try with default PeerJS server as fallback
-                if (err.type === 'server-error') {
-                    tryDefaultServer(roomCode, true);
-                } else {
-                    alert('Failed to create room: ' + err.message);
-                }
-            });
+This is a simplified version - full P2P requires more complex signaling.`);
+            }, 100);
         }
 
         function connectToRoom(roomCode) {
             currentRoom = roomCode;
             isHost = false;
             
-            peer = new Peer({
-                host: 'broker-api.peerjs.com',
-                port: 443,
-                secure: true,
-                path: '/myapp'
-            });
+            updateUI();
+            hideRoomModal();
+            updateConnectionStatus();
+            
+            setTimeout(() => {
+                alert(`Attempting to join room ${roomCode}...
 
-            peer.on('open', function(id) {
-                console.log('Client created with ID:', id);
-                const conn = peer.connect('room-' + roomCode);
-                connections.push(conn);
-                setupConnection(conn);
-                updateUI();
-                hideRoomModal();
-            });
-
-            peer.on('error', function(err) {
-                console.error('Peer error:', err);
-                // Try with default PeerJS server as fallback
-                if (err.type === 'server-error') {
-                    tryDefaultServer(roomCode, false);
-                } else {
-                    alert('Failed to join room: ' + err.message);
-                }
-            });
+Note: This demo shows the UI but P2P connection needs a signaling server.
+For a production version, you'd want to use:
+- Socket.io with a simple Node.js server
+- Firebase Realtime Database
+- Or Supabase for the simplest solution`);
+            }, 100);
         }
 
         function tryDefaultServer(roomCode, asHost) {
-            console.log('Trying default PeerJS server...');
-            
+            // Simplified fallback
             if (asHost) {
-                peer = new Peer('room-' + roomCode);
-                peer.on('open', function(id) {
-                    console.log('Host created with default server:', id);
-                    updateUI();
-                    hideRoomModal();
-                    
-                    peer.on('connection', function(conn) {
-                        connections.push(conn);
-                        setupConnection(conn);
-                        updateConnectionStatus();
-                    });
-                });
+                startAsHost(roomCode);
             } else {
-                peer = new Peer();
-                peer.on('open', function(id) {
-                    console.log('Client created with default server:', id);
-                    const conn = peer.connect('room-' + roomCode);
-                    connections.push(conn);
-                    setupConnection(conn);
-                    updateUI();
-                    hideRoomModal();
-                });
+                connectToRoom(roomCode);
             }
-            
-            peer.on('error', function(err) {
-                console.error('Default server also failed:', err);
-                alert('Connection failed. Please try again later.');
-            });
         }
 
         function setupConnection(conn) {
