@@ -208,7 +208,12 @@
         async function clearAll() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             if (supabase) {
-                await supabase.from('drawing_strokes').delete().neq('id', 0);
+                try {
+                    await supabase.from('drawing_strokes').delete().neq('id', 0);
+                } catch (error) {
+                    console.error('Clear failed:', error);
+                    // If delete fails, still clear locally
+                }
             }
         }
 
@@ -277,13 +282,29 @@
         canvas.addEventListener('touchstart', startDrawing);
         canvas.addEventListener('touchmove', draw);
         canvas.addEventListener('touchend', stopDrawing);
+        canvas.addEventListener('touchcancel', stopDrawing);
 
         window.addEventListener('resize', setupCanvas);
         
-        // Prevent scrolling
-        document.body.addEventListener('touchstart', e => e.preventDefault());
-        document.body.addEventListener('touchend', e => e.preventDefault());
-        document.body.addEventListener('touchmove', e => e.preventDefault());
+        // Prevent scrolling but allow button interactions
+        document.body.addEventListener('touchstart', function(e) {
+            // Don't prevent if touching the clear button
+            if (!e.target.closest('.clear-btn')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        document.body.addEventListener('touchend', function(e) {
+            if (!e.target.closest('.clear-btn')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        document.body.addEventListener('touchmove', function(e) {
+            if (!e.target.closest('.clear-btn')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         // Start the app
         init();
