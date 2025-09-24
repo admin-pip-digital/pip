@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Whiteboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+
+        #whiteboard {
+            display: block;
+            background-color: white;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .toolbar {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .clear-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .clear-btn:hover {
+            background: #cc3333;
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <button class="clear-btn" onclick="clearCanvas()">Clear</button>
+    </div>
+    
+    <canvas id="whiteboard"></canvas>
+
+    <script>
+        const canvas = document.getElementById('whiteboard');
+        const ctx = canvas.getContext('2d');
+        
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        let currentPath = [];
+
+        // Set canvas size to full window
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Set drawing properties
+            ctx.strokeStyle = '#3d3d3d';
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+        }
+
+        // Initialize canvas
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Get coordinates from mouse or touch event
+        function getCoordinates(e) {
+            const rect = canvas.getBoundingClientRect();
+            if (e.touches) {
+                return {
+                    x: e.touches[0].clientX - rect.left,
+                    y: e.touches[0].clientY - rect.top
+                };
+            }
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        // Start drawing
+        function startDrawing(e) {
+            e.preventDefault();
+            isDrawing = true;
+            const coords = getCoordinates(e);
+            [lastX, lastY] = [coords.x, coords.y];
+            currentPath = [{x: coords.x, y: coords.y}];
+        }
+
+        // Draw smooth line
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            
+            const coords = getCoordinates(e);
+            
+            if (currentPath.length === 0) {
+                // First point
+                currentPath.push({x: coords.x, y: coords.y});
+                return;
+            }
+            
+            currentPath.push({x: coords.x, y: coords.y});
+            
+            if (currentPath.length >= 3) {
+                // Get the last three points
+                const len = currentPath.length;
+                const p1 = currentPath[len - 3];
+                const p2 = currentPath[len - 2];
+                const p3 = currentPath[len - 1];
+                
+                // Calculate midpoints for smooth curve
+                const midX1 = (p1.x + p2.x) / 2;
+                const midY1 = (p1.y + p2.y) / 2;
+                const midX2 = (p2.x + p3.x) / 2;
+                const midY2 = (p2.y + p3.y) / 2;
+                
+                ctx.beginPath();
+                ctx.moveTo(midX1, midY1);
+                ctx.quadraticCurveTo(p2.x, p2.y, midX2, midY2);
+                ctx.stroke();
+            } else if (currentPath.length === 2) {
+                // Draw initial line segment
+                ctx.beginPath();
+                ctx.moveTo(currentPath[0].x, currentPath[0].y);
+                ctx.lineTo(currentPath[1].x, currentPath[1].y);
+                ctx.stroke();
+            }
+        }
+
+        // Stop drawing
+        function stopDrawing(e) {
+            if (isDrawing) {
+                e.preventDefault();
+                isDrawing = false;
+                currentPath = [];
+            }
+        }
+
+        // Mouse events
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // Touch events
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+        canvas.addEventListener('touchcancel', stopDrawing);
+
+        // Clear canvas function
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Prevent scrolling on touch devices
+        document.body.addEventListener('touchstart', e => e.preventDefault());
+        document.body.addEventListener('touchend', e => e.preventDefault());
+        document.body.addEventListener('touchmove', e => e.preventDefault());
+    </script>
+</body>
+</html>
