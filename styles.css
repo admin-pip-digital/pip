@@ -406,6 +406,11 @@ p {
     color: var(--text-primary);
 }
 
+.article-hero p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
 .article-text-block {
     padding: 24px;
 }
