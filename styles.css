@@ -198,48 +198,35 @@ p {
 .hero-text-block h1 {
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     color: var(--text-primary);
 }
 
 /* Full viewport hero section on desktop */
 @media (min-width: 768px) {
     .hero {
-        margin-top: 80px;
         display: flex;
+        max-width: 1200px; /* Match your content max-width */
         align-items: center;
         justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0 32px;
-        height: calc(100vh - 120px);
-        min-height: 500px;
+        margin: 110px auto 40px auto;
+        padding: 0 24px;
     }
     
     .hero img {
-        width: 60%;
+        width: 66%;
         margin-right: 40px;
     }
     
     .hero-text-block {
-        width: 40%;
+        width: 33%;
         padding: 0;
-    }
-    
-    .hero-text-block h1 {
-        font-size: 32px;
-        margin-bottom: 16px;
-    }
-    
-    .hero-text-block p {
-        font-size: 18px;
-        line-height: 1.5;
     }
     
     /* Make anchor bar larger and more prominent */
     .anchor-bar {
         padding: 40px 32px;
-        margin-bottom: 0;
+        margin-bottom: 32px;
         position: sticky;
         bottom: 0;
     }
@@ -407,7 +394,7 @@ p {
 }
 
 .article-hero p {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.5;
 }
 
@@ -472,6 +459,10 @@ p {
         line-height: 1.2;
         letter-spacing: -0.02em;
         margin-bottom: 32px;
+    }
+
+    .article-hero p {
+        font-size: 20px;
     }
     
     .article-text-block {
