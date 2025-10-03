@@ -16,42 +16,6 @@
     --link-color: #000000;
 }
 
-/* Dark mode colors */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-primary: #1a1a1a;
-        --bg-secondary: #2d2d2d;
-        --bg-tertiary: #333333;
-        --text-primary: #ffffff;
-        --text-secondary: #e0e0e0;
-        --text-tertiary: #b0b0b0;
-        --text-quaternary: #cccccc;
-        --border-primary: #404040;
-        --border-secondary: #505050;
-        --navbar-bg: #1a1a1a;
-        --footer-bg: #0f0f0f;
-        --footer-text: #ffffff;
-        --link-color: #ffffff;
-    }
-}
-
-/* Manual dark mode class (optional - for toggle functionality) */
-.dark-mode {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2d2d2d;
-    --bg-tertiary: #333333;
-    --text-primary: #ffffff;
-    --text-secondary: #e0e0e0;
-    --text-tertiary: #b0b0b0;
-    --text-quaternary: #cccccc;
-    --border-primary: #404040;
-    --border-secondary: #505050;
-    --navbar-bg: #1a1a1a;
-    --footer-bg: #0f0f0f;
-    --footer-text: #ffffff;
-    --link-color: #ffffff;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -62,7 +26,6 @@
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
