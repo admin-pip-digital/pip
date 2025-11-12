@@ -221,7 +221,7 @@ body {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .container {
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 64px;
     }
     
@@ -239,8 +239,11 @@ body {
     }
     
     .sidebar {
-        position: static;
-        width: 100%;
+        display: none;
+    }
+    
+    .case-study-content {
+        max-width: 100%;
     }
 }
 
