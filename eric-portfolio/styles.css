@@ -285,4 +285,7 @@ body {
         padding: 64px 16px;
     }
     
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
