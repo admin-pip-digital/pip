@@ -221,6 +221,14 @@ body {
     border-radius: 16px;
 }
 
+.case-study-image video {
+    border-radius: 16px;
+    border: 1px solid #ebebeb;
+    width: 100%;
+    display: block;
+    transform: scale(1.005);
+}
+
 .image-caption {
     font-size: 16px;
     color: #666;
