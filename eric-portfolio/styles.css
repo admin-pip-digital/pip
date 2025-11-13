@@ -12,6 +12,15 @@ body {
     line-height: 1.6;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 /* Homepage Layout */
 .container {
     display: flex;
@@ -36,7 +45,10 @@ body {
 
 .card {
     background: white;
-    border: 1px solid #ebebeb;
+    border-top: 0;
+    border-right: 2px solid #d1d1d1;
+    border-bottom: 2px solid #d1d1d1;
+    border-left: 0;
     border-radius: 16px;
     padding: 32px 16px;
     text-decoration: none;
@@ -45,15 +57,20 @@ body {
     display: flex;
     align-items: flex-start;
     min-height: 280px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
 }
 
 .card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border-color: #d1d1d1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+    border-top: 2px solid #d1d1d1;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 2px solid #d1d1d1;
 }
 
 .card h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 1.3;
 }
@@ -139,6 +156,7 @@ body {
 .case-study-content {
     flex: 1;
     max-width: 800px;
+    animation: fadeIn 0.5s ease-in;
 }
 
 .case-study-content h1 {
