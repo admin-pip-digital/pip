@@ -46,8 +46,8 @@ body {
 .card {
     background: white;
     border-top: 0;
-    border-right: 2px solid #d1d1d1;
-    border-bottom: 2px solid #d1d1d1;
+    border-right: 2px solid #ebebeb;
+    border-bottom: 2px solid #ebebeb;
     border-left: 0;
     border-radius: 16px;
     padding: 32px 16px;
@@ -62,12 +62,12 @@ body {
 }
 
 .card:hover {
-    border-top: 2px solid #d1d1d1;
+    border-top: 2px solid #ebebeb;
     border-right: 0;
     border-bottom: 0;
-    border-left: 2px solid #d1d1d1;
+    border-left: 2px solid #ebebeb;
     transition: ease-in;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+    box-shadow: 0;
 }
 
 .card h3 {
