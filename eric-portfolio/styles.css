@@ -52,8 +52,7 @@ body {
     border-radius: 16px;
     padding: 32px 16px;
     text-decoration: none;
-    color: #1d1d1f;
-    transition: all 0.2s ease;
+    color: #1d1d1d;
     display: flex;
     align-items: flex-start;
     min-height: 280px;
