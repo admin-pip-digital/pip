@@ -1,25 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17308801022"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-17308801022');
-    </script>
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MPR5BJMC');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Meta Description -->
+<!-- Meta Description -->
     <meta name="description" content="Designing for scale and coherence across products. Eric Moore reduced Optavia's development cycles from 4 months to 2-3 weeks through systematic thinking.">
 
     <meta charset="UTF-8">
@@ -27,6 +9,7 @@
     <link rel="icon" type="png" href="image/favicon.png">
     <title>Systems thinking - Eric Moore</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="case-study-container">
@@ -80,7 +63,538 @@
                 <img src="image/2.1.png" alt="Business incentive program component breakdown">
                 <p class="image-caption">Modular card component: configured, not custom-built</p>
             </div>
-            
+
+            <section class="section">
+                <h2>Try it yourself!</h2>
+                <p>After creating this way for non-technical people to add their own business programs, the product team had more time to spend on more important discovery work.</p>
+            </section>
+
+            <!-- Add this section where you want the component to appear in your systems-thinking.html -->
+            <!-- Place it after your existing images but before the navigation -->
+
+            <div class="case-study-image">
+                <div class="interactive-component-container">
+                    <!-- Input Panel -->
+                    <div class="component-input-panel">
+                        <div class="form-group">
+                            <label for="programTitle">Program Title</label>
+                            <input type="text" id="programTitle" value="Coach Accelerator Bonus">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="programDescription">Program Description</label>
+                            <textarea id="programDescription">Earn up to $250 each month, September – November, by signing up 5 new Clients with at least 150 PQV.</textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="learnMoreUrl">Learn More URL</label>
+                            <input type="url" id="learnMoreUrl" value="" placeholder="https://example.com/learn-more">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="currentMonth">Current Month</label>
+                                <input type="text" id="currentMonth" value="September 2024">
+                            </div>
+                            <div class="form-group">
+                                <label for="daysLeft">Days Left</label>
+                                <input type="number" id="daysLeft" value="24">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="amountEarned">Amount Earned</label>
+                                <input type="number" id="amountEarned" value="0" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="totalAmount">Total Possible</label>
+                                <input type="number" id="totalAmount" value="250" min="1">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="progressLabel">Progress Label</label>
+                            <input type="text" id="progressLabel" value="New Clients with at least 150 PQV:">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="currentProgress">Current Progress</label>
+                                <input type="number" id="currentProgress" value="2" min="0" max="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="targetProgress">Target Progress</label>
+                                <input type="number" id="targetProgress" value="5" min="1" max="10">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="milestone1">Milestone 1 Value</label>
+                                <input type="number" id="milestone1" value="150">
+                            </div>
+                            <div class="form-group">
+                                <label for="milestone2">Milestone 2 Value</label>
+                                <input type="number" id="milestone2" value="250">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Preview Panel -->
+                    <div class="component-preview-panel">
+                        <div class="program-card">
+                            <div class="program-header">
+                                <div class="program-title" id="previewTitle">Coach Accelerator Bonus</div>
+                            </div>
+                            
+                            <div class="program-description">
+                                <div class="program-description-text" id="previewDescription">
+                                    Earn up to $250 each month, September – November, by signing up 5 new Clients with at least 150 PQV. <a href="#" class="learn-more" id="previewLearnMore">Learn more</a>
+                                </div>
+                            </div>
+                            
+                            <div class="current-month-section">
+                                <div>
+                                    <span class="current-month-value" id="previewMonth">September 2024</span>
+                                    <span class="days-left" id="previewDaysLeft">24 days left</span>
+                                </div>
+                                <div class="amount-section">
+                                    <div class="amount-earned">
+                                        $<span id="previewEarned">0</span> <span class="amount-total">of $<span id="previewTotal">250</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-section">
+                                <div class="progress-label">
+                                    <span class="progress-description" id="previewProgressLabel">New Clients with at least 150 PQV:</span>
+                                </div>
+                                
+                                <div class="progress-tracker">
+                                    <div class="progress-steps" id="progressSteps">
+                                        <!-- Steps will be generated by JavaScript -->
+                                    </div>
+                                    
+                                    <div class="milestones-container">
+                                        <div class="milestone step-3">
+                                            $<span class="milestone-value" id="previewMilestone1">150</span>
+                                        </div>
+                                        <div class="milestone step-5">
+                                            $<span class="milestone-value" id="previewMilestone2">250</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="image-caption">Interactive component generator: Configure program details and see live preview</p>
+            </div>
+
+            <!-- Add this CSS to your styles.css file -->
+            <style>
+            /* Interactive Component Styles */
+            .interactive-component-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+                background: #fff;
+                border-radius: 16px;
+                border: 1px solid #ebebeb;
+                overflow: hidden;
+                font-family: 'Open Sans', sans-serif;
+            }
+
+            .component-input-panel {
+                padding: 24px 16px;
+                background: #fafafa;
+                max-width: 400px;
+            }
+
+            .component-preview-panel {
+                padding: 24px 16px;
+                background: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 6px;
+                font-weight: 600;
+                color: #333;
+                font-size: 14px;
+                font-family: 'Open Sans', sans-serif;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                font-size: 16px;
+                font-family: 'Open Sans', sans-serif;
+                transition: border-color 0.2s;
+            }
+
+            .form-group input:focus,
+            .form-group textarea:focus,
+            .form-group select:focus {
+                outline: none;
+                border-color: #667eea;
+            }
+
+            .form-group textarea {
+                resize: vertical;
+                min-height: 96px;
+            }
+
+            .form-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            /* Program Card Styles */
+            .program-card {
+                background: #f7f7f7;
+                border-radius: 8px;
+                padding: 24px 20px 24px 20px;
+                max-width: 343px;
+                width: 100%;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+                font-family: 'Open Sans', sans-serif;
+                border: 1px solid #ebebeb;
+            }
+
+            .program-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 16px;
+            }
+
+            .program-title {
+                font-size: 16px;
+                font-weight: 700;
+                color: #333;
+                display: flex;
+                align-items: center;
+                font-family: 'Open Sans', sans-serif;
+                letter-spacing: -0.02em;
+                line-height: 1.2;
+            }
+
+            .program-description {
+                padding: 0;
+                margin-bottom: 16px;
+                border-bottom: 1px solid #e0e0e0;
+                padding-bottom: 16px;
+            }
+
+            .program-description-text {
+                color: #333;
+                line-height: 1.5;
+                font-size: 14px;
+                font-family: 'Open Sans', sans-serif;
+            }
+
+            .learn-more {
+                color: #2563eb;
+                text-decoration: none;
+                font-weight: 500;
+                font-family: 'Open Sans', sans-serif;
+                line-height: 1.5;
+            }
+
+            .learn-more:hover {
+                text-decoration: underline;
+            }
+
+            .current-month-section {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                margin-bottom: 8px;
+                gap: 12px;
+            }
+
+            .current-month-value {
+                font-weight: 600;
+                color: #333;
+                font-size: 16px;
+                font-family: 'Open Sans', sans-serif;
+                line-height: 1.5;
+            }
+
+            .days-left {
+                color: #888;
+                font-size: 13px;
+                font-family: 'Open Sans', sans-serif;
+                line-height: 1.5;
+            }
+
+            .amount-section {
+                text-align: right;
+            }
+
+            .amount-earned {
+                font-size: 14px;
+                font-weight: 700;
+                color: #333;
+                font-family: 'Open Sans', sans-serif;
+                line-height: 1.5;
+            }
+
+            .amount-total {
+                color: #888;
+                font-size: 14px;
+                font-family: 'Open Sans', sans-serif;
+                line-height: 1.5;
+                font-weight: 400;
+            }
+
+            .progress-section {
+                margin-bottom: 0;
+            }
+
+            .progress-label {
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+            }
+
+            .progress-description {
+                color: #333;
+                font-weight: 500;
+                font-size: 14px;
+                font-family: 'Open Sans', sans-serif;
+                line-height: 1.5;
+            }
+
+            .progress-tracker {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .progress-steps {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                gap: 8px;
+            }
+
+            .step {
+                width: 48px;
+                height: 28px;
+                border-radius: 6px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                color: white;
+                cursor: pointer;
+                transition: all 0.2s;
+                font-size: 14px;
+                font-family: 'Open Sans', sans-serif;
+                flex: 1;
+                line-height: 1.5;
+                padding: 4px 0;
+            }
+
+            .step.completed {
+                background: #2563eb;
+            }
+
+            .step.incomplete {
+                background: #d1d5db;
+                color: #6b7280;
+            }
+
+            .milestones-container {
+                position: relative;
+                width: 100%;
+                height: 20px;
+                margin-top: 8px;
+            }
+
+            .milestone {
+                position: absolute;
+                text-align: center;
+                color: #666;
+                font-size: 13px;
+                font-family: 'Open Sans', sans-serif;
+                white-space: nowrap;
+                line-height: 1.5;
+            }
+
+            .milestone-value {
+                font-weight: 600;
+                color: #333;
+                font-family: 'Open Sans', sans-serif;
+                line-height: 1.5;
+            }
+
+            /* Responsive Design for Component */
+            @media (max-width: 1024px) {
+                .interactive-component-container {
+                    grid-template-columns: 1fr;
+                    gap: 0;
+                }
+                
+                .component-input-panel {
+                    border-bottom: 1px solid #e0e0e0;
+                    max-width: none;
+                }
+                
+                .form-row {
+                    grid-template-columns: 1fr;
+                }
+            }
+            </style>
+
+            <!-- Add this JavaScript at the end of your HTML body -->
+            <script>
+            // Component JavaScript
+            function updatePreview() {
+                // Update title
+                document.getElementById('previewTitle').textContent = 
+                    document.getElementById('programTitle').value || 'Program Title';
+                
+                // Update description with inline learn more link
+                const descriptionText = document.getElementById('programDescription').value || 'Program description...';
+                const learnMoreUrl = document.getElementById('learnMoreUrl').value;
+                const learnMoreLink = `<a href="${learnMoreUrl || '#'}" class="learn-more">Learn more</a>`;
+                document.getElementById('previewDescription').innerHTML = `${descriptionText} ${learnMoreLink}`;
+                
+                // Update learn more link separately for the click handler
+                const learnMoreElement = document.getElementById('previewDescription').querySelector('.learn-more');
+                if (learnMoreElement) {
+                    learnMoreElement.href = learnMoreUrl || '#';
+                }
+                
+                // Update current month
+                document.getElementById('previewMonth').textContent = 
+                    document.getElementById('currentMonth').value || 'Month Year';
+                
+                // Update days left
+                const daysLeft = document.getElementById('daysLeft').value || '0';
+                document.getElementById('previewDaysLeft').textContent = `${daysLeft} days left`;
+                
+                // Update amounts
+                document.getElementById('previewEarned').textContent = 
+                    document.getElementById('amountEarned').value || '0';
+                document.getElementById('previewTotal').textContent = 
+                    document.getElementById('totalAmount').value || '0';
+                
+                // Update progress label
+                document.getElementById('previewProgressLabel').textContent = 
+                    document.getElementById('progressLabel').value || 'Progress label:';
+                
+                // Update milestones
+                document.getElementById('previewMilestone1').textContent = 
+                    document.getElementById('milestone1').value || '0';
+                document.getElementById('previewMilestone2').textContent = 
+                    document.getElementById('milestone2').value || '0';
+                
+                // Update progress steps
+                updateProgressSteps();
+            }
+
+            function updateProgressSteps() {
+                const currentProgress = parseInt(document.getElementById('currentProgress').value) || 0;
+                const targetProgress = parseInt(document.getElementById('targetProgress').value) || 5;
+                const stepsContainer = document.getElementById('progressSteps');
+                
+                stepsContainer.innerHTML = '';
+                
+                for (let i = 1; i <= targetProgress; i++) {
+                    const step = document.createElement('div');
+                    step.className = i <= currentProgress ? 'step completed' : 'step incomplete';
+                    step.textContent = i;
+                    step.onclick = () => {
+                        document.getElementById('currentProgress').value = i;
+                        updatePreview();
+                    };
+                    stepsContainer.appendChild(step);
+                }
+                
+                // Update milestone positioning - wait for DOM to render
+                setTimeout(() => {
+                    const steps = stepsContainer.children;
+                    const milestonesContainer = document.querySelector('.milestones-container');
+                    const milestone1 = milestonesContainer.querySelector('.step-3');
+                    const milestone2 = milestonesContainer.querySelector('.step-5');
+                    
+                    if (steps.length >= 3) {
+                        // Get the actual position of step 3 (index 2)
+                        const step3 = steps[2];
+                        const step3Rect = step3.getBoundingClientRect();
+                        const containerRect = stepsContainer.getBoundingClientRect();
+                        const step3Center = (step3Rect.left - containerRect.left) + (step3Rect.width / 2);
+                        
+                        milestone1.style.position = 'absolute';
+                        milestone1.style.left = `${step3Center - 12}px`; // Center the milestone text
+                        milestone1.style.display = 'block';
+                    } else {
+                        milestone1.style.display = 'none';
+                    }
+                    
+                    if (steps.length >= 5) {
+                        // Get the actual position of step 5 (index 4)
+                        const step5 = steps[4];
+                        const step5Rect = step5.getBoundingClientRect();
+                        const containerRect = stepsContainer.getBoundingClientRect();
+                        const step5Center = (step5Rect.left - containerRect.left) + (step5Rect.width / 2);
+                        
+                        milestone2.style.position = 'absolute';
+                        milestone2.style.left = `${step5Center - 12}px`; // Center the milestone text
+                    } else if (steps.length > 0) {
+                        // Position under the last step if less than 5 steps
+                        const lastStep = steps[steps.length - 1];
+                        const lastStepRect = lastStep.getBoundingClientRect();
+                        const containerRect = stepsContainer.getBoundingClientRect();
+                        const lastStepCenter = (lastStepRect.left - containerRect.left) + (lastStepRect.width / 2);
+                        
+                        milestone2.style.position = 'absolute';
+                        milestone2.style.left = `${lastStepCenter - 12}px`;
+                    }
+                    
+                    milestonesContainer.style.position = 'relative';
+                    milestonesContainer.style.height = '20px'; // Ensure container has height
+                }, 10);
+            }
+
+            // Add event listeners to all inputs
+            document.querySelectorAll('input, textarea, select').forEach(element => {
+                element.addEventListener('input', updatePreview);
+            });
+
+            // Initial preview update
+            updatePreview();
+
+            // Add click functionality to learn more link
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('learn-more')) {
+                    const url = document.getElementById('learnMoreUrl').value;
+                    if (!url || url === '#') {
+                        e.preventDefault();
+                        alert('Please enter a valid URL in the Learn More URL field');
+                    }
+                }
+            });
+            </script>
+
             <div class="case-study-image">
                 <img src="image/2.2.png" alt="Mobile and desktop views of incentive cards">
                 <p class="image-caption">Samples of the component in different contexts: Mobile, left and desktop, right</p>
