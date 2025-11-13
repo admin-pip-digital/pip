@@ -67,6 +67,7 @@ body {
     border-right: 0;
     border-bottom: 0;
     border-left: 2px solid #d1d1d1;
+    animation: ease-in;
 }
 
 .card h3 {
