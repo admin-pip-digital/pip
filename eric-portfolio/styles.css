@@ -178,14 +178,15 @@ body {
 }
 
 .principle-description {
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: 400;
     color: #000;
     margin-bottom: 32px;
     line-height: 1.5;
 }
 
 .project-title {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 200;
     margin-bottom: 40px;
 }
