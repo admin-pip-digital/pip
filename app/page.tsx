@@ -27,17 +27,17 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="flex flex-col items-center justify-center h-[calc(100vh-3.5rem-9rem)] px-6 text-center">
-        <h1 className="font-display text-[56px] leading-[1.05] tracking-[-0.03em] animate-hero-scale-in">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-[56px] leading-[1.05] tracking-[-0.03em] animate-hero-scale-in">
           Design your life.
         </h1>
       </section>
 
       {/* Featured project — expands as you scroll */}
       <section className="animate-fade-in-delayed">
-        <p className="text-sm text-neutral-600 text-center mb-6">Hey, I&apos;m <Link href="/about" className="text-neutral-950 underline underline-offset-4 hover:opacity-60 transition-opacity">Eric Moore</Link> 🙋‍♂️ Digital Product Design &amp; Founder of Pip.</p>
+        <p className="text-sm text-neutral-600 text-center mb-6 px-6">Hey, I&apos;m <Link href="/about" className="text-neutral-950 underline underline-offset-4 hover:opacity-60 transition-opacity">Eric Moore</Link> 🙋‍♂️ Digital Product Design &amp; Founder of Pip.</p>
         <FeaturedExpand>
           <Link href={`/work/${featured.slug}`} className="group block relative rounded-2xl overflow-hidden">
-            <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+            <div className="relative w-full aspect-[4/5] md:aspect-[16/9]">
               <Image
                 src={featured.coverImage}
                 alt={featured.title}
@@ -46,13 +46,13 @@ export default function HomePage() {
                 sizes="100vw"
                 priority
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-              <div className="absolute inset-0 flex flex-col justify-end items-end text-right p-8 md:p-14">
+              <div className="absolute inset-0 bg-black/50 md:bg-black/0 md:group-hover:bg-black/10 transition-colors duration-300" />
+              <div className="absolute inset-0 flex flex-col justify-end items-end text-right p-5 md:p-14">
                 <div className="max-w-[320px]">
-                <span className="text-xs tracking-widest uppercase text-neutral-400 mb-3">
+                <span className="text-xs tracking-widest uppercase text-white md:text-neutral-400 mb-3">
                   Featured Project
                 </span>
-                <h2 className="font-display text-2xl leading-[1.2] tracking-[-0.02em] text-white">
+                <h2 className="font-display text-xl md:text-2xl leading-[1.2] tracking-[-0.02em] text-white">
                   {featured.title.includes('telehealth ') ? (
                     <>
                       {featured.title.split('telehealth ')[0]}telehealth<br />
@@ -63,15 +63,15 @@ export default function HomePage() {
                   )}
                 </h2>
                 {featured.outcome && (
-                  <p className="text-sm text-neutral-300 mt-2">{featured.outcome}</p>
+                  <p className="text-sm text-white md:text-neutral-300 mt-2">{featured.outcome}</p>
                 )}
                 {featured.protected && (
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-[11px] tracking-[0.12em] uppercase text-neutral-300">
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-[11px] tracking-[0.12em] uppercase text-white md:text-neutral-300">
                     <Lock className="w-3 h-3" strokeWidth={2} />
                     Password protected
                   </span>
                 )}
-                  <span className="mt-5 block text-sm text-neutral-400 group-hover:text-white transition-colors">
+                  <span className="mt-5 block text-sm text-white md:text-neutral-400 md:group-hover:text-white transition-colors">
                     View project &rarr;
                   </span>
                 </div>
@@ -82,7 +82,7 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="px-4 py-24">
+      <section className="px-4 pt-24 pb-12 md:pb-24">
         <div className="max-w-[1200px] mx-auto">
           <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-4">Services</p>
           <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-4">Ready to level up?<br/>Do something great.</h2>
@@ -95,7 +95,7 @@ export default function HomePage() {
               About Pip
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {[
               { label: 'Improve your user experience', subtitle: 'UX, product & systems', href: '/ux' },
               { label: 'Elevate your brand image', subtitle: 'Identity & visual design', href: '/brand' },
@@ -104,12 +104,12 @@ export default function HomePage() {
               <Link
                 key={label}
                 href={href}
-                className="group relative flex flex-col justify-between aspect-[3/4] rounded-2xl border border-neutral-300 p-8 overflow-hidden hover:bg-neutral-800 transition-colors duration-300"
+                className="group relative flex flex-col justify-between aspect-[5/2] md:aspect-[3/4] rounded-2xl border border-neutral-300 p-6 md:p-8 overflow-hidden hover:bg-neutral-800 transition-colors duration-300"
               >
                 {/* Slide-in placeholder */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[95%] aspect-[4/3] translate-x-full group-hover:translate-x-[15%] transition-transform duration-500 ease-out rounded-2xl overflow-hidden bg-neutral-200" />
+                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[95%] aspect-[4/3] translate-x-full group-hover:translate-x-[15%] transition-transform duration-500 ease-out rounded-2xl overflow-hidden bg-neutral-200" />
 
-                <span className="relative z-10 font-display text-2xl leading-[1.2] tracking-[-0.02em] group-hover:text-white transition-colors duration-300">
+                <span className="relative z-10 font-display text-xl md:text-2xl leading-[1.2] tracking-[-0.02em] group-hover:text-white transition-colors duration-300">
                   {label}
                 </span>
                 <div className="relative z-10 flex items-center justify-between">
@@ -127,21 +127,23 @@ export default function HomePage() {
       </section>
 
       {/* Case studies */}
-      <section className="py-24">
+      <section className="pt-12 pb-12 md:py-24">
         <div className="max-w-[1200px] mx-auto">
-          <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-4">Case studies</p>
-          <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-4">See what's possible.</h2>
-          <p className="text-neutral-500 font-light max-w-lg mb-10">Real projects, real outcomes. Browse the work and see if anything looks familiar — then let's talk about what we can do for yours.</p>
+          <div className="px-4">
+            <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-4">Case studies</p>
+            <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-4">See what's possible.</h2>
+            <p className="text-neutral-500 font-light max-w-lg mb-10">Real projects, real outcomes. Browse the work and see if anything looks familiar — then let's talk about what we can do for yours.</p>
+          </div>
           <CaseStudiesCarousel items={carouselItems} />
         </div>
       </section>
 
       {/* CTA */}
-      <section className="max-w-[960px] mx-auto px-4 md:px-8 py-24">
-        <div className="rounded-2xl bg-neutral-800 text-white px-14 py-24 md:py-32 flex flex-col md:flex-row md:items-center justify-between gap-10">
+      <section className="max-w-[960px] mx-auto px-4 md:px-8 pt-12 pb-24 md:py-24">
+        <div className="rounded-2xl bg-neutral-800 text-white px-6 py-16 md:px-14 md:py-32 flex flex-col md:flex-row md:items-center justify-between gap-10">
           <div>
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-100 mb-2">Get started</p>
-            <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-xl">
+            <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-xl">
               Give &lsquo;em something<br/>to talk about.
             </h2>
           </div>

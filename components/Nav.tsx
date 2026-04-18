@@ -42,7 +42,7 @@ export default function Nav() {
             priority
           />
         </Link>
-        <ul className="flex items-center gap-6">
+        <ul className="flex items-center gap-5 md:gap-6">
           {links.map(({ href, label }) => {
             const active =
               label === 'Work' ? isWork : pathname === href
@@ -50,7 +50,7 @@ export default function Nav() {
               <li key={href}>
                 <Link
                   href={href}
-                  className={`text-[16px] tracking-wide transition-opacity hover:opacity-60 ${
+                  className={`text-[14px] md:text-[16px] tracking-wide transition-opacity hover:opacity-60 ${
                     active
                       ? 'underline underline-offset-4'
                       : ''

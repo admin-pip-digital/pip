@@ -9,10 +9,10 @@ export default function FeaturedExpand({ children }: { children: React.ReactNode
     const el = wrapperRef.current
     if (!el) return
 
-    const START_PX = 96 // padding at top of section
-    const END_PX = 16   // padding at bottom (matches the section's pb-4 / px-4 baseline)
-
     function update() {
+      const isMobile = window.innerWidth < 768
+      const START_PX = isMobile ? 64 : 96
+      const END_PX = isMobile ? 8 : 16
       const rect = el!.getBoundingClientRect()
       const windowH = window.innerHeight
       // progress: 0 when section top is at viewport bottom, 1 when section top reaches viewport top
@@ -24,7 +24,11 @@ export default function FeaturedExpand({ children }: { children: React.ReactNode
 
     update()
     window.addEventListener('scroll', update, { passive: true })
-    return () => window.removeEventListener('scroll', update)
+    window.addEventListener('resize', update, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
   }, [])
 
   return (

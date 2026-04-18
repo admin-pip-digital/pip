@@ -127,12 +127,12 @@ export default function ServicePage({ service }: { service: Service }) {
 
       {/* ── CTA ── */}
       <section className="max-w-[960px] mx-auto px-4 md:px-8 pb-28">
-        <div className="rounded-2xl bg-neutral-800 text-white px-14 py-24 md:py-32 flex flex-col md:flex-row md:items-center justify-between gap-10">
+        <div className="rounded-2xl bg-neutral-800 text-white px-6 py-16 md:px-14 md:py-32 flex flex-col md:flex-row md:items-center justify-between gap-10">
           <div>
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-100 mb-2">
               Get started
             </p>
-            <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-xl">
+            <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-xl">
               {service.ctaTitle}
             </h2>
           </div>

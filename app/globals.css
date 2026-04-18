@@ -48,8 +48,10 @@ body {
   to { padding-left: 2rem; padding-right: 2rem; }
 }
 
-.animate-nav-contract {
-  animation: nav-contract 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+@media (min-width: 768px) {
+  .animate-nav-contract {
+    animation: nav-contract 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
 }
 
 @keyframes fade-in {

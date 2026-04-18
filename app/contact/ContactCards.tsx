@@ -17,7 +17,7 @@ function CopyButton({ value }: { value: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="opacity-0 group-hover:opacity-100 flex items-center gap-1.5 p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-all cursor-pointer"
+      className="opacity-100 md:opacity-0 md:group-hover:opacity-100 flex items-center gap-1.5 p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-all cursor-pointer"
       aria-label="Copy to clipboard"
     >
       {copied ? (

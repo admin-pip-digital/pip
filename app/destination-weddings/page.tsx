@@ -256,7 +256,7 @@ export default function WeddingsPage() {
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-100 mb-2">
               Get started
             </p>
-            <h2 className="font-display text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-xl">
+            <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-xl">
               Let&apos;s build something<br/>worth sharing.
             </h2>
           </div>
