@@ -54,7 +54,7 @@ function SectionBody({ section }: { section: Section }) {
           {paragraphs.map((para, i) => (
             <p
               key={i}
-              className="text-neutral-800 font-light text-lg leading-relaxed"
+              className="text-neutral-800 font-light text-base md:text-lg leading-relaxed"
             >
               {para}
             </p>
@@ -72,7 +72,7 @@ function SectionBody({ section }: { section: Section }) {
           {section.list.map((item, i) => (
             <li
               key={i}
-              className="text-neutral-800 font-light text-lg leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.7em] before:w-3 before:h-px before:bg-neutral-300"
+              className="text-neutral-800 font-light text-base md:text-lg leading-relaxed pl-6 relative before:content-[''] before:absolute before:left-0 before:top-[0.7em] before:w-3 before:h-px before:bg-neutral-300"
             >
               {item}
             </li>
@@ -85,17 +85,17 @@ function SectionBody({ section }: { section: Section }) {
 
 function IntroSection({ section }: { section: Section }) {
   return (
-    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:items-start">
+    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 md:items-start">
         <div>
           <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500 mb-4">
             {section.heading}
           </p>
-          <h2 className="font-display text-3xl md:text-4xl leading-[1.15] tracking-[-0.02em]">
+          <h2 className="font-display text-2xl md:text-4xl leading-[1.15] tracking-[-0.02em]">
             {paragraphsOf(section.body)[0] ?? ''}
           </h2>
         </div>
-        <div className="space-y-5 text-neutral-800 font-light text-lg leading-relaxed pt-1">
+        <div className="space-y-5 text-neutral-800 font-light text-base md:text-lg leading-relaxed pt-1">
           {paragraphsOf(section.body)
             .slice(1)
             .map((para, i) => (
@@ -121,15 +121,15 @@ function IntroSection({ section }: { section: Section }) {
 
 function TwoColSection({ section }: { section: Section }) {
   return (
-    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:items-start">
+    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 md:items-start">
         <div>
           {section.eyebrow && (
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500 mb-4">
               {section.eyebrow}
             </p>
           )}
-          <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em]">
+          <h2 className="font-display text-2xl md:text-4xl leading-[1.1] tracking-[-0.02em]">
             {section.heading}
           </h2>
         </div>
@@ -143,7 +143,7 @@ function TwoColSection({ section }: { section: Section }) {
 
 function ProseSection({ section }: { section: Section }) {
   return (
-    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
       <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500 mb-4">
         {section.heading}
       </p>
@@ -159,21 +159,21 @@ function StatsSection({ section }: { section: Section }) {
   const count = section.stats.length
   const cols =
     count === 2
-      ? 'md:grid-cols-2'
+      ? 'grid-cols-2'
       : count === 3
-        ? 'md:grid-cols-3'
-        : 'md:grid-cols-4'
+        ? 'grid-cols-3'
+        : 'grid-cols-2 md:grid-cols-4'
   return (
-    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
       {section.heading && (
-        <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500 mb-10">
+        <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500 mb-6 md:mb-10">
           {section.heading}
         </p>
       )}
-      <div className={`grid grid-cols-2 ${cols} gap-8`}>
+      <div className={`grid ${cols} gap-8`}>
         {section.stats.map((stat) => (
           <div key={stat.label} className="border-t border-neutral-200 pt-6">
-            <p className="font-display text-3xl md:text-4xl leading-[1.05] tracking-[-0.02em] mb-3">
+            <p className="font-display text-2xl md:text-4xl leading-[1.05] tracking-[-0.02em] mb-3">
               {stat.value}
             </p>
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500">
@@ -190,13 +190,13 @@ function QuoteSection({ section }: { section: Section }) {
   const paragraphs = paragraphsOf(section.body)
   const quote = paragraphs[0] ?? ''
   return (
-    <section className="border-t border-b border-neutral-200 py-20 mb-28">
+    <section className="bg-neutral-100 border-t border-b border-neutral-200 py-20 mb-28">
       <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-        <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] text-neutral-700 max-w-[640px] mx-0 text-left">
+        <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] text-neutral-700 max-w-[640px] mx-auto text-center">
           &ldquo;{quote}&rdquo;
         </blockquote>
         {section.heading && (
-          <p className="mt-6 text-sm text-neutral-500 text-left">
+          <p className="mt-6 text-sm text-neutral-500 text-center">
             — {section.heading}
           </p>
         )}
@@ -242,7 +242,7 @@ function WorkflowDiagram() {
     },
   ]
   return (
-    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
       <div className="rounded-2xl border border-neutral-300 bg-neutral-100 px-6 md:px-10 py-10 md:py-14">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
           {steps.map((step, i) => (
@@ -250,7 +250,7 @@ function WorkflowDiagram() {
               <p className="text-[11px] tracking-[0.14em] uppercase text-neutral-500 mb-3">
                 Step {i + 1}
               </p>
-              <p className="font-display text-lg md:text-xl leading-[1.2] tracking-[-0.01em] mb-3">
+              <p className="font-display text-base md:text-xl leading-[1.2] tracking-[-0.01em] mb-3">
                 {step.label}
               </p>
               <p className="text-sm text-neutral-600 font-light leading-relaxed">
@@ -298,7 +298,7 @@ function ImageFrame({
             fill
             className={
               image.shadow
-                ? 'object-contain drop-shadow-2xl'
+                ? 'object-contain drop-shadow-lg md:drop-shadow-2xl'
                 : 'object-cover'
             }
             style={
@@ -331,8 +331,8 @@ function ImageBlockRender({ block }: { block: ImageBlock }) {
 
   if (layout === 'full') {
     return (
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
-        <div className="space-y-12">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
+        <div className="space-y-8 md:space-y-12">
           {block.images.map((img) => (
             <ImageFrame
               key={img.src}
@@ -352,8 +352,8 @@ function ImageBlockRender({ block }: { block: ImageBlock }) {
       pairs.push(block.images.slice(i, i + 2))
     }
     return (
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
-        <div className="space-y-12">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
+        <div className="space-y-8 md:space-y-12">
           {pairs.map((pair, i) => (
             <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {pair.map((img) => (
@@ -373,7 +373,7 @@ function ImageBlockRender({ block }: { block: ImageBlock }) {
 
   if (layout === 'logos') {
     return (
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
         <div className="rounded-2xl border border-neutral-300 bg-neutral-100 px-8 md:px-12 py-10 md:py-14">
           <div className="grid grid-cols-3 md:grid-cols-6 gap-6 md:gap-10 items-center justify-items-center">
 
@@ -410,7 +410,7 @@ function ImageBlockRender({ block }: { block: ImageBlock }) {
 
   // stack
   return (
-    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
         {block.images.map((img) => (
           <ImageFrame
@@ -446,7 +446,7 @@ export default async function WorkPage({ params }: Props) {
       {!locked && item.banner && (
         <div className="bg-brand text-white">
           <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-3">
-            <p className="text-sm font-semibold leading-relaxed text-center text-white">
+            <p className="text-xs md:text-sm font-semibold leading-[1.5] text-center text-white">
               {item.banner}
             </p>
           </div>
@@ -454,8 +454,8 @@ export default async function WorkPage({ params }: Props) {
       )}
 
       {/* ── Hero ── */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pt-20 pb-16">
-        <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500 mb-6">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pt-14 pb-16 md:pt-20">
+        <p className="text-[11.5px] md:text-[13px] leading-[1.5] tracking-[0.12em] uppercase text-neutral-500 mb-4 md:mb-6">
           {locked ? (
             <>
               Confidential
@@ -476,18 +476,18 @@ export default async function WorkPage({ params }: Props) {
             </>
           )}
         </p>
-        <h1 className="font-display text-5xl md:text-[56px] leading-[1.05] tracking-[-0.03em] max-w-4xl mb-8">
+        <h1 className="font-display text-4xl md:text-[56px] leading-[1.05] tracking-[-0.03em] max-w-4xl mb-5 md:mb-8">
           {item.title}
         </h1>
         {!locked && item.subtitle && (
-          <p className="text-neutral-800 font-light text-lg md:text-xl leading-relaxed max-w-2xl">
+          <p className="text-neutral-800 font-light text-base md:text-xl leading-relaxed max-w-2xl">
             {item.subtitle}
           </p>
         )}
       </section>
 
       {/* ── Cover image ── */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
         <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200">
           {cover ? (
             <Image
@@ -512,12 +512,12 @@ export default async function WorkPage({ params }: Props) {
         <>
       {/* ── Stats ── */}
       {content.stats && content.stats.length > 0 && (
-        <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+        <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
           <div
-            className={`grid grid-cols-2 ${
+            className={`grid ${
               content.stats.length === 3
-                ? 'md:grid-cols-3'
-                : 'md:grid-cols-4'
+                ? 'grid-cols-3'
+                : 'grid-cols-2 md:grid-cols-4'
             } gap-8`}
           >
             {content.stats.map((stat) => (
@@ -525,7 +525,7 @@ export default async function WorkPage({ params }: Props) {
                 key={stat.label}
                 className="border-t border-neutral-200 pt-6"
               >
-                <p className="font-display text-3xl md:text-4xl leading-[1.05] tracking-[-0.02em] mb-3">
+                <p className="font-display text-2xl md:text-4xl leading-[1.05] tracking-[-0.02em] mb-3">
                   {stat.value}
                 </p>
                 <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500">
@@ -548,13 +548,13 @@ export default async function WorkPage({ params }: Props) {
 
       {/* ── Pull quote ── */}
       {content.pullQuote && (
-        <section className="border-t border-b border-neutral-200 py-20 mb-28">
+        <section className="bg-neutral-100 border-t border-b border-neutral-200 py-20 mb-28">
           <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-            <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] text-neutral-700 max-w-[640px] mx-0 text-left">
+            <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] text-neutral-700 max-w-[640px] mx-auto text-center">
               &ldquo;{content.pullQuote.text}&rdquo;
             </blockquote>
             {content.pullQuote.attribution && (
-              <p className="mt-6 text-sm text-neutral-500 text-left">
+              <p className="mt-6 text-sm text-neutral-500 text-center">
                 — {content.pullQuote.attribution}
               </p>
             )}
@@ -578,8 +578,8 @@ export default async function WorkPage({ params }: Props) {
         const hasNext = next && next.status === 'published'
         if (!hasNext) {
           return (
-            <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28 flex flex-col items-center text-center">
-              <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-3">
+            <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28 flex flex-col items-center text-center">
+              <h2 className="font-display text-2xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-3">
                 You&rsquo;ve reached the end 💔
               </h2>
               <p className="text-neutral-600 font-light leading-relaxed max-w-md mb-8">
@@ -606,7 +606,7 @@ export default async function WorkPage({ params }: Props) {
         return (
           <>
             <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-8">
-              <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em]">
+              <h2 className="font-display text-2xl md:text-4xl leading-[1.1] tracking-[-0.02em]">
                 &hellip;but wait, there&rsquo;s more!
               </h2>
             </section>

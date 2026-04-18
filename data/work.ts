@@ -90,13 +90,13 @@ export const work: WorkItem[] = [
           heading: 'The situation',
           layout: 'intro',
           body: [
-            'In December 2025, REBL had just hired its first prescribing provider — and no infrastructure to support her.',
+            'REBL had just hired its first prescribing provider — and no infrastructure to support her.',
             'No patient portal, no way to surface treatments, no mechanism for the async visits that would define their care model. Within weeks of joining as a contractor, I was scoping what would become REBL: a fully online, asynchronous telehealth practice built around compounded medications and peptide protocols.',
             'The business need was immediate. Treatments needed to be discoverable. Patients needed a way to initiate care. The provider needed a system that could scale without adding scheduling overhead. Everything had to work before the practice could see its first patient.',
           ],
         },
         {
-          heading: 'What I built',
+          heading: 'What we built',
           eyebrow: 'Scope',
           layout: 'two-col',
           body: [
@@ -296,7 +296,7 @@ export const work: WorkItem[] = [
           },
         },
         {
-          heading: 'What I built',
+          heading: 'What we built',
           eyebrow: 'The system',
           layout: 'two-col',
           body: [

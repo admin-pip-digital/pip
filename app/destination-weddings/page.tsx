@@ -62,14 +62,14 @@ export default function WeddingsPage() {
     <div>
 
       {/* ── Hero ── */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pt-20 pb-24">
-        <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-6">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pt-14 pb-16 md:pt-20 md:pb-24">
+        <p className="text-[12px] md:text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-4 md:mb-6">
           Websites for destination weddings &amp; elopements
         </p>
-        <h1 className="font-display text-5xl md:text-[56px] leading-[1.05] tracking-[-0.03em] max-w-4xl mb-8">
+        <h1 className="font-display text-4xl md:text-[56px] leading-[1.05] tracking-[-0.03em] max-w-4xl mb-5 md:mb-8">
           A website as remarkable as your wedding.
         </h1>
-        <p className="text-neutral-500 font-light text-lg md:text-xl leading-relaxed max-w-2xl mb-10">
+        <p className="text-neutral-500 font-light text-base md:text-xl leading-relaxed max-w-2xl mb-10">
           Custom-built websites for destination weddings and elopements. Not a
           template — a site designed around your story, your aesthetic, and
           your guests.
@@ -91,7 +91,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── Hero image ── */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-24">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-24">
         <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-neutral-300">
           <Image
             src="/images/vows-in-verona-hero.png"
@@ -105,10 +105,10 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── Intro statement ── */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:items-start">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 md:items-start">
           <div>
-            <h2 className="font-display text-3xl md:text-4xl leading-[1.15] tracking-[-0.02em]">
+            <h2 className="font-display text-2xl md:text-4xl leading-[1.15] tracking-[-0.02em]">
               From the Great Salt Flats to the Amalfi Coast — every destination
               deserves a site that does it justice.
             </h2>
@@ -131,7 +131,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── Two-up images ── */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-300">
             <Image
@@ -161,11 +161,11 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── Features ── */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
         <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-4">
           What&apos;s included
         </p>
-        <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-14 max-w-xl">
+        <h2 className="font-display text-2xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-8 md:mb-14 max-w-xl">
           Everything your guests need, nothing they don&apos;t.
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
@@ -191,13 +191,13 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── Full-width quote / pull ── */}
-      <section className="border-t border-b border-neutral-200 py-20 mb-28">
+      <section className="bg-neutral-100 border-t border-b border-neutral-200 py-20 mb-28">
         <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-          <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] max-w-3xl text-neutral-700">
+          <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] text-neutral-700 max-w-[640px] mx-auto text-center">
             &ldquo;The website made it feel real. Our guests kept telling us
             how much they loved it before we even landed in Italy.&rdquo;
           </blockquote>
-          <p className="mt-6 text-sm text-neutral-400">
+          <p className="mt-6 text-sm text-neutral-400 text-center">
             — Julianna &amp; William, Verona 2026
           </p>
         </div>
@@ -206,12 +206,12 @@ export default function WeddingsPage() {
       {/* ── How it works ── */}
       <section
         id="how-it-works"
-        className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28"
+        className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28"
       >
         <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-4">
           How it works
         </p>
-        <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-14">
+        <h2 className="font-display text-2xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-8 md:mb-14">
           Simple process, extraordinary result.
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -232,7 +232,7 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── Illustration ── */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
         <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-neutral-300">
           <Image
             src="/images/vows-in-verona-illustrations.png"
@@ -250,8 +250,8 @@ export default function WeddingsPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="max-w-[960px] mx-auto px-4 md:px-8 pb-28">
-        <div className="rounded-2xl bg-neutral-800 text-white px-14 py-24 md:py-32 flex flex-col md:flex-row md:items-center justify-between gap-10">
+      <section className="max-w-[960px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
+        <div className="rounded-2xl bg-neutral-800 text-white px-6 py-16 md:px-14 md:py-32 flex flex-col md:flex-row md:items-center justify-between gap-10">
           <div>
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-100 mb-2">
               Get started
