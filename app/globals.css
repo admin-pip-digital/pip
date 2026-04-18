@@ -2,25 +2,89 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
+  --brand: #007A60;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-brand: var(--brand);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-dm-sans);
 }
 
 body {
-  background: var(--background);
+  background: #fafafa;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  button:not(:disabled),
+  a,
+  [role="button"]:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+}
+
+@keyframes hero-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-hero-scale-in {
+  animation: hero-scale-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@keyframes nav-contract {
+  from { padding-left: 3rem; padding-right: 3rem; }
+  to { padding-left: 2rem; padding-right: 2rem; }
+}
+
+.animate-nav-contract {
+  animation: nav-contract 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in-delayed {
+  opacity: 0;
+  animation: fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@theme inline {
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-float-delayed: float 4s ease-in-out infinite 2s;
+}
+
+.animate-float {
+  animation: var(--animate-float);
+}
+
+.animate-float-delayed {
+  animation: var(--animate-float-delayed);
+}
+
+
+.scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
