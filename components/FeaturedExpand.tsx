@@ -11,7 +11,7 @@ export default function FeaturedExpand({ children }: { children: React.ReactNode
 
     function update() {
       const isMobile = window.innerWidth < 768
-      const START_PX = isMobile ? 16 : 96
+      const START_PX = isMobile ? 64 : 96
       const END_PX = isMobile ? 8 : 16
       const rect = el!.getBoundingClientRect()
       const windowH = window.innerHeight
