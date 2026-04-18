@@ -76,9 +76,9 @@ export default function CaseStudiesCarousel({ items }: { items: WorkItem[] }) {
         <div
           className={`relative rounded-2xl snap-start shrink-0 w-[80%] sm:w-[calc((100%-32px)/2)] md:w-[calc((100%-64px)/3)] aspect-[3/4] border border-dashed border-neutral-300 flex items-center justify-center px-8 text-center ${items.length % 2 === 0 ? 'mt-4 mb-6 animate-float' : 'mt-10 animate-float-delayed'}`}
         >
-          <span className="inline-flex items-center gap-1.5 text-[11px] tracking-[0.12em] uppercase text-neutral-400">
-            <Clock className="w-3 h-3" strokeWidth={2} />
-            Additional projects coming soon
+          <span className="inline-flex items-start gap-1.5 text-[11px] tracking-[0.12em] uppercase text-neutral-400">
+            <Clock className="w-3 h-3 mt-0.5 shrink-0" strokeWidth={2} />
+            <span>Additional projects<br className="sm:hidden" /> coming soon</span>
           </span>
         </div>
       </div>

@@ -26,7 +26,7 @@ export default function HomePage() {
     <div>
 
       {/* Hero */}
-      <section className="flex flex-col items-center justify-center h-[calc(100vh-3.5rem-9rem)] px-6 text-center">
+      <section className="flex flex-col items-center justify-center h-[calc(100dvh-3.5rem-20rem)] md:h-[calc(100vh-3.5rem-9rem)] px-6 text-center">
         <h1 className="font-display text-4xl sm:text-5xl md:text-[56px] leading-[1.05] tracking-[-0.03em] animate-hero-scale-in">
           Design your life.
         </h1>
