@@ -141,9 +141,6 @@ export default function WeddingsPage() {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/40 to-transparent z-10">
-              <p className="text-xs tracking-widest uppercase text-white/80">Mobile view</p>
-            </div>
           </div>
           <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-300">
             <Image
@@ -153,9 +150,6 @@ export default function WeddingsPage() {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/40 to-transparent z-10">
-              <p className="text-xs tracking-widest uppercase text-white/80">RSVP section</p>
-            </div>
           </div>
         </div>
       </section>
@@ -241,11 +235,6 @@ export default function WeddingsPage() {
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 1200px"
           />
-          <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/40 to-transparent z-10">
-            <p className="text-xs tracking-widest uppercase text-white/80">
-              Custom illustrations — Vows in Verona, 2026
-            </p>
-          </div>
         </div>
       </section>
 

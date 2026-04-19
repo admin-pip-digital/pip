@@ -172,7 +172,7 @@ export default function ServicePage({ service }: { service: Service }) {
       {service.twoUp && (
         <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {service.twoUp.map(({ src, alt, caption, objectPosition }) => (
+            {service.twoUp.map(({ src, alt, objectPosition }) => (
               <div key={src} className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200">
                 <Image
                   src={src}
@@ -182,9 +182,6 @@ export default function ServicePage({ service }: { service: Service }) {
                   style={objectPosition ? { objectPosition } : undefined}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-10 bg-gradient-to-t from-black/40 to-transparent">
-                  <p className="text-xs tracking-widest uppercase text-white/80">{caption}</p>
-                </div>
               </div>
             ))}
           </div>

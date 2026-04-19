@@ -159,7 +159,7 @@ export const services: Service[] = [
       'Your brand is the first thing people judge you by. I help businesses look as good as they actually are — with visual identities that feel considered, consistent, and built to last.',
     primaryCta: 'Start a project',
 
-    heroImage: '/images/epic-marketing-hero.png',
+    heroImage: '/images/brand-hero.png',
     heroImageAlt: 'Brand identity and marketing design',
     heroImageCaption: 'Recent work: marketing identity refresh',
 
@@ -170,19 +170,6 @@ export const services: Service[] = [
       'I help you build a brand that works as hard as you do. One that looks the same whether it\u2019s on a storefront, a social post, or a pitch deck — and makes people feel like they\u2019re in good hands before you\u2019ve said a word.',
     ],
 
-    twoUp: [
-      {
-        src: '/images/epic-marketing-2.png',
-        alt: 'Marketing campaign design',
-        caption: 'Campaign design',
-      },
-      {
-        src: '/images/epic-marketing-3.png',
-        alt: 'Brand collateral system',
-        caption: 'Collateral system',
-      },
-    ],
-
     featuresEyebrow: 'What\u2019s included',
     featuresHeading: 'More than a logo. A system that works.',
     features: [
@@ -190,13 +177,15 @@ export const services: Service[] = [
         title: 'Identity system',
         description:
           'Your logo, colors, typography, and visual style — designed to work together across everything you do. Not a one-time file drop, but a toolkit you can actually use.',
-        image: '/images/script-before.png',
+        image: '/images/brand-identity.png',
+        objectPosition: 'left center',
       },
       {
         title: 'Guidelines & rollout',
         description:
           'Clear, simple guidelines so you and anyone you work with knows exactly how to use your brand. Plus hands-on support getting it live across your most important touchpoints.',
-        image: '/images/epic-marketing-5.png',
+        image: '/images/epic-marketing-6.png',
+        objectPosition: 'left center',
       },
     ],
 
@@ -249,7 +238,7 @@ export const services: Service[] = [
       'A great website does more than look good — it works. I build fast, custom sites and run ad campaigns that bring the right people in and give them a reason to stay.',
     primaryCta: 'Start a project',
 
-    heroImage: '/images/optavia-path-to-purchase-7.png',
+    heroImage: '/images/web-hero.png',
     heroImageAlt: 'Custom marketing website design',
     heroImageCaption: 'Recent work: agency marketing site',
 
@@ -260,19 +249,6 @@ export const services: Service[] = [
       'Pair that with ad creative and campaign strategy, and you have a setup that actually moves the number you care about.',
     ],
 
-    twoUp: [
-      {
-        src: '/images/optavia-agency-2.png',
-        alt: 'Responsive marketing site',
-        caption: 'Marketing site',
-      },
-      {
-        src: '/images/optavia-agency-3.png',
-        alt: 'Landing page design',
-        caption: 'Landing page',
-      },
-    ],
-
     featuresEyebrow: 'What\u2019s included',
     featuresHeading: 'Built to ship, tuned to convert.',
     features: [
@@ -280,13 +256,14 @@ export const services: Service[] = [
         title: 'Custom website design & build',
         description:
           'Bespoke marketing sites on a modern stack \u2014 fast, editable by your team, and designed for the way your customers actually shop.',
-        image: '/images/optavia-agency-4.png',
+        image: '/images/web-sample.png',
+        objectPosition: 'left top',
       },
       {
         title: 'Ads & marketing',
         description:
           'Channel mix, ad creative, and campaign management — the thinking and the doing, pointed at the same goal.',
-        image: '/images/rebl-utm-promo.png',
+        image: '/images/web-mobile.png',
       },
     ],
 
