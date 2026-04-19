@@ -73,7 +73,7 @@ export const services: Service[] = [
       'Good products don\u2019t happen by accident. I help teams untangle complexity, align on the right problems, and ship experiences that actually hold together — from first flow to final component.',
     primaryCta: 'Start a project',
 
-    heroImage: '/images/ecommerce-hero.png',
+    heroImage: '/images/ux-hero.png',
     heroImageAlt: 'Ecommerce product experience design',
     heroImageCaption: 'Recent work: product experience redesign',
 
@@ -92,7 +92,7 @@ export const services: Service[] = [
         title: 'Product & UX strategy',
         description:
           'Scoping, research synthesis, and prioritization so the team ships the right thing next, not just the next thing. I work upstream so decisions don\u2019t have to get undone later.',
-        image: '/images/rebl-homepage.png',
+        image: '/images/simplenexus-1.png',
       },
       {
         title: 'Design systems',
@@ -104,7 +104,7 @@ export const services: Service[] = [
         title: 'Cross-functional collaboration',
         description:
           'I\u2019m used to working inside existing teams — with PMs, engineers, and stakeholders — not around them. I don\u2019t need a lot of direction to get moving, and I don\u2019t create drag while I do.',
-        image: '/images/client-app-hero.png',
+        image: '/images/simplenexus-11.avif',
       },
     ],
 
@@ -249,7 +249,7 @@ export const services: Service[] = [
       'A great website does more than look good — it works. I build fast, custom sites and run ad campaigns that bring the right people in and give them a reason to stay.',
     primaryCta: 'Start a project',
 
-    heroImage: '/images/optavia-agency-1.png',
+    heroImage: '/images/optavia-path-to-purchase-7.png',
     heroImageAlt: 'Custom marketing website design',
     heroImageCaption: 'Recent work: agency marketing site',
 
@@ -286,7 +286,7 @@ export const services: Service[] = [
         title: 'Ads & marketing',
         description:
           'Channel mix, ad creative, and campaign management — the thinking and the doing, pointed at the same goal.',
-        image: '/images/time4uspa-hero.png',
+        image: '/images/rebl-utm-promo.png',
       },
     ],
 

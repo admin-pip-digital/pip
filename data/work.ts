@@ -132,11 +132,6 @@ export const work: WorkItem[] = [
           ],
         },
         {
-          heading: '',
-          layout: 'quote',
-          body: 'The content architecture was the real design problem.',
-        },
-        {
           heading: 'Content architecture',
           eyebrow: 'Design',
           layout: 'two-col',

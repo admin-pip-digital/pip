@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Lock } from 'lucide-react'
 import { work } from '@/data/work'
+import { getService } from '@/data/services'
 import FeaturedExpand from '@/components/FeaturedExpand'
 import CaseStudiesCarousel from '@/components/CaseStudiesCarousel'
 
@@ -97,17 +98,25 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {[
-              { label: 'Improve your user experience', subtitle: 'UX, product & systems', href: '/ux' },
-              { label: 'Elevate your brand image', subtitle: 'Identity & visual design', href: '/brand' },
-              { label: 'Build a custom website and grow online', subtitle: 'Web, ads & strategy', href: '/web' },
-            ].map(({ label, subtitle, href }) => (
+              { label: 'Improve your user experience', subtitle: 'UX, product & systems', href: '/ux', service: getService('ux') },
+              { label: 'Elevate your brand image', subtitle: 'Identity & visual design', href: '/brand', service: getService('brand') },
+              { label: 'Build a custom website and grow online', subtitle: 'Web, ads & strategy', href: '/web', service: getService('web') },
+            ].map(({ label, subtitle, href, service }) => (
               <Link
                 key={label}
                 href={href}
                 className="group relative flex flex-col justify-between aspect-[5/2] md:aspect-[3/4] rounded-2xl border border-neutral-300 p-6 md:p-8 overflow-hidden hover:bg-neutral-800 transition-colors duration-300"
               >
-                {/* Slide-in placeholder */}
-                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[95%] aspect-[4/3] translate-x-full group-hover:translate-x-[15%] transition-transform duration-500 ease-out rounded-2xl overflow-hidden bg-neutral-200" />
+                {/* Slide-in preview */}
+                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[95%] aspect-[4/3] translate-x-full group-hover:translate-x-[15%] transition-transform duration-500 ease-out rounded-2xl overflow-hidden bg-neutral-200">
+                  <Image
+                    src={service.heroImage}
+                    alt={service.heroImageAlt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 0px, 40vw"
+                  />
+                </div>
 
                 <span className="relative z-10 font-display text-xl md:text-2xl leading-[1.2] tracking-[-0.02em] group-hover:text-white transition-colors duration-300">
                   {label}

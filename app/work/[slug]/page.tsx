@@ -192,8 +192,8 @@ function QuoteSection({ section }: { section: Section }) {
   return (
     <section className="bg-neutral-100 border-t border-b border-neutral-200 py-20 mb-28">
       <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-        <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] text-neutral-700 max-w-[640px] mx-auto text-center">
-          &ldquo;{quote}&rdquo;
+        <blockquote className="font-display text-xl md:text-3xl leading-[1.2] tracking-[-0.02em] text-neutral-700 max-w-[640px] mx-auto text-center">
+          {quote}
         </blockquote>
         {section.heading && (
           <p className="mt-6 text-sm text-neutral-500 text-center">
@@ -550,7 +550,7 @@ export default async function WorkPage({ params }: Props) {
       {content.pullQuote && (
         <section className="bg-neutral-100 border-t border-b border-neutral-200 py-20 mb-28">
           <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-            <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] text-neutral-700 max-w-[640px] mx-auto text-center">
+            <blockquote className="font-display text-xl md:text-3xl leading-[1.2] tracking-[-0.02em] text-neutral-700 max-w-[640px] mx-auto text-center">
               &ldquo;{content.pullQuote.text}&rdquo;
             </blockquote>
             {content.pullQuote.attribution && (
