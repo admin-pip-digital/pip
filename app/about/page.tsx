@@ -21,13 +21,13 @@ export default function AboutPage() {
           <div className="space-y-4 text-neutral-600 font-light leading-relaxed">
             <p>
               I&apos;m a product designer who thinks in systems. I care about
-              work that holds together — experiences that feel inevitable,
-              brands that earn trust, and products that actually serve the
-              people using them.
+              work that brings people together, experiences that feel
+              inevitable, brands that earn trust, and products that actually
+              serve their users.
             </p>
             <p>
               I work best when the problems are real, the people are honest,
-              and the work is allowed to be good.
+              and we&apos;re all allowed to be good at what we do together.
             </p>
           </div>
           <div className="mt-8">
@@ -153,7 +153,7 @@ export default function AboutPage() {
           </div>
           <div>
             <blockquote className="font-display text-lg md:text-2xl leading-[1.3] tracking-[-0.02em] text-neutral-700">
-              &ldquo;He has a great way of bringing everyone together and
+              &ldquo;Eric has a great way of bringing everyone together and
               making everyone feel included. He cares about those he works with
               and strives to create an atmosphere of openness and acceptance.&rdquo;
             </blockquote>

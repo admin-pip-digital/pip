@@ -86,7 +86,7 @@ export default function HomePage() {
         <div className="max-w-[1200px] mx-auto">
           <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-4">Services</p>
           <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-4">Ready to level up?<br/>Do something great.</h2>
-          <p className="text-neutral-500 font-light max-w-lg mb-6">I help businesses turn their ideas into reality. Together, we&apos;ll create something that something your customers will love.</p>
+          <p className="text-neutral-500 font-light max-w-lg mb-6">I help teams and businesses turn great ideas into reality. Let&apos;s build something people will remember.</p>
           <div className="flex flex-wrap gap-3 mb-10">
             <Link href="/contact" className="inline-block px-5 py-2.5 rounded-full bg-neutral-950 text-white text-sm hover:bg-neutral-700 transition-colors duration-300">
               Get in touch
@@ -144,7 +144,7 @@ export default function HomePage() {
           <div>
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-100 mb-2">Get started</p>
             <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-md">
-              Give &lsquo;em something<br/>to talk about.
+              Let&apos;s get to work.
             </h2>
           </div>
           <div className="flex flex-col gap-4 shrink-0">
@@ -155,7 +155,7 @@ export default function HomePage() {
               Get in touch
             </Link>
             <p className="text-xs text-neutral-100 text-center">
-              Call or schedule a free consultation
+              Based in Utah, available for remote work
             </p>
           </div>
         </div>
