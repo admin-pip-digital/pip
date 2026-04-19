@@ -40,18 +40,21 @@ export type Service = {
   statementHeading: string
   statementBody: string[]
 
-  twoUp: [ServiceTwoUp, ServiceTwoUp]
+  twoUp?: [ServiceTwoUp, ServiceTwoUp]
 
   featuresEyebrow: string
   featuresHeading: string
   features: ServiceFeature[]
 
   quote: ServiceQuote
+  secondaryQuote?: ServiceQuote
 
   processHeading: string
+  processIntro?: string
   steps: ServiceStep[]
 
   ctaTitle: string
+  ctaIntro?: string
   ctaButton: string
   ctaFooter: string
 }
@@ -64,9 +67,9 @@ export const services: Service[] = [
       'Product and systems design that turns complex workflows into clear, confident user experiences.',
 
     eyebrow: 'UX, product & systems',
-    title: 'Experiences users actually want to use.',
+    title: 'Improve your user experience',
     intro:
-      'I design product experiences that cut through complexity — helping teams ship interfaces that feel inevitable, not improvised.',
+      'Good products don\u2019t happen by accident. I help teams untangle complexity, align on the right problems, and ship experiences that actually hold together — from first flow to final component.',
     primaryCta: 'Start a project',
 
     heroImage: '/images/ecommerce-hero.png',
@@ -78,68 +81,71 @@ export const services: Service[] = [
     statementBody: [
       'Most product problems aren\u2019t surface problems. They\u2019re structural — the wrong object model, the wrong flow, the wrong place to make a decision. I work at that layer first, then let the pixels follow.',
       'The result is a product that feels coherent end-to-end. Teams move faster because the foundation is sound, and users get an experience that quietly does its job.',
+      'I\u2019ve helped a telehealth platform go from concept to launched product in four weeks — design system, core flows, and clinical content architecture included.',
     ],
 
-    twoUp: [
-      {
-        src: '/images/client-app-hero.png',
-        alt: 'Client-facing app experience',
-        caption: 'Client app',
-      },
-      {
-        src: '/images/coach-app-hero.png',
-        alt: 'Coach-facing app experience',
-        caption: 'Coach app',
-      },
-    ],
-
-    featuresEyebrow: 'What\u2019s included',
+    featuresEyebrow: 'How I help',
     featuresHeading: 'Thoughtful systems, end to end.',
     features: [
       {
         title: 'Product & UX strategy',
         description:
-          'Scoping, research synthesis, and prioritization so the team ships the right thing next, not just the next thing.',
+          'Scoping, research synthesis, and prioritization so the team ships the right thing next, not just the next thing. I work upstream so decisions don\u2019t have to get undone later.',
         image: '/images/rebl-homepage.png',
       },
       {
         title: 'Design systems',
         description:
-          'Token-first component libraries in Figma and code, so future work stays fast and consistent without re-inventing primitives.',
+          'Token-first component libraries in Figma and code, so future work stays fast and consistent without reinventing primitives. Built to hand off cleanly to engineering.',
         image: '/images/script-design-system.png',
+      },
+      {
+        title: 'Cross-functional collaboration',
+        description:
+          'I\u2019m used to working inside existing teams — with PMs, engineers, and stakeholders — not around them. I don\u2019t need a lot of direction to get moving, and I don\u2019t create drag while I do.',
+        image: '/images/client-app-hero.png',
       },
     ],
 
     quote: {
-      text: '\u201CEric rewired how we think about the product. Our roadmap finally matches what users actually need.\u201D',
-      attribution: '\u2014 VP Product, health platform',
+      text: '\u201CEric truly cares about the people using a product, listens closely, and works to understand what they actually need.\u201D',
+      attribution: '\u2014 Product Designer, health & wellness platform',
     },
 
-    processHeading: 'A calm, collaborative process.',
+    secondaryQuote: {
+      text: '\u201CEric doesn\u2019t just scratch the surface\u2014he digs deep to truly understand the core needs and motivations of users, resulting in designs that genuinely resonate.\u201D',
+      attribution: '\u2014 Director of Product Management, SaaS platform',
+    },
+
+    processHeading: 'A smooth, collaborative process.',
+    processIntro:
+      'I don\u2019t show up with a methodology to sell you. I show up to understand your product, your team, and where things are breaking down — then I work in whatever way makes your team faster.',
     steps: [
       {
         number: '01',
         title: 'Understand the problem',
         description:
-          'We start with interviews, audits, and analytics \u2014 whatever it takes to separate symptoms from root causes before touching Figma.',
+          'Interviews, audits, and analytics — whatever it takes to separate symptoms from root causes before touching Figma. I\u2019m looking for the structural issue, not just the surface one.',
       },
       {
         number: '02',
         title: 'Design the system',
         description:
-          'Flows, IA, and core screens in tight loops with your team. You see work weekly, not after a month of silence.',
+          'Flows, IA, and core screens in tight loops with your team. You see work weekly, not after a month of silence. I stay close to engineering so nothing gets lost in translation.',
       },
       {
         number: '03',
         title: 'Ship & iterate',
         description:
-          'I partner with engineering through build and launch, then keep iterating based on what real usage teaches us.',
+          'I partner with engineering through build and launch, then keep iterating based on what real usage teaches us. The work isn\u2019t done when it ships — it\u2019s done when it works.',
       },
     ],
 
-    ctaTitle: 'Let\u2019s make the product make sense.',
-    ctaButton: 'Start a project',
-    ctaFooter: 'Engagements from 6 weeks',
+    ctaTitle: 'Ship a product people want to use.',
+    ctaIntro:
+      'If you\u2019re looking for someone who can slot into your team, move with confidence, and make the work better without making the process harder — let\u2019s talk.',
+    ctaButton: 'Get in touch',
+    ctaFooter: 'Based in Utah, available for remote work',
   },
 
   {
@@ -149,9 +155,9 @@ export const services: Service[] = [
       'Brand identity and visual systems that give your company a voice people remember.',
 
     eyebrow: 'Identity & visual design',
-    title: 'A brand worth looking twice at.',
+    title: 'Elevate your brand image',
     intro:
-      'Identity systems, visual direction, and design guidelines that make your company feel considered \u2014 from the logo to the last line of the footer.',
+      'Your brand is the first thing people judge you by. I help businesses look as good as they actually are — with visual identities that feel considered, consistent, and built to last.',
     primaryCta: 'Start a project',
 
     heroImage: '/images/epic-marketing-hero.png',
@@ -224,7 +230,7 @@ export const services: Service[] = [
 
     ctaTitle: 'Make them remember you.',
     ctaButton: 'Start a project',
-    ctaFooter: 'Engagements from 4 weeks',
+    ctaFooter: 'Based in Utah, available for remote work',
   },
 
   {
@@ -234,9 +240,9 @@ export const services: Service[] = [
       'Custom websites, paid ads, and growth strategy for companies ready to stop looking like everyone else.',
 
     eyebrow: 'Web, ads & strategy',
-    title: 'A website that earns its keep.',
+    title: 'Build a custom website and grow online',
     intro:
-      'Custom-built websites, landing pages, and ad creative \u2014 paired with the strategy to make them compound. No templates, no guesswork.',
+      'A great website does more than look good — it works. I build fast, custom sites and run ad campaigns that bring the right people in and give them a reason to stay.',
     primaryCta: 'Start a project',
 
     heroImage: '/images/optavia-agency-1.png',
@@ -309,7 +315,7 @@ export const services: Service[] = [
 
     ctaTitle: 'Let\u2019s build something that works for you.',
     ctaButton: 'Start a project',
-    ctaFooter: 'Engagements from 3 weeks',
+    ctaFooter: 'Based in Utah, available for remote work',
   },
 ]
 

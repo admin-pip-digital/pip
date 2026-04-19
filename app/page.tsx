@@ -143,7 +143,7 @@ export default function HomePage() {
         <div className="rounded-2xl bg-neutral-800 text-white px-6 py-16 md:px-14 md:py-32 flex flex-col md:flex-row md:items-center justify-between gap-10">
           <div>
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-100 mb-2">Get started</p>
-            <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-xl">
+            <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-md">
               Give &lsquo;em something<br/>to talk about.
             </h2>
           </div>

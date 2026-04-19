@@ -61,7 +61,11 @@ export default function ServicePage({ service }: { service: Service }) {
         <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-14 max-w-xl">
           {service.featuresHeading}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+        <div
+          className={`grid grid-cols-1 ${
+            service.features.length >= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
+          } gap-x-10 gap-y-8`}
+        >
           {service.features.map(({ title, description }) => (
             <div key={title}>
               <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200 mb-5" />
@@ -92,9 +96,18 @@ export default function ServicePage({ service }: { service: Service }) {
         <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-4">
           How it works
         </p>
-        <h2 className="font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-14">
+        <h2
+          className={`font-display text-3xl md:text-4xl leading-[1.1] tracking-[-0.02em] ${
+            service.processIntro ? 'mb-6' : 'mb-14'
+          }`}
+        >
           {service.processHeading}
         </h2>
+        {service.processIntro && (
+          <p className="text-neutral-500 font-light text-lg leading-relaxed max-w-2xl mb-14">
+            {service.processIntro}
+          </p>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {service.steps.map(({ number, title, description }) => (
             <div key={number} className="border-t border-neutral-200 pt-8">
@@ -112,18 +125,32 @@ export default function ServicePage({ service }: { service: Service }) {
         </div>
       </section>
 
+      {/* ── Secondary quote ── */}
+      {service.secondaryQuote && (
+        <section className="border-t border-b border-neutral-200 py-20 mb-28">
+          <div className="max-w-[1200px] mx-auto px-4 md:px-8">
+            <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] max-w-3xl text-neutral-700">
+              {service.secondaryQuote.text}
+            </blockquote>
+            <p className="mt-6 text-sm text-neutral-400">{service.secondaryQuote.attribution}</p>
+          </div>
+        </section>
+      )}
+
       {/* ── Two-up images ── */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {service.twoUp.map(({ src, caption }) => (
-            <div key={src} className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200">
-              <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                <p className="text-xs tracking-widest uppercase text-neutral-500">{caption}</p>
+      {service.twoUp && (
+        <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {service.twoUp.map(({ src, caption }) => (
+              <div key={src} className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200">
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                  <p className="text-xs tracking-widest uppercase text-neutral-500">{caption}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── CTA ── */}
       <section className="max-w-[960px] mx-auto px-4 md:px-8 pb-28">
@@ -132,9 +159,14 @@ export default function ServicePage({ service }: { service: Service }) {
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-100 mb-2">
               Get started
             </p>
-            <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-xl">
+            <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-md">
               {service.ctaTitle}
             </h2>
+            {service.ctaIntro && (
+              <p className="mt-6 text-neutral-300 font-light leading-relaxed max-w-md">
+                {service.ctaIntro}
+              </p>
+            )}
           </div>
           <div className="flex flex-col gap-4 shrink-0">
             <Link

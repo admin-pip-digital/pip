@@ -38,7 +38,7 @@ export default function AboutPage() {
           <div className="mt-8">
             <Link
               href="/contact"
-              className="inline-block px-6 py-3 bg-neutral-900 text-white text-sm tracking-wide hover:bg-neutral-700 transition-colors rounded-full"
+              className="inline-block px-6 py-3 border border-neutral-950 text-sm rounded-full hover:bg-neutral-950 hover:text-white transition-colors duration-300"
             >
               Get in touch
             </Link>
