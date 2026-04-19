@@ -42,9 +42,6 @@ export const metadata: Metadata = {
     images: ['https://pip.digital/social-preview.png'],
   },
   metadataBase: new URL('https://pip.digital'),
-  icons: {
-    icon: '/favicon.png',
-  },
 }
 
 export default function RootLayout({

@@ -39,6 +39,7 @@ export type Service = {
 
   statementHeading: string
   statementBody: string[]
+  statementQuote?: ServiceQuote
 
   twoUp?: [ServiceTwoUp, ServiceTwoUp]
 
@@ -108,13 +109,13 @@ export const services: Service[] = [
     ],
 
     quote: {
-      text: '\u201CEric truly cares about the people using a product, listens closely, and works to understand what they actually need.\u201D',
-      attribution: '\u2014 Product Designer, health & wellness platform',
+      text: '\u201CEric used his skills in UX research... demonstrating how results driven he truly is. His analytical thinking along with keen eye for design always impressed me.\u201D',
+      attribution: '\u2013 UX Designer',
     },
 
     secondaryQuote: {
-      text: '\u201CEric doesn\u2019t just scratch the surface\u2014he digs deep to truly understand the core needs and motivations of users, resulting in designs that genuinely resonate.\u201D',
-      attribution: '\u2014 Director of Product Management, SaaS platform',
+      text: '\u201CEric\u2019s keen eye for design resulted in increased leads, sales and installs. He understands all aspects of design and how they play a role in the marketplace.\u201D',
+      attribution: '\u2013 Affiliate Marketing Manager',
     },
 
     processHeading: 'A smooth, collaborative process.',
@@ -142,8 +143,6 @@ export const services: Service[] = [
     ],
 
     ctaTitle: 'Ship a product people want to use.',
-    ctaIntro:
-      'If you\u2019re looking for someone who can slot into your team, move with confidence, and make the work better without making the process harder — let\u2019s talk.',
     ctaButton: 'Get in touch',
     ctaFooter: 'Based in Utah, available for remote work',
   },
@@ -167,8 +166,8 @@ export const services: Service[] = [
     statementHeading:
       'Your brand is the first thing people feel and the last thing they forget.',
     statementBody: [
-      'Most brand work stops at a logo and a color palette. I go further \u2014 building voice, typography, motion, and image language into a system your team can actually use across every surface.',
-      'The goal isn\u2019t novelty. It\u2019s a brand that reads as confident in every touchpoint, from a pitch deck to a paid ad to a product screen.',
+      'Most businesses underestimate how much their brand is costing them. A logo slapped together in a hurry, inconsistent colors across platforms, a website that doesn\u2019t match the business card — customers notice, even when they can\u2019t articulate why.',
+      'I help you build a brand that works as hard as you do. One that looks the same whether it\u2019s on a storefront, a social post, or a pitch deck — and makes people feel like they\u2019re in good hands before you\u2019ve said a word.',
     ],
 
     twoUp: [
@@ -185,25 +184,30 @@ export const services: Service[] = [
     ],
 
     featuresEyebrow: 'What\u2019s included',
-    featuresHeading: 'A complete identity, not a logo drop.',
+    featuresHeading: 'More than a logo. A system that works.',
     features: [
       {
         title: 'Identity system',
         description:
-          'Logo suite, typography, color, and iconography that work as a kit of parts \u2014 not a static PDF gathering dust.',
+          'Your logo, colors, typography, and visual style — designed to work together across everything you do. Not a one-time file drop, but a toolkit you can actually use.',
         image: '/images/script-before.png',
       },
       {
         title: 'Guidelines & rollout',
         description:
-          'Living brand guidelines plus hands-on support applying the system to real campaigns and touchpoints.',
+          'Clear, simple guidelines so you and anyone you work with knows exactly how to use your brand. Plus hands-on support getting it live across your most important touchpoints.',
         image: '/images/epic-marketing-5.png',
       },
     ],
 
     quote: {
-      text: '\u201CThe identity work paid for itself the first time we walked into a pitch. People remembered us.\u201D',
-      attribution: '\u2014 Founder, consumer startup',
+      text: '\u201CEric brought positivity, humor, and professionalism... His ability to push creative strategy and collaborate led to stronger performing and well designed creative assets.\u201D',
+      attribution: '\u2013 Product Manager',
+    },
+
+    secondaryQuote: {
+      text: '\u201CEric\u2019s design talent is undeniable... his results speak for themselves.\u201D',
+      attribution: '\u2013 Director of Affiliate Marketing',
     },
 
     processHeading: 'From fuzzy to unmistakable.',
@@ -212,23 +216,23 @@ export const services: Service[] = [
         number: '01',
         title: 'Discover the brand',
         description:
-          'Workshops, competitive audits, and stakeholder interviews to land on a point of view worth owning.',
+          'We start with a conversation about your business, your customers, and what makes you different. Then I do the homework — looking at your market and your competitors — so the brand we build is yours, not just something that looks nice.',
       },
       {
         number: '02',
         title: 'Design the system',
         description:
-          'Identity, voice, and visual language built up in parallel so nothing gets locked in before the whole picture is there.',
+          'I build your visual identity piece by piece, sharing work along the way so nothing comes as a surprise. You stay involved without having to manage the process.',
       },
       {
         number: '03',
         title: 'Roll it out',
         description:
-          'Guidelines, templates, and launch support so the new brand shows up everywhere it needs to, cleanly.',
+          'When the brand is ready, I help you put it into the world — templates, launch assets, and support so it shows up consistently everywhere it needs to.',
       },
     ],
 
-    ctaTitle: 'Make them remember you.',
+    ctaTitle: 'Let\u2019s make your hard work visible.',
     ctaButton: 'Start a project',
     ctaFooter: 'Based in Utah, available for remote work',
   },
@@ -253,7 +257,7 @@ export const services: Service[] = [
       'A website isn\u2019t a brochure. It\u2019s the hardest-working person on your team.',
     statementBody: [
       'Most sites are built to look good on launch day and never touched again. I build sites that are easy to evolve, fast to measure, and structured so every page is pulling its weight toward a real business goal.',
-      'Pair that with ad creative and funnel strategy, and you have a setup that actually moves the number you care about \u2014 not just your portfolio.',
+      'Pair that with ad creative and campaign strategy, and you have a setup that actually moves the number you care about.',
     ],
 
     twoUp: [
@@ -279,16 +283,21 @@ export const services: Service[] = [
         image: '/images/optavia-agency-4.png',
       },
       {
-        title: 'Growth strategy',
+        title: 'Ads & marketing',
         description:
-          'Channel mix, messaging, and experiment roadmap \u2014 the thinking layer that keeps the creative and the site pointed at the same goal.',
+          'Channel mix, ad creative, and campaign management — the thinking and the doing, pointed at the same goal.',
         image: '/images/time4uspa-hero.png',
       },
     ],
 
     quote: {
-      text: '\u201CNew site, new ad system, and our CAC dropped inside a month. It finally feels like we\u2019re marketing on purpose.\u201D',
-      attribution: '\u2014 COO, DTC brand',
+      text: '\u201CEric created a great website for my spa, handled our Facebook ads, and improved our Google SEO rankings. His strategies brought in more customers and increased our revenue. I appreciate his clear communication and honest advice \u2014 I\u2019d recommend him to any business owner who wants real growth.\u201D',
+      attribution: '\u2013 Business Owner, Lehi, Utah',
+    },
+
+    secondaryQuote: {
+      text: '\u201CEric has been absolutely amazing! He updated our website and runs ads that drive new business. He works incredibly hard and truly cares about the success of our company. Professional, friendly, and flexible \u2014 highly recommend his services!\u201D',
+      attribution: '\u2013 Business Owner, Parker, Colorado',
     },
 
     processHeading: 'Strategy, design, launch.',
@@ -309,11 +318,11 @@ export const services: Service[] = [
         number: '03',
         title: 'Launch & compound',
         description:
-          'Ongoing ad creative, landing-page experiments, and iteration \u2014 so the site gets smarter the longer it\u2019s live.',
+          'Ongoing ad creative, landing page experiments, and iteration — so the site gets smarter the longer it\u2019s live.',
       },
     ],
 
-    ctaTitle: 'Let\u2019s build something that works for you.',
+    ctaTitle: 'Your customers are waiting. Let\u2019s get growing!',
     ctaButton: 'Start a project',
     ctaFooter: 'Based in Utah, available for remote work',
   },

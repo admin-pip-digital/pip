@@ -5,7 +5,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Eric Moore is a product & systems designer with 8+ years of experience in health & wellness, mortgage, and marketing technology.',
+    'Eric Moore is a product designer who thinks in systems — based in South Jordan, Utah.',
 }
 
 export default function AboutPage() {
@@ -14,25 +14,20 @@ export default function AboutPage() {
       {/* Header */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20 md:items-center">
         <div>
-
           <p className="text-xs tracking-[0.12em] uppercase text-neutral-400 mb-4">A little about me</p>
           <h1 className="font-display text-4xl md:text-5xl leading-[1.2] tracking-[-0.02em] mb-8">
-            Hey, I&apos;m Eric — product designer &amp; systems thinker.
+            Hey, I&apos;m Eric.
           </h1>
           <div className="space-y-4 text-neutral-600 font-light leading-relaxed">
             <p>
-              I have 8+ years of experience working with mid-to-large companies
-              in mortgage, health &amp; wellness, and marketing tech —
-              and I&apos;m currently contracting at Refill, building an
-              agent-centric design system from scratch for AI-first product
-              experiences.
+              I&apos;m a product designer who thinks in systems. I care about
+              work that holds together — experiences that feel inevitable,
+              brands that earn trust, and products that actually serve the
+              people using them.
             </p>
             <p>
-              Prior to starting Pip, I helped my team at Optavia to reduce quarterly development cycles
-              from 4 months to 2–3 weeks using systems thinking, map complex
-              user experiences that became foundational product documentation, and
-              design the strategic pivot from coach-dependent to client-led
-              acquisition serving 800K+ users.
+              I work best when the problems are real, the people are honest,
+              and the work is allowed to be good.
             </p>
           </div>
           <div className="mt-8">
@@ -49,7 +44,7 @@ export default function AboutPage() {
             src="/images/profile-eric-desktop.png"
             alt="Eric Moore"
             fill
-            className="object-cover grayscale hover:grayscale-0 transition-none"
+            className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
@@ -66,9 +61,10 @@ export default function AboutPage() {
               Sustainable growth, technology for humans
             </h3>
             <p className="text-sm text-neutral-500 font-light leading-relaxed">
-              Growth that doesn&apos;t burn people out or compromise quality.
-              Technology should reduce friction and expand capability — not
-              replace the human judgment at the center of good work.
+              I&apos;ve seen what happens when speed becomes the only metric —
+              burned out teams and products that quietly stop working for the
+              people using them. Growth that lasts is growth that&apos;s built
+              right.
             </p>
           </div>
           <div>
@@ -76,9 +72,9 @@ export default function AboutPage() {
               Building partnerships, not just projects
             </h3>
             <p className="text-sm text-neutral-500 font-light leading-relaxed">
-              The best outcomes come from relationships built on trust,
-              transparency, and shared goals. A finished deliverable is
-              a byproduct of that — not the point.
+              The best work I&apos;ve ever done came out of relationships where
+              both sides were honest about what they needed. A finished
+              deliverable is a byproduct of that trust — not the point.
             </p>
           </div>
           <div>
@@ -94,10 +90,82 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* Outside the work */}
+      <div className="border-t border-neutral-300 pt-16 mb-16">
+        <h2 className="text-xs font-medium tracking-widest uppercase text-neutral-400 mb-10">
+          Outside of work
+        </h2>
+        <div className="space-y-4 text-neutral-600 font-light leading-relaxed max-w-3xl">
+          <p>
+            I live in South Jordan, Utah with my husband Ben and our dogs. I
+            play piano, volunteer with Great Salt Lake conservation efforts,
+            and run a small publishing community with some friends from
+            previous jobs. I&apos;m not always loud or outspoken... but
+            working on it. I aim to stay deeply rooted in something bigger
+            than myself.
+          </p>
+        </div>
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200">
+            <Image
+              src="/images/eric-osaka.png"
+              alt="Eric in Osaka"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          </div>
+          <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200">
+            <Image
+              src="/images/eric-dogs.png"
+              alt="Eric with his dogs"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          </div>
+          <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200">
+            <Image
+              src="/images/eric-kyoto.png"
+              alt="Eric in Kyoto"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      <div className="border-t border-neutral-300 pt-16 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+          <div>
+            <blockquote className="font-display text-lg md:text-2xl leading-[1.3] tracking-[-0.02em] text-neutral-700">
+              &ldquo;Eric is an exceptional mentor, collaborator, and just a
+              genuinely awesome person. What really stands out is his empathy
+              — he truly cares about the people using a product, listens
+              closely, and works to understand what they actually need. That
+              genuine care is rare and makes a huge difference.&rdquo;
+            </blockquote>
+            <p className="mt-4 text-sm text-neutral-400">
+              – Product Designer, Health &amp; Wellness Platform
+            </p>
+          </div>
+          <div>
+            <blockquote className="font-display text-lg md:text-2xl leading-[1.3] tracking-[-0.02em] text-neutral-700">
+              &ldquo;He has a great way of bringing everyone together and
+              making everyone feel included. He cares about those he works with
+              and strives to create an atmosphere of openness and acceptance.&rdquo;
+            </blockquote>
+            <p className="mt-4 text-sm text-neutral-400">– Colleague, Vivint</p>
+          </div>
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="border-t border-neutral-300 pt-16 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <p className="text-neutral-500 font-light">
-          Open to freelance, contract, and full-time opportunities.
+          Currently available for full-time and contract product design roles.
         </p>
         <div className="flex items-center gap-6 text-sm">
           <Link

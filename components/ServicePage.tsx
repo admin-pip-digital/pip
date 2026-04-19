@@ -53,6 +53,18 @@ export default function ServicePage({ service }: { service: Service }) {
         </div>
       </section>
 
+      {/* ── Statement quote ── */}
+      {service.statementQuote && (
+        <section className="border-t border-b border-neutral-200 py-20 mb-28">
+          <div className="max-w-[1200px] mx-auto px-4 md:px-8">
+            <blockquote className="font-display text-xl md:text-3xl leading-[1.2] tracking-[-0.02em] max-w-3xl text-neutral-700">
+              {service.statementQuote.text}
+            </blockquote>
+            <p className="mt-6 text-sm text-neutral-400">{service.statementQuote.attribution}</p>
+          </div>
+        </section>
+      )}
+
       {/* ── Features ── */}
       <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-28">
         <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400 mb-4">
@@ -81,7 +93,7 @@ export default function ServicePage({ service }: { service: Service }) {
       {/* ── Quote ── */}
       <section className="border-t border-b border-neutral-200 py-20 mb-28">
         <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-          <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] max-w-3xl text-neutral-700">
+          <blockquote className="font-display text-xl md:text-3xl leading-[1.2] tracking-[-0.02em] max-w-3xl text-neutral-700">
             {service.quote.text}
           </blockquote>
           <p className="mt-6 text-sm text-neutral-400">{service.quote.attribution}</p>
@@ -129,7 +141,7 @@ export default function ServicePage({ service }: { service: Service }) {
       {service.secondaryQuote && (
         <section className="border-t border-b border-neutral-200 py-20 mb-28">
           <div className="max-w-[1200px] mx-auto px-4 md:px-8">
-            <blockquote className="font-display text-2xl md:text-4xl leading-[1.2] tracking-[-0.02em] max-w-3xl text-neutral-700">
+            <blockquote className="font-display text-xl md:text-3xl leading-[1.2] tracking-[-0.02em] max-w-3xl text-neutral-700">
               {service.secondaryQuote.text}
             </blockquote>
             <p className="mt-6 text-sm text-neutral-400">{service.secondaryQuote.attribution}</p>
