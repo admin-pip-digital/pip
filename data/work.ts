@@ -42,6 +42,7 @@ export type CaseStudyReview = {
   outcomes?: string | string[]
   reflection?: string | string[]
   role?: string | string[]
+  extra?: { label: string; body: string | string[] }[]
 }
 
 export type CaseStudyContent = {
@@ -125,7 +126,7 @@ export const work: WorkItem[] = [
                 src: '/images/rebl-medication.png',
                 alt: 'Treatment detail page',
                 caption: 'Dynamic medication pages generated from the Sanity schema.',
-                objectPosition: 'top left',
+                objectPosition: 'top right',
               },
             ],
           },
@@ -355,7 +356,7 @@ export const work: WorkItem[] = [
         ],
       },
       nextSlug: 'optavia-app',
-      nextLabel: 'Taking a health app from 2 to 4.7 stars: Optavia',
+      nextLabel: 'Optavia client app: Taking a health app from 2 to 4.7 stars',
     },
   },
   {
@@ -510,7 +511,7 @@ export const work: WorkItem[] = [
   },
   {
     slug: 'optavia-app',
-    title: 'Taking a health app from 2 to 4.7 stars: Optavia',
+    title: 'Optavia client app: Taking a health app from 2 to 4.7 stars',
     subtitle:
       "Optavia's mobile app had a 2-star rating because it was built like an e-commerce platform when users needed a behavior change companion.",
     outcome: '2 → 4.7 stars · 800K MAU',
@@ -595,8 +596,8 @@ export const work: WorkItem[] = [
       review: {
         reflection: 'We stopped building what we assumed users wanted and started supporting what they actually needed. Feature assumptions produced a 2-star product. Understanding the real behavior behind the program — the coach, the habits, the lifestyle — is what got us to 4.7.',
       },
-      nextSlug: 'optavia-business-programs',
-      nextLabel: 'Turning Endless Loops of Frustration into Simple Program Delivery',
+      nextSlug: 'optavia-ecommerce-experience-redesign',
+      nextLabel: 'Multi-path e-commerce redesign for a health platform',
     },
   },
   {
@@ -1031,55 +1032,88 @@ export const work: WorkItem[] = [
     subtitle:
       "Optavia's website couldn't accommodate users with different health goals beyond traditional weight loss.",
     tags: ['UX Design', 'E-commerce', 'Information Architecture'],
-    coverImage: '/images/optavia-path-to-purchase-7.png',
+    coverImage: '/images/ecommerce-desktop.png',
+    coverObjectPosition: 'left center',
     year: '2024',
-    status: 'coming-soon',
+    status: 'published',
     client: 'Optavia',
     content: {
       sections: [
         {
-          heading: 'The Problem',
-          body: "Optavia's website was built around one user journey — traditional weight loss — but users had diverse goals like GLP-1 medication support, maintenance, and muscle building. The site couldn't effectively guide users to appropriate programs or products.",
-        },
-        {
-          heading: 'The Approach',
-          body: "I collaborated across teams (marketing, nutrition, legal, development) to redesign the user experience around multiple pathways. Key insight: users needed to understand not just what to buy, but why it would work for their specific situation.",
-        },
-        {
-          heading: 'The Solution',
-          list: [
-            'Clear program differentiation with benefit comparisons (GLP-1 + Optavia vs. GLP-1 alone)',
-            'Product education that explains nutritional benefits rather than just features',
-            'Streamlined conversion funnel with multiple entry points',
-            'Visual consistency through systematic product photography approach',
+          heading: 'The situation',
+          layout: 'intro',
+          body: [
+            "Optavia's website was built around one user journey — traditional weight loss — but the user base had outgrown that path.",
+            "New users were arriving with GLP-1 medication regimens, maintenance goals, muscle-building ambitions, and specialized nutritional needs. The site forced all of them through the same funnel, and it showed: users couldn't find the program that fit their situation, and the business couldn't grow new segments without rebuilding the funnel from scratch.",
           ],
         },
         {
-          heading: 'The Impact',
-          body: 'Created a scalable e-commerce experience that could accommodate new user segments and product lines while maintaining conversion effectiveness.',
+          heading: 'Designing across teams',
+          eyebrow: 'Approach',
+          layout: 'two-col',
+          body: [
+            'I led the redesign in collaboration with marketing, nutrition, legal, and development — each team holding a piece of what the site needed to communicate, but without a shared structure for how to combine them.',
+            "The reframe: users didn't just need to know what to buy. They needed to understand why a program would work for their specific situation. That shifted the site's job from merchandising to decision support.",
+          ],
         },
         {
-          heading: 'Why This Worked',
-          body: "Instead of cramming everything into one generic funnel, we created specialized pathways that spoke to each user's specific needs and concerns. This reduced cognitive load while increasing relevance.",
+          heading: '',
+          layout: 'quote',
+          body: "Users didn't just need to know what to buy. They needed to understand why it would work for them.",
+        },
+        {
+          heading: 'Multiple paths, one system',
+          eyebrow: 'Design',
+          layout: 'two-col',
+          body: [
+            'We restructured the site around distinct pathways — one for GLP-1 support, one for traditional weight loss, one for maintenance and lifestyle — each with its own entry point, product selection, and education layer.',
+            'The pathways shared the same underlying system: a consistent product presentation, a systematic approach to product photography, and a streamlined checkout. The front-end experience diverged to match user intent, but the back-end stayed unified so new pathways could be added without rebuilding the site each time.',
+          ],
+          after: {
+            layout: 'pair',
+            images: [
+              {
+                src: '/images/ecommerce-mobile.png',
+                alt: 'Optavia e-commerce experience on mobile',
+                caption: 'Mobile experience carrying the same pathway-first logic through to checkout.',
+                objectPosition: 'top center',
+              },
+              {
+                src: '/images/ecommerce-plan.png',
+                alt: 'Optavia pathway selection cards',
+                caption: 'Users are guided to a plan that fits their needs rather than browsing a catalog.',
+                objectPosition: 'top center',
+              },
+            ],
+          },
+        },
+        {
+          heading: 'Explaining why, not just what',
+          layout: 'prose',
+          body: "Education lived throughout the shopping experience — not as a separate marketing site bolted onto a catalog. Users arriving with a GLP-1 regimen or a specific goal could see how each product fit their situation as they browsed, so the answer to \"why this?\" was always one scroll away from the buy button.",
+          after: {
+            layout: 'full',
+            images: [
+              {
+                src: '/images/ecommerce-shop.png',
+                alt: 'Optavia shop page showing products with educational context',
+                caption: 'The shop experience: products presented with the context that made them make sense.',
+                objectPosition: 'top left',
+              },
+            ],
+          },
         },
       ],
-      images: [
-        {
-          src: '/images/optavia-path-to-purchase-7.png',
-          alt: 'Optavia e-commerce product page for GLP-1 Nutrition Support Plan',
-          caption: 'Redesigned product pages with educational content and clear program differentiation.',
-        },
-        {
-          src: '/images/optavia-path-to-purchase-1.png',
-          alt: 'Three clickable cards showing Optavia turnkey nutrition plans',
-          caption: 'New entry point: users choose their journey before browsing products.',
-        },
-        {
-          src: '/images/optavia-path-to-purchase-4.png',
-          alt: 'Feature comparison table',
-          caption: 'Benefit comparison table helping users understand why GLP-1 + Optavia beats GLP-1 alone.',
-        },
-      ],
+      images: [],
+      review: {
+        reflection: "Instead of cramming everything into one generic funnel, we created specialized pathways that spoke to each user's specific needs and concerns. Cognitive load went down, relevance went up — and the site could finally grow with the business rather than bottlenecking it.",
+        extra: [
+          {
+            label: 'A separate experience',
+            body: "The e-commerce site was treated as its own vertical — a marketing and acquisition experience, deliberately separate from the habit-building client app where users actually lived their Optavia lifestyle. The two products supported each other but met different needs: the shop's job was persuasion and decision support, getting users into the right program. The app's job was behavior change, reinforcing the daily habits that made the program work. Keeping them separate let each one do its job well.",
+          },
+        ],
+      },
       nextSlug: 'epic-marketing-rebrand',
       nextLabel: 'Epic Marketing Agency Rebrand',
     },

@@ -238,7 +238,7 @@ export const services: Service[] = [
       'A great website does more than look good — it works. I build durable, custom sites and run ad campaigns that bring the right people in and give them a reason to stay.',
     primaryCta: 'Start a project',
 
-    heroImage: '/images/web-hero.png',
+    heroImage: '/images/ecommerce-desktop.png',
     heroImageAlt: 'Custom marketing website design',
     heroImageCaption: 'Recent work: agency marketing site',
 

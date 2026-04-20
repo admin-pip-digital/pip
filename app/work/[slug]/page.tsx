@@ -216,6 +216,10 @@ function ReviewSection({ review }: { review: CaseStudyReview }) {
   const blocks: { label: string; paragraphs: string[] }[] = [
     { label: 'Outcomes', paragraphs: toParagraphs(review.outcomes) },
     { label: 'Why it worked', paragraphs: toParagraphs(review.reflection) },
+    ...(review.extra ?? []).map((e) => ({
+      label: e.label,
+      paragraphs: toParagraphs(e.body),
+    })),
     { label: 'My role', paragraphs: toParagraphs(review.role) },
   ].filter((b) => b.paragraphs.length > 0)
 
