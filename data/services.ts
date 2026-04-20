@@ -70,7 +70,7 @@ export const services: Service[] = [
     eyebrow: 'UX, product & systems',
     title: 'Improve your user experience',
     intro:
-      'Good products don\u2019t happen by accident. I help teams untangle complexity, align on the right problems, and ship experiences that actually hold together — from first flow to final component.',
+      'Good products don\u2019t happen by accident. I help teams untangle complexity, align on the right problems, and build experiences that actually hold together — from first flow to final component.',
     primaryCta: 'Start a project',
 
     heroImage: '/images/ux-hero.png',
@@ -81,7 +81,7 @@ export const services: Service[] = [
       'Great UX isn\u2019t a coat of paint. It\u2019s how the product thinks.',
     statementBody: [
       'Most product problems aren\u2019t surface problems. They\u2019re structural — the wrong object model, the wrong flow, the wrong place to make a decision. I work at that layer first, then let the pixels follow.',
-      'The result is a product that feels coherent end-to-end. Teams move faster because the foundation is sound, and users get an experience that quietly does its job.',
+      'The result is a product that feels coherent end-to-end. The foundation holds up, so the team stops relitigating old decisions — and users get an experience that quietly does its job.',
       'I\u2019ve helped a telehealth platform go from concept to launched product in four weeks — design system, core flows, and clinical content architecture included.',
     ],
 
@@ -97,7 +97,7 @@ export const services: Service[] = [
       {
         title: 'Design systems',
         description:
-          'Token-first component libraries in Figma and code, so future work stays fast and consistent without reinventing primitives. Built to hand off cleanly to engineering.',
+          'Token-first component libraries in Figma and code, so future work stays coherent and consistent without reinventing primitives. Built to hand off cleanly to engineering.',
         image: '/images/script-design-system.png',
       },
       {
@@ -120,7 +120,7 @@ export const services: Service[] = [
 
     processHeading: 'A smooth, collaborative process.',
     processIntro:
-      'I don\u2019t show up with a methodology to sell you. I show up to understand your product, your team, and where things are breaking down — then I work in whatever way makes your team faster.',
+      'I don\u2019t show up with a methodology to sell you. I show up to understand your product, your team, and where things are breaking down — then I work in whatever way actually moves the product forward.',
     steps: [
       {
         number: '01',
@@ -136,13 +136,13 @@ export const services: Service[] = [
       },
       {
         number: '03',
-        title: 'Ship & iterate',
+        title: 'Launch & iterate',
         description:
           'I partner with engineering through build and launch, then keep iterating based on what real usage teaches us. The work isn\u2019t done when it ships — it\u2019s done when it works.',
       },
     ],
 
-    ctaTitle: 'Ship a product people want to use.',
+    ctaTitle: 'Build a product people keep using.',
     ctaButton: 'Get in touch',
     ctaFooter: 'Based in Utah, available for remote work',
   },
@@ -235,7 +235,7 @@ export const services: Service[] = [
     eyebrow: 'Web, ads & strategy',
     title: 'Build a custom website and grow online',
     intro:
-      'A great website does more than look good — it works. I build fast, custom sites and run ad campaigns that bring the right people in and give them a reason to stay.',
+      'A great website does more than look good — it works. I build durable, custom sites and run ad campaigns that bring the right people in and give them a reason to stay.',
     primaryCta: 'Start a project',
 
     heroImage: '/images/web-hero.png',
@@ -245,17 +245,17 @@ export const services: Service[] = [
     statementHeading:
       'A website isn\u2019t a brochure. It\u2019s the hardest-working person on your team.',
     statementBody: [
-      'Most sites are built to look good on launch day and never touched again. I build sites that are easy to evolve, fast to measure, and structured so every page is pulling its weight toward a real business goal.',
+      'Most sites are built to look good on launch day and never touched again. I build sites that are built to evolve, clear to measure, and structured so every page is pulling its weight toward a real business goal.',
       'Pair that with ad creative and campaign strategy, and you have a setup that actually moves the number you care about.',
     ],
 
     featuresEyebrow: 'What\u2019s included',
-    featuresHeading: 'Built to ship, tuned to convert.',
+    featuresHeading: 'Built to last, tuned to convert.',
     features: [
       {
         title: 'Custom website design & build',
         description:
-          'Bespoke marketing sites on a modern stack \u2014 fast, editable by your team, and designed for the way your customers actually shop.',
+          'Bespoke marketing sites on a modern stack \u2014 durable, editable by your team, and designed for the way your customers actually shop.',
         image: '/images/web-sample.png',
         objectPosition: 'left top',
       },

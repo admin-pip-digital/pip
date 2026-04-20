@@ -6,6 +6,7 @@ import {
   work,
   getWorkBySlug,
   type CaseStudyImage,
+  type CaseStudyReview,
   type DiagramVariant,
   type ImageBlock,
   type Section,
@@ -200,6 +201,56 @@ function QuoteSection({ section }: { section: Section }) {
             — {section.heading}
           </p>
         )}
+      </div>
+    </section>
+  )
+}
+
+function toParagraphs(value?: string | string[]): string[] {
+  if (!value) return []
+  if (Array.isArray(value)) return value
+  return value.split('\n\n')
+}
+
+function ReviewSection({ review }: { review: CaseStudyReview }) {
+  const blocks: { label: string; paragraphs: string[] }[] = [
+    { label: 'Outcomes', paragraphs: toParagraphs(review.outcomes) },
+    { label: 'Reflection', paragraphs: toParagraphs(review.reflection) },
+    { label: 'My role', paragraphs: toParagraphs(review.role) },
+  ].filter((b) => b.paragraphs.length > 0)
+
+  if (blocks.length === 0) return null
+
+  return (
+    <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 md:items-start">
+        <div>
+          <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500 mb-4">
+            In review
+          </p>
+          <h2 className="font-display text-2xl md:text-4xl leading-[1.1] tracking-[-0.02em]">
+            Outcomes &amp; reflection
+          </h2>
+        </div>
+        <div className="pt-1 space-y-10">
+          {blocks.map((block) => (
+            <div key={block.label}>
+              <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-500 mb-4">
+                {block.label}
+              </p>
+              <div className="space-y-5">
+                {block.paragraphs.map((para, i) => (
+                  <p
+                    key={i}
+                    className="text-neutral-800 font-light text-base md:text-lg leading-relaxed"
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -572,32 +623,37 @@ export default async function WorkPage({ params }: Props) {
         />
       )}
 
+      {/* ── Outcomes & reflection ── */}
+      {content.review && <ReviewSection review={content.review} />}
+
       {/* ── Next project reveal ── */}
       {(() => {
         const next = content.nextSlug ? getWorkBySlug(content.nextSlug) : undefined
         const hasNext = next && next.status === 'published'
         if (!hasNext) {
           return (
-            <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28 flex flex-col items-center text-center">
-              <h2 className="font-display text-2xl md:text-4xl leading-[1.1] tracking-[-0.02em] mb-3">
-                You&rsquo;ve reached the end 💔
-              </h2>
-              <p className="text-neutral-600 font-light leading-relaxed max-w-md mb-8">
-                If anything here sparked an idea, feel free to reach out. Thanks for reviewing my work!
-              </p>
-              <div className="flex flex-wrap gap-3 justify-center">
-                <Link
-                  href="/"
-                  className="inline-block px-5 py-2.5 rounded-full bg-neutral-950 text-white text-sm hover:bg-neutral-700 transition-colors duration-300"
-                >
-                  Return home
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-block px-5 py-2.5 rounded-full border border-neutral-950 text-sm hover:bg-neutral-950 hover:text-white transition-colors duration-300"
-                >
-                  Get in touch
-                </Link>
+            <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-16 md:pb-28">
+              <div className="border-t border-neutral-200 pt-10 md:pt-16 flex flex-col items-center text-center">
+                <h2 className="font-display text-xl md:text-2xl leading-[1.1] tracking-[-0.02em] mb-3">
+                  You&rsquo;ve reached the end 💔
+                </h2>
+                <p className="text-neutral-600 font-light leading-relaxed max-w-md mb-8">
+                  If anything here sparked an idea, feel free to reach out. Thanks for reviewing my work!
+                </p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <Link
+                    href="/"
+                    className="inline-block px-5 py-2.5 rounded-full bg-neutral-950 text-white text-sm hover:bg-neutral-700 transition-colors duration-300"
+                  >
+                    Return home
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-block px-5 py-2.5 rounded-full border border-neutral-950 text-sm hover:bg-neutral-950 hover:text-white transition-colors duration-300"
+                  >
+                    Get in touch
+                  </Link>
+                </div>
               </div>
             </section>
           )
@@ -606,9 +662,11 @@ export default async function WorkPage({ params }: Props) {
         return (
           <>
             <section className="max-w-[1200px] mx-auto px-4 md:px-8 pb-8">
-              <h2 className="font-display text-2xl md:text-4xl leading-[1.1] tracking-[-0.02em]">
-                &hellip;but wait, there&rsquo;s more!
-              </h2>
+              <div className="border-t border-neutral-200 pt-10 md:pt-16">
+                <h2 className="font-display text-xl md:text-2xl leading-[1.1] tracking-[-0.02em] text-center">
+                  &hellip;but wait, there&rsquo;s more 👇
+                </h2>
+              </div>
             </section>
             <div className="relative w-full h-[260px] md:h-[330px]">
             <Link

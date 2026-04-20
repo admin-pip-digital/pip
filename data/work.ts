@@ -38,12 +38,19 @@ export type PullQuote = {
   attribution?: string
 }
 
+export type CaseStudyReview = {
+  outcomes?: string | string[]
+  reflection?: string | string[]
+  role?: string | string[]
+}
+
 export type CaseStudyContent = {
   overview?: string
   stats?: Stat[]
   pullQuote?: PullQuote
   sections: Section[]
   images: CaseStudyImage[]
+  review?: CaseStudyReview
   nextSlug?: string
   nextLabel?: string
 }
@@ -224,13 +231,11 @@ export const work: WorkItem[] = [
             ],
           },
         },
-        {
-          heading: 'My role',
-          layout: 'prose',
-          body: 'I was one of two designers and the primary developer on REBL. The clinical team — particularly the prescribing provider — shaped the treatment catalog and patient education content. Brand guidelines came from a colleague on the design side. Everything else — site architecture, content modeling, frontend development, CMS configuration, data pipeline design, and UTM attribution — was mine.',
-        },
       ],
       images: [],
+      review: {
+        role: 'I was one of two designers and the primary developer on REBL. The clinical team — particularly the prescribing provider — shaped the treatment catalog and patient education content. Brand guidelines came from a colleague on the design side. Everything else — site architecture, content modeling, frontend development, CMS configuration, data pipeline design, and UTM attribution — was mine.',
+      },
       nextSlug: 'script-design-system',
       nextLabel: 'Script: a design system for humans and AI agents',
     },
@@ -339,17 +344,15 @@ export const work: WorkItem[] = [
           ],
           diagram: 'workflow',
         },
-        {
-          heading: 'My role',
-          layout: 'prose',
-          body: [
-            'I wrote Script. The dev team informed what it needed to do — they needed something agents could consume reliably — and I designed the architecture, wrote every rule, and iterated on both structure and language until the system was legible to a developer, an AI, and a designer in the same reading.',
-            'It started as a response to pushback. It became something the team actually uses.',
-            'Disciplines involved: Design systems · Technical writing · AI tooling · Token architecture · Multi-app design · Documentation strategy',
-          ],
-        },
       ],
       images: [],
+      review: {
+        role: [
+          'I wrote Script. The dev team informed what it needed to do — they needed something agents could consume reliably — and I designed the architecture, wrote every rule, and iterated on both structure and language until the system was legible to a developer, an AI, and a designer in the same reading.',
+          'It started as a response to pushback. It became something the team actually uses.',
+          'Disciplines involved: Design systems · Technical writing · AI tooling · Token architecture · Multi-app design · Documentation strategy',
+        ],
+      },
       nextSlug: 'patient-education',
       nextLabel: 'Patient Education Model',
     },
