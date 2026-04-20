@@ -105,7 +105,7 @@ export default function AboutPage() {
             than myself.
           </p>
         </div>
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="mt-10 grid grid-cols-3 gap-2 md:gap-6">
           <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200">
             <Image
               src="/images/eric-osaka.png"
