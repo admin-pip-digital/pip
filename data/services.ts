@@ -159,7 +159,7 @@ export const services: Service[] = [
       'Your brand is the first thing people judge you by. I help businesses look as good as they actually are — with visual identities that feel considered, consistent, and built to last.',
     primaryCta: 'Start a project',
 
-    heroImage: '/images/brand-hero.png',
+    heroImage: '/images/epic-hero.png',
     heroImageAlt: 'Brand identity and marketing design',
     heroImageCaption: 'Recent work: marketing identity refresh',
 

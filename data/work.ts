@@ -1122,57 +1122,125 @@ export const work: WorkItem[] = [
     slug: 'epic-marketing-rebrand',
     title: 'Bold rebrand to compete with larger agencies: Epic Marketing',
     subtitle:
-      'Rebranded a marketing agency to compete with larger firms for premium clients using a bold visual system with high-contrast colors and modular layouts.',
+      'Repositioning a marketing agency to win premium accounts — a high-contrast identity built to polarize instead of please.',
+    outcome: 'Moved up-market to premium clients',
     tags: ['Branding', 'Identity', 'Web Design'],
-    coverImage: '/images/epic-marketing.png',
+    coverImage: '/images/epic-hero.png',
+    coverObjectPosition: 'left center',
     year: '2021',
-    status: 'coming-soon',
+    status: 'published',
     client: 'Epic Marketing',
     content: {
       sections: [
         {
-          heading: 'The Problem',
-          body: 'Our agency needed to compete with larger firms for premium clients. The existing brand looked like every other small marketing agency — generic and forgettable.',
-        },
-        {
-          heading: 'The Approach',
-          body: 'We designed a bold visual system that would make potential clients stop and take notice. The key insight: businesses hire agencies they perceive as successful, so the brand needed to project confidence and capability.',
-        },
-        {
-          heading: 'The Solution',
-          list: [
-            'High-contrast black and yellow color system that stands out in a sea of safe blues and grays',
-            'Modular layout system that works across mobile and desktop',
-            'Typography hierarchy that makes content scannable',
-            'Interactive elements that make users feel "part of something special"',
+          heading: 'The situation',
+          layout: 'intro',
+          body: [
+            'Epic was a small marketing agency trying to move up-market — and looking like every other small marketing agency trying to move up-market.',
+            "Safe blues, safe grays, portfolio pages that read as capable but not confident. Potential clients were comparing Epic against firms twice its size, and Epic was losing on perceived credibility before the conversation about work even started. The brand was holding the business back from the accounts it was ready to serve.",
           ],
         },
         {
-          heading: 'Results',
-          body: 'The rebrand positioned Epic to win larger accounts and move into a branded office space that reinforces the premium positioning.',
+          heading: 'Why the brand, not the services',
+          eyebrow: 'Approach',
+          layout: 'two-col',
+          body: [
+            "The work Epic was doing was good — that wasn't the problem. The problem was that the brand didn't signal it.",
+            'Businesses hire agencies they perceive as successful. If Epic wanted larger accounts, the identity needed to project the kind of creative conviction premium clients were looking for. The rebrand was the lever — not a new service offering, not a new pitch.',
+          ],
+          after: {
+            layout: 'pair',
+            images: [
+              {
+                src: '/images/epic-brand-1.png',
+                alt: 'Hands holding branded print materials in the Epic identity',
+                caption: 'Identity applied to print and collateral — the voice extending past the screen.',
+                objectPosition: 'center center',
+              },
+              {
+                src: '/images/epic-brand-2.png',
+                alt: 'Designer reviewing Epic brand assets pinned to a wall',
+                caption: 'Working the system out across surfaces before it shipped.',
+                objectPosition: 'center center',
+              },
+            ],
+          },
         },
         {
-          heading: 'Why This Worked',
-          body: "Sometimes you have to be willing to polarize to stand out. The bold design attracts clients who value creativity and confidence while filtering out those looking for the cheapest option. Better to be someone's strong yes than everyone's maybe.",
+          heading: '',
+          layout: 'quote',
+          body: "Better to be someone's strong yes than everyone's maybe.",
+        },
+        {
+          heading: 'A polarizing system',
+          eyebrow: 'Design',
+          layout: 'two-col',
+          body: [
+            'The identity was built around a high-contrast black and yellow palette — deliberately loud in a category dominated by safe color choices. The point was to filter, not to please: pull in clients who valued creativity and conviction, and let clients shopping on price keep scrolling.',
+            'The system extended into a modular layout framework, a scannable typography hierarchy, and component patterns the team could use without breaking the voice. Every surface — web, team pages, portfolio, campaign materials — spoke the same way.',
+          ],
+          after: {
+            layout: 'full',
+            images: [
+              {
+                src: '/images/epic-style-guide.png',
+                alt: 'Epic Marketing brand style guide spread',
+                caption: 'Brand guide: typography, logo, palette, and components in one place so the team could build without breaking the voice.',
+                objectPosition: 'center center',
+              },
+            ],
+          },
+        },
+        {
+          heading: 'Across every surface',
+          layout: 'prose',
+          body: "The identity extended to Epic's full digital footprint — homepage, team pages, service pages, and portfolio layouts — all pulling from the same components. The same bones that made the homepage confident also made the rest of the site cheap to produce and easy to keep consistent.",
+          after: {
+            layout: 'pair',
+            images: [
+              {
+                src: '/images/epic-homepage.png',
+                alt: 'Epic Marketing homepage on desktop',
+                caption: 'The homepage: bold type, yellow accents, and a highlight reel leading with the work.',
+                objectPosition: 'top center',
+              },
+              {
+                src: '/images/epic-team.png',
+                alt: 'Epic Marketing team page on desktop',
+                caption: 'The team page, built from the same components as the rest of the site.',
+                objectPosition: 'top center',
+              },
+            ],
+          },
+        },
+        {
+          heading: 'On mobile',
+          layout: 'prose',
+          body: "Mobile was treated as a first-class surface rather than a responsive afterthought. The yellow blocks, the heavy type, the modular cards — everything kept its visual weight on a phone screen, where most of the new-business traffic was actually landing.",
+          after: {
+            layout: 'full',
+            images: [
+              {
+                src: '/images/epic-mobile-1.png',
+                alt: 'Epic Marketing homepage and team page on iPhone',
+                caption: 'Homepage and team page on mobile — the system in the hand.',
+                objectPosition: 'center center',
+              },
+              {
+                src: '/images/epic-mobile-2.png',
+                alt: 'Four iPhone screens showing Epic Marketing mobile experience',
+                caption: 'Design, highlight reel, team, and article screens — every surface carrying the same voice.',
+                objectPosition: 'center center',
+              },
+            ],
+          },
         },
       ],
-      images: [
-        {
-          src: '/images/epic-marketing-hero.png',
-          alt: 'Two iPhone mockups showing Epic Marketing Agency website',
-          caption: 'Bold, high-contrast identity that commands attention.',
-        },
-        {
-          src: '/images/epic-marketing-4.png',
-          alt: 'Three-page brand style guide spread',
-          caption: 'Brand system: typography, color, and component library.',
-        },
-        {
-          src: '/images/epic-marketing-7.png',
-          alt: 'Desktop website pages showing design services and team page',
-          caption: 'The system applied across web, team pages, and marketing materials.',
-        },
-      ],
+      images: [],
+      review: {
+        reflection:
+          "Sometimes you have to polarize to reposition. The bold identity attracted clients who valued creativity and conviction — and quietly filtered out the ones shopping on price. That shift in filter was the point of the rebrand, not the aesthetic itself. Epic went on to win larger accounts and move into a branded office space that reinforced the new positioning.",
+      },
       nextSlug: 'pip-campaign-builder',
       nextLabel: 'Helping small businesses think about customers, not transactions',
     },
