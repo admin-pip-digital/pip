@@ -215,7 +215,7 @@ function toParagraphs(value?: string | string[]): string[] {
 function ReviewSection({ review }: { review: CaseStudyReview }) {
   const blocks: { label: string; paragraphs: string[] }[] = [
     { label: 'Outcomes', paragraphs: toParagraphs(review.outcomes) },
-    { label: 'Reflection', paragraphs: toParagraphs(review.reflection) },
+    { label: 'Why it worked', paragraphs: toParagraphs(review.reflection) },
     { label: 'My role', paragraphs: toParagraphs(review.role) },
   ].filter((b) => b.paragraphs.length > 0)
 

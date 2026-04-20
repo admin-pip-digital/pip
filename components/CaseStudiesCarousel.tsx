@@ -9,6 +9,7 @@ type WorkItem = {
   slug: string
   title: string
   coverImage: string
+  coverObjectPosition?: string
   protected?: true
 }
 
@@ -58,6 +59,7 @@ export default function CaseStudiesCarousel({ items }: { items: WorkItem[] }) {
                 alt={item.title}
                 fill
                 className="object-cover"
+                style={item.coverObjectPosition ? { objectPosition: item.coverObjectPosition } : undefined}
                 sizes="(max-width: 768px) 100vw, 33vw"
                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
               />

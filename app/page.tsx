@@ -20,6 +20,7 @@ export default function HomePage() {
     slug: w.slug,
     title: w.title,
     coverImage: w.coverImage,
+    coverObjectPosition: w.coverObjectPosition,
     protected: w.protected,
   }))
 

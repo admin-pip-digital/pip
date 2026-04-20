@@ -62,6 +62,7 @@ export type WorkItem = {
   outcome?: string
   tags: string[]
   coverImage: string
+  coverObjectPosition?: string
   year: string
   status: 'published' | 'coming-soon'
   client: string
@@ -353,8 +354,8 @@ export const work: WorkItem[] = [
           'Disciplines involved: Design systems · Technical writing · AI tooling · Token architecture · Multi-app design · Documentation strategy',
         ],
       },
-      nextSlug: 'patient-education',
-      nextLabel: 'Patient Education Model',
+      nextSlug: 'optavia-app',
+      nextLabel: 'Taking a health app from 2 to 4.7 stars: Optavia',
     },
   },
   {
@@ -514,9 +515,10 @@ export const work: WorkItem[] = [
       "Optavia's mobile app had a 2-star rating because it was built like an e-commerce platform when users needed a behavior change companion.",
     outcome: '2 → 4.7 stars · 800K MAU',
     tags: ['Mobile', 'UX Research', 'Product Design'],
-    coverImage: '/images/optavia-app-1.png',
+    coverImage: '/images/optavia-app-screens.png',
+    coverObjectPosition: 'left center',
     year: '2023',
-    status: 'coming-soon',
+    status: 'published',
     client: 'Optavia',
     content: {
       stats: [
@@ -525,53 +527,74 @@ export const work: WorkItem[] = [
       ],
       sections: [
         {
-          heading: 'The Problem',
-          body: "Optavia's mobile app had a 2-star rating because it was built like an e-commerce platform when users needed a behavior change companion. Multiple outsourced rebuilds had created a frankenstein product that missed the point entirely.",
-        },
-        {
-          heading: 'The Approach',
-          body: 'We conducted deep user research with both coaches and clients to understand how the program actually worked. The key insight: success came from the coach relationship and lifestyle adoption, not product browsing.',
-        },
-        {
-          heading: 'The Solution',
-          body: 'We repositioned the app from shopping platform to habit support tool:',
-          list: [
-            'Habit tracking that reinforced the "Optavia lifestyle"',
-            'Coach-client communication features',
-            'Progress visualization that celebrated behavior change',
-            'Product ordering became secondary, not primary',
+          heading: 'The situation',
+          layout: 'intro',
+          body: [
+            "Optavia's mobile app was sitting at a 2-star rating in the app store — a public, permanent signal that the product wasn't working.",
+            "Multiple outsourced rebuilds had stacked on top of each other without a clear product vision, producing a frankenstein experience. The app looked and behaved like a general e-commerce platform, but the people using it weren't there to shop. They were there to change their health — and the product wasn't helping them do it.",
           ],
         },
         {
-          heading: 'Results',
-          list: [
-            'App store rating jumped from 2 to 4.7 stars',
-            '800K monthly active users',
-            'Validated that understanding real user needs trumps feature assumptions',
+          heading: 'Listening first',
+          eyebrow: 'Research',
+          layout: 'two-col',
+          body: [
+            'Before touching the interface, we did deep user research with both sides of the program — the coaches who guided clients through behavior change, and the clients who were living it.',
+            "The insight that reframed everything: success on Optavia didn't come from browsing products. It came from the coach relationship and the daily habits that relationship reinforced. The app had been optimized for the wrong thing.",
           ],
         },
         {
-          heading: 'Why This Worked',
-          body: "We stopped building what we thought users wanted and started supporting what they actually needed. The coach-client relationship was the real product — the app just needed to strengthen it rather than compete with it.",
+          heading: '',
+          layout: 'quote',
+          body: 'The coach-client relationship was the real product — the app just needed to strengthen it rather than compete with it.',
+        },
+        {
+          heading: 'Repositioning the product',
+          eyebrow: 'Design',
+          layout: 'two-col',
+          body: [
+            'We repositioned the app from shopping platform to habit support tool. Product ordering stayed in the experience, but it moved out of the center — no longer the thing the app was trying to get users to do.',
+            "In its place: habit tracking built around the 'Optavia lifestyle,' coach-client communication surfaced throughout the app, and progress visualization that celebrated behavior change instead of purchase volume.",
+          ],
+          after: {
+            layout: 'pair',
+            images: [
+              {
+                src: '/images/optavia-app-1.png',
+                alt: 'Optavia mobile app screens showing nutrition tracking, health dashboard, and hydration tracking',
+                caption: 'Habit tracking and behavior change at the center — product ordering moved off the main flow.',
+                objectPosition: 'center center',
+              },
+              {
+                src: '/images/optavia-app-2.png',
+                alt: 'Optavia app gamification system with achievement badges',
+                caption: 'Gamification reinforcing daily habits rather than transactions.',
+                objectPosition: 'center center',
+              },
+            ],
+          },
+        },
+        {
+          heading: 'Connecting to the lifestyle',
+          layout: 'prose',
+          body: 'Health integrations — Apple Health, body composition tracking — made day-to-day tracking feel effortless and connected the app to the broader lifestyle rather than siloing it as "the Optavia app."',
+          after: {
+            layout: 'full',
+            images: [
+              {
+                src: '/images/optavia-app-3.png',
+                alt: 'Body composition tracking and Apple Health integration screens',
+                caption: 'Apple Health and body composition integrations — tracking as a background habit, not a chore.',
+                objectPosition: 'top left',
+              },
+            ],
+          },
         },
       ],
-      images: [
-        {
-          src: '/images/optavia-app-1.png',
-          alt: 'Optavia mobile app screens showing nutrition tracking, health dashboard, and hydration tracking',
-          caption: 'The redesigned app focused on habit tracking and behavior change rather than product browsing.',
-        },
-        {
-          src: '/images/optavia-app-2.png',
-          alt: 'Optavia app gamification system with achievement badges',
-          caption: 'Gamification reinforced healthy habits and kept users engaged with their progress.',
-        },
-        {
-          src: '/images/optavia-app-3.png',
-          alt: 'Body composition tracking and Apple Health integration screens',
-          caption: 'Health integrations made tracking feel effortless and connected to the broader lifestyle.',
-        },
-      ],
+      images: [],
+      review: {
+        reflection: 'We stopped building what we assumed users wanted and started supporting what they actually needed. Feature assumptions produced a 2-star product. Understanding the real behavior behind the program — the coach, the habits, the lifestyle — is what got us to 4.7.',
+      },
       nextSlug: 'optavia-business-programs',
       nextLabel: 'Turning Endless Loops of Frustration into Simple Program Delivery',
     },
