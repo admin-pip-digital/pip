@@ -1126,7 +1126,6 @@ export const work: WorkItem[] = [
     outcome: 'Moved up-market to premium clients',
     tags: ['Branding', 'Identity', 'Web Design'],
     coverImage: '/images/epic-hero.png',
-    coverObjectPosition: 'left center',
     year: '2021',
     status: 'published',
     client: 'Epic Marketing',
