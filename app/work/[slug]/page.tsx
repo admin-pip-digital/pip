@@ -337,13 +337,15 @@ function ImageFrame({
   sizes: string
   aspectClass: string
 }) {
+  const effectiveAspect = image.aspect ?? aspectClass
+  const framed = !image.shadow && !image.bare
   return (
     <figure>
       <div
-        className={`relative w-full ${aspectClass} ${
-          image.shadow
-            ? ''
-            : 'rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200'
+        className={`relative w-full ${effectiveAspect} ${
+          framed
+            ? 'rounded-2xl overflow-hidden border border-neutral-300 bg-neutral-200'
+            : ''
         }`}
       >
         {image.src ? (
@@ -354,7 +356,9 @@ function ImageFrame({
             className={
               image.shadow
                 ? 'object-contain drop-shadow-lg md:drop-shadow-2xl'
-                : 'object-cover'
+                : image.bare
+                  ? 'object-contain'
+                  : 'object-cover'
             }
             style={
               image.objectPosition
@@ -677,7 +681,7 @@ export default async function WorkPage({ params }: Props) {
               href={`/work/${next.slug}`}
               className="group absolute bottom-0 left-1/2 -translate-x-1/2 block w-full max-w-[1200px] overflow-hidden rounded-t-2xl border-t border-l border-r border-neutral-300"
             >
-              <div className="relative w-full h-[240px] md:h-[300px] group-hover:h-[260px] md:group-hover:h-[330px] transition-[height] duration-500 ease-out">
+              <div className="relative w-full h-[260px] md:h-[300px] md:group-hover:h-[330px] transition-[height] duration-500 ease-out">
               {nextCover ? (
                 <Image
                   src={nextCover}
@@ -689,15 +693,15 @@ export default async function WorkPage({ params }: Props) {
               ) : (
                 <div className="absolute inset-0 bg-neutral-200" />
               )}
-              <div className="absolute inset-0 bg-black/15 group-hover:bg-black/75 transition-colors duration-300" />
-              <div className="absolute inset-0 flex flex-col justify-center items-end text-right px-6 md:px-12 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="text-xs tracking-widest uppercase text-neutral-400 mb-3">
+              <div className="absolute inset-0 bg-black/75 md:bg-black/15 md:group-hover:bg-black/75 transition-colors duration-300" />
+              <div className="absolute inset-0 flex flex-col justify-center items-end text-right px-6 md:px-12 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-xs tracking-widest uppercase text-white mb-3">
                   Next project
                 </span>
                 <h2 className="font-display text-2xl leading-[1.2] tracking-[-0.02em] text-white max-w-3xl">
                   {content.nextLabel ?? next.title}
                 </h2>
-                <span className="mt-5 inline-block text-sm text-neutral-400 group-hover:text-white transition-colors">
+                <span className="mt-5 inline-block text-sm text-white transition-colors">
                   View project &rarr;
                 </span>
               </div>

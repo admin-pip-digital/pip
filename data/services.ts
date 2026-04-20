@@ -184,7 +184,7 @@ export const services: Service[] = [
         title: 'Guidelines & rollout',
         description:
           'Clear, simple guidelines so you and anyone you work with knows exactly how to use your brand. Plus hands-on support getting it live across your most important touchpoints.',
-        image: '/images/epic-marketing-6.png',
+        image: '/images/epic-style-guide.png',
         objectPosition: 'left center',
       },
     ],

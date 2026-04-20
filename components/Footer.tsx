@@ -38,7 +38,7 @@ export default function Footer() {
             <p>South Jordan, Utah</p>
           </div>
         </div>
-        <div className="flex items-center gap-6 text-sm text-neutral-500">
+        <div className="flex items-center justify-center md:justify-start gap-6 text-sm text-neutral-500">
           <a
             href="https://linkedin.com/company/pip-digital"
             className="hover:text-neutral-900 transition-colors"

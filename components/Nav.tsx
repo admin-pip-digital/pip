@@ -30,10 +30,17 @@ export default function Nav() {
     pathname === '/' ||
     pathname.startsWith('/work')
 
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 bg-neutral-50 transition-transform duration-300 animate-fade-in-delayed ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
       <nav className="max-w-[1440px] mx-auto px-4 md:px-8 h-14 flex items-center justify-between animate-nav-contract">
-        <Link href="/" className="flex items-center">
+        <Link href="/" onClick={handleHomeClick} className="flex items-center">
           <Image
             src="/logo/logo-lockup.svg"
             alt="Pip"
@@ -50,6 +57,7 @@ export default function Nav() {
               <li key={href}>
                 <Link
                   href={href}
+                  onClick={href === '/' ? handleHomeClick : undefined}
                   className={`text-[14px] md:text-[16px] tracking-wide transition-opacity hover:opacity-60 ${
                     active
                       ? 'underline underline-offset-4'

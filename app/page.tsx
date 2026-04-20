@@ -154,7 +154,7 @@ export default function HomePage() {
           <div>
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-100 mb-2">Get started</p>
             <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-md">
-              Let&apos;s get to work.
+              Let&apos;s make something together.
             </h2>
           </div>
           <div className="flex flex-col gap-4 shrink-0">

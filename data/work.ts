@@ -7,6 +7,8 @@ export type CaseStudyImage = {
   caption?: string
   objectPosition?: string
   shadow?: boolean
+  bare?: boolean
+  aspect?: string
 }
 
 export type ImageBlock = {
@@ -79,7 +81,6 @@ export const work: WorkItem[] = [
     title: 'Building a telehealth platform from scratch',
     subtitle:
       'Architecture, design, and content infrastructure for a fully async medical practice — four weeks from concept to live.',
-    outcome: '4 weeks to launch',
     tags: [
       'Product Design',
       'Frontend Development',
@@ -817,71 +818,6 @@ export const work: WorkItem[] = [
     },
   },
   {
-    slug: 'simplenexus-agent-experience',
-    title: 'Expanding into a new user segment: SimpleNexus',
-    subtitle:
-      'Led a design sprint that identified a key opportunity in pre-qualification letters, creating agent tools that strengthened lender relationships while opening a new market segment.',
-    tags: ['UX Research', 'Design Sprint', 'Fintech'],
-    coverImage: '/images/simplenexus-1.png',
-    year: '2022',
-    status: 'coming-soon',
-    client: 'SimpleNexus',
-    content: {
-      sections: [
-        {
-          heading: 'The Problem',
-          body: 'SimpleNexus dominated digital mortgage solutions for lenders but was missing a key opportunity — real estate agents who influence which lenders their buyers work with. How do you expand into a new user base without disrupting your core business?',
-        },
-        {
-          heading: 'The Approach',
-          body: "I immersed myself in the real estate world — took licensing courses, interviewed agents, visited open houses. The key insight: agents and lenders had a communication breakdown around pre-qualification letters that hurt everyone involved.",
-        },
-        {
-          heading: 'The Solution',
-          body: 'I led a 5-day design sprint that resulted in an agent dashboard where:',
-          list: [
-            'Agents could generate pre-qual letters with borrower-friendly language',
-            'Parameters stayed within lender guidelines but gave agents control',
-            'Borrowers could self-serve updates within agent-defined limits',
-            'Everyone stayed informed as loan conditions changed',
-          ],
-        },
-        {
-          heading: 'Results',
-          body: 'Successfully brought a new user segment into the SimpleNexus ecosystem while strengthening relationships between our existing lender clients and their agent partners. The solution adapted well when market conditions shifted in 2022.',
-        },
-        {
-          heading: 'Why This Worked',
-          body: "Instead of building what we assumed agents needed, we validated the core problem first. The design sprint let us test our hypothesis quickly before committing significant development resources.",
-        },
-      ],
-      images: [
-        {
-          src: '/images/simplenexus-1.png',
-          alt: 'NexusMortgage loan application welcome screen',
-          caption: 'The existing borrower experience — which agents were trying to bridge.',
-        },
-        {
-          src: '/images/simplenexus-3.avif',
-          alt: 'Hand-drawn design sprint process diagram',
-          caption: '5-day design sprint process.',
-        },
-        {
-          src: '/images/simplenexus-12.avif',
-          alt: 'Desktop interface for NexusMortgage loan management',
-          caption: 'The agent dashboard: pre-qual letter generation within lender-defined parameters.',
-        },
-        {
-          src: '/eric-portfolio/4.1.png',
-          alt: 'SimpleNexus mobile app screens',
-          caption: "The agent dashboard solved the real problem — communication friction around pre-qualification — rather than just adding 'agent features' to the existing product.",
-        },
-      ],
-      nextSlug: 'optavia-mapping',
-      nextLabel: 'Building Shared Understanding: Mapping the Optavia Experience',
-    },
-  },
-  {
     slug: 'optavia-mapping',
     title: 'Mapping a complex product to stop building on assumptions',
     subtitle:
@@ -1114,8 +1050,161 @@ export const work: WorkItem[] = [
           },
         ],
       },
+      nextSlug: 'simplenexus-agent-experience',
+      nextLabel: 'Expanding into a new user segment: SimpleNexus',
+    },
+  },
+  {
+    slug: 'simplenexus-agent-experience',
+    title: 'Expanding into a new user segment: SimpleNexus',
+    subtitle:
+      'A five-day design sprint brought a new user segment into the SimpleNexus product — and earned the executive trust that opened the door to the agent strategy that followed.',
+    outcome: 'New user segment unlocked',
+    tags: ['UX Research', 'Design Sprint', 'Fintech'],
+    coverImage: '/images/sn-hero.png',
+    year: '2022',
+    status: 'published',
+    client: 'SimpleNexus',
+    content: {
+      sections: [
+        {
+          heading: 'The situation',
+          layout: 'intro',
+          body: [
+            'Agents shaped which lender a buyer called first. SimpleNexus had no presence in that conversation.',
+            'Real estate agents had enormous influence over the start of every mortgage — which lenders buyers called, what price range was realistic, what to expect next. But SimpleNexus was built for lenders, not agents. The challenge was figuring out how to earn a place in that relationship without disrupting the product that was already working.',
+          ],
+        },
+        {
+          heading: 'The setup',
+          eyebrow: 'Approach',
+          layout: 'two-col',
+          body: [
+            'Rather than running a traditional discovery process, we used the challenge as a chance to align around a new way of working. Bryan (product), Jordan (engineering), and I committed to a full design sprint — five structured days from challenge to tested prototype, using Jake Knapp\'s Sprint methodology as our shared operating system.',
+            'We defined our roles at the start. I facilitated. Bryan owned the product framing. Jordan represented the technical reality. We pulled in Shane as our executive decision-maker, the CX team for existing customer journey knowledge, and other product squads for critique at key moments. Everyone knew their role before Monday started.',
+          ],
+        },
+        {
+          heading: 'The target',
+          eyebrow: 'Research',
+          layout: 'two-col',
+          body: [
+            'The sprint\'s first move is always to map the problem and choose a target — one specific moment in the journey worth solving for. The CX team\'s knowledge of the agent–lender–borrower relationship pointed us quickly toward pre-qualification letters.',
+            'Agents needed them constantly. Lenders generated them manually. Buyers sat in the middle, forwarding PDFs and losing context. Everyone lost time. The agent looked slow. The lender got interrupted on weekends. The buyer didn\'t know what number to put on the letter when they were competing against another offer.',
+          ],
+        },
+        {
+          heading: '',
+          layout: 'quote',
+          body: 'The pre-qualification letter — an opportunity hiding inside the highest-stakes moment of a homebuyer\'s journey.',
+        },
+        {
+          heading: 'Five days to a tested prototype',
+          eyebrow: 'Design sprint',
+          layout: 'two-col',
+          body: [
+            'The sprint structure kept us honest and moving. Monday we mapped and chose our target. Tuesday we sketched competing solutions independently — no groupthink, no anchoring. Wednesday we decided on a direction. Thursday we built a realistic prototype. Friday we tested it with real agents and lenders outside the company.',
+            'What the sprint produced wasn\'t a finished product. It was evidence. The prototype tested well enough to justify engineering resources, and the process itself did something equally valuable — it gave the executive team a legible way of working they could trust, and gave the broader product team a shared experience of moving fast without skipping the hard questions.',
+          ],
+          after: {
+            layout: 'full',
+            images: [
+              {
+                src: '/images/simplenexus-3.avif',
+                alt: 'Hand-drawn five-day design sprint diagram from challenge to learn',
+                caption: 'The sprint structure: a week-long forcing function for evidence.',
+                objectPosition: 'center center',
+                aspect: 'aspect-[1024/300]',
+                bare: true,
+              },
+            ],
+          },
+        },
+        {
+          heading: 'Working in the open',
+          layout: 'prose',
+          body: 'The sprint lived on whiteboards and walls. Sketchbooks, affinity clusters of sticky notes, frame-by-frame storyboards — the process was deliberately visible so that product managers, engineers, and stakeholders could weigh in throughout rather than only at the end.',
+          after: {
+            layout: 'full',
+            images: [
+              {
+                src: '/images/simplenexus-5.avif',
+                alt: 'Sketchbook pages with design sprint notes and annotations',
+                caption: 'Sketchbook notes from the mapping phase — the thinking left visible.',
+                objectPosition: 'top center',
+              },
+            ],
+          },
+        },
+        {
+          heading: 'Storyboarding before building',
+          layout: 'prose',
+          body: 'Sketches and storyboards forced every screen to defend its place in the flow before the prototype was stitched together. Cheap paper, cheap changes — the most expensive thing we could have done was build the wrong thing fast.',
+          after: {
+            layout: 'full',
+            images: [
+              {
+                src: '/images/simplenexus-8.avif',
+                alt: 'Wireframe sketches with sticky-note annotations',
+                caption: 'Wireframe sketches with sticky-note annotations — quick to produce, quick to throw away.',
+                objectPosition: 'center center',
+              },
+            ],
+          },
+        },
+        {
+          heading: 'Testing with the real audience',
+          layout: 'prose',
+          body: 'Friday\'s session brought in agents and lenders from outside the company to walk through the prototype. The feedback came back as a grid of sticky notes on the studio window — a raw, unfiltered read of what worked, what confused them, and what they\'d actually use on Monday morning.',
+          after: {
+            layout: 'full',
+            images: [
+              {
+                src: '/images/simplenexus-11.avif',
+                alt: 'Sticky-note feedback from user testing spread across a large office window',
+                caption: 'Friday test feedback, left visible on the window for the whole team to read.',
+                objectPosition: 'center center',
+              },
+            ],
+          },
+        },
+        {
+          heading: 'The solution',
+          eyebrow: 'What shipped',
+          layout: 'two-col',
+          body: [
+            'We shipped pre-qualification letters for agents. From a single view, agents could see their active borrowers, generate letters with borrower-friendly language, and adjust the purchase price within limits the lender had already defined.',
+            'The constraint mattered as much as the feature. Agents got control of the pieces that were actually theirs to control — purchase price, co-branding, language. The lender\'s guidelines stayed intact. That boundary wasn\'t a limitation we worked around; it was the design decision that made the whole thing trustworthy enough to ship.',
+          ],
+          after: {
+            layout: 'full',
+            images: [
+              {
+                src: '/images/simplenexus-12.avif',
+                alt: 'Desktop agent dashboard showing loan list and letter history',
+                caption: 'The agent\'s single view — active borrowers and letter history in one place.',
+                objectPosition: 'top left',
+              },
+              {
+                src: '/images/sn-hero.png',
+                alt: 'Polished SimpleNexus agent experience',
+                caption: 'What the sprint prototype eventually turned into — after months of polish and optimization with the team.',
+                objectPosition: 'center center',
+              },
+            ],
+          },
+        },
+      ],
+      images: [],
+      review: {
+        outcomes:
+          'Traction on the feature was early and measured. The more durable outcome was organizational. The sprint gave the executive team a legible process they could point to, energized squads who hadn\'t worked this way before, and created enough momentum that the agent strategy continued well beyond the sprint itself. We didn\'t just ship a feature — we established a way of working the team wanted to repeat.',
+        reflection:
+          'The real estate immersion work — licensing coursework, agent interviews, time spent inside open houses — came after the sprint, not before it. That learning fed the longer arc of what we built next. The sprint gave us enough to ship. The immersion gave us enough to keep going.',
+        role: 'I facilitated — which in practice meant holding the team to the process when the instinct was to jump to solutions, making the call on Wednesday when we had three good directions and needed one, and keeping the sprint from collapsing into a week of meetings.',
+      },
       nextSlug: 'epic-marketing-rebrand',
-      nextLabel: 'Epic Marketing Agency Rebrand',
+      nextLabel: 'Bold rebrand to compete with larger agencies: Epic Marketing',
     },
   },
   {
