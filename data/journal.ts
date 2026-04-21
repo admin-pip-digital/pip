@@ -8,7 +8,7 @@ export type JournalEntry = {
 
 export const journal: JournalEntry[] = [
   {
-    slug: 'coaching-a-recent-college-graduate',
+    slug: 'coaching-college-graduate',
     title:
       "What I've learned coaching a college graduate looking for entry-level work",
     date: '2026-04-21',
