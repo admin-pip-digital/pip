@@ -100,7 +100,7 @@ export const work: WorkItem[] = [
           heading: 'The situation',
           layout: 'intro',
           body: [
-            'REBL had just hired its first prescribing provider — and no infrastructure to support her.',
+            'REBL was standing up a new async telehealth practice — and had no patient-facing infrastructure to support it.',
             'No patient portal, no way to surface treatments, no mechanism for the async visits that would define their care model. Within weeks of joining as a contractor, I was scoping what would become REBL: a fully online, asynchronous telehealth practice built around compounded medications and peptide protocols.',
             'The business need was immediate. Treatments needed to be discoverable. Patients needed a way to initiate care. The provider needed a system that could scale without adding scheduling overhead. Everything had to work before the practice could see its first patient.',
           ],
@@ -110,7 +110,7 @@ export const work: WorkItem[] = [
           eyebrow: 'Scope',
           layout: 'two-col',
           body: [
-            'REBL launched as the patient-facing side of a two-product system. The companion product, Connect, gave the provider the ability to approve requests, order prescriptions, and send follow-ups — the clinical layer. REBL was the front door.',
+            'REBL launched as the patient-facing side of an async telehealth practice. Patients needed a way to discover treatments and initiate care — REBL was that front door.',
             'Before I got there, there was no portal and no way to market provider support to patients. Four weeks later, REBL was live.',
             'I started in Framer, moving quickly through architecture and visual design with brand guidelines from the clinical team. When it became clear the site needed more flexibility than Framer could offer — dynamic medication pages, non-technical content editing, a data model that could grow — I rebuilt it from scratch in Next.js with Sanity CMS as the content layer.',
           ],
@@ -161,7 +161,7 @@ export const work: WorkItem[] = [
               {
                 src: '/images/rebl-notion-database.png',
                 alt: 'Notion editorial layer',
-                caption: 'Notion database used by the clinical team to review and annotate medication content.',
+                caption: 'Notion database used by the care team to review and annotate medication content.',
                 objectPosition: 'top left',
               },
             ],
@@ -205,6 +205,11 @@ export const work: WorkItem[] = [
           },
         },
         {
+          heading: 'AI-assisted development',
+          layout: 'prose',
+          body: 'Development was AI-assisted using Claude Code, with the Refill dev team reviewing the implementation prior to launch.',
+        },
+        {
           heading: 'Built for migration',
           layout: 'prose',
           body: "The Notion → Sanity pipeline was deliberately designed for migration. The medication catalog doesn't need to live in a third-party CMS forever — by building the schema cleanly and keeping the data model well-documented, the dev team has a clear path to migrate the content layer into REBL's internal systems when the time comes.",
@@ -237,7 +242,7 @@ export const work: WorkItem[] = [
       ],
       images: [],
       review: {
-        role: 'I was one of two designers and the primary developer on REBL. The clinical team — particularly the prescribing provider — shaped the treatment catalog and patient education content. Brand guidelines came from a colleague on the design side. Everything else — site architecture, content modeling, frontend development, CMS configuration, data pipeline design, and UTM attribution — was mine.',
+        role: 'I was one of two designers and the primary developer on REBL. The clinical team shaped the treatment catalog and patient education content. Brand guidelines came from a colleague on the design side. Everything else — site architecture, content modeling, frontend development, CMS configuration, data pipeline design, and UTM attribution — was mine.',
       },
       nextSlug: 'script-design-system',
       nextLabel: 'Script: a design system for humans and AI agents',
