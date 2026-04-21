@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ContactCards from './ContactCards'
+import ContactForm from './ContactForm'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="max-w-[960px] mx-auto px-6 py-16">
+    <div className="max-w-[800px] mx-auto px-6 py-16">
       <h1 className="font-display text-4xl md:text-5xl leading-[1.2] tracking-[-0.02em] mb-4">
         Get in touch
       </h1>
@@ -18,20 +19,11 @@ export default function ContactPage() {
         remote work everywhere else.
       </p>
 
-      <ContactCards />
-
-      {/* Map */}
-      <div className="w-full aspect-video overflow-hidden">
-        <iframe
-          src="https://maps.google.com/maps?ll=40.66,-111.93&z=10&t=m&output=embed"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+      <div className="mb-16">
+        <ContactForm />
       </div>
+
+      <ContactCards />
     </div>
   )
 }

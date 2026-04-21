@@ -17,7 +17,7 @@ function CopyButton({ value }: { value: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="opacity-100 md:opacity-0 md:group-hover:opacity-100 flex items-center gap-1.5 p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-all cursor-pointer"
+      className="opacity-100 md:opacity-0 md:group-hover:opacity-100 flex items-center gap-1.5 p-2 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200 transition-all cursor-pointer"
       aria-label="Copy to clipboard"
     >
       {copied ? (
@@ -40,13 +40,13 @@ export default function ContactCards() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
       <a
         href="tel:+13038450746"
-        className="group flex items-center justify-between border border-neutral-300 p-6 rounded-2xl hover:border-neutral-700 transition-colors"
+        className="group flex items-center justify-between border border-neutral-300 bg-white p-5 rounded-2xl hover:bg-neutral-100 hover:border-neutral-700 transition-colors"
       >
         <div>
-          <p className="font-display text-[20px] font-medium tracking-[-0.02em] leading-[1.2] text-neutral-800 mb-2">
+          <p className="text-sm text-neutral-500 mb-1">
             Phone
           </p>
-          <p className="flex items-center gap-2 text-base font-medium group-hover:underline underline-offset-4">
+          <p className="flex items-center gap-2 text-base font-medium">
             303-845-0746
             <Phone className="w-4 h-4 text-neutral-500 shrink-0" />
           </p>
@@ -55,13 +55,13 @@ export default function ContactCards() {
       </a>
       <a
         href="mailto:eric@pip.digital"
-        className="group flex items-center justify-between border border-neutral-300 p-6 rounded-2xl hover:border-neutral-700 transition-colors"
+        className="group flex items-center justify-between border border-neutral-300 bg-white p-5 rounded-2xl hover:bg-neutral-100 hover:border-neutral-700 transition-colors"
       >
         <div>
-          <p className="font-display text-[20px] font-medium tracking-[-0.02em] leading-[1.2] text-neutral-800 mb-2">
+          <p className="text-sm text-neutral-500 mb-1">
             Email
           </p>
-          <p className="flex items-center gap-2 text-base font-medium group-hover:underline underline-offset-4">
+          <p className="flex items-center gap-2 text-base font-medium">
             eric@pip.digital
             <Mail className="w-4 h-4 text-neutral-500 shrink-0" />
           </p>

@@ -36,7 +36,7 @@ export default function HomePage() {
 
       {/* Featured project — expands as you scroll */}
       <section className="animate-fade-in-delayed">
-        <p className="text-sm text-neutral-600 text-center mb-6 px-6">Hey, I&apos;m <Link href="/about" className="text-neutral-950 underline underline-offset-4 hover:opacity-60 transition-opacity">Eric Moore</Link> 🙋‍♂️ Product Designer &amp; Founder of Pip.</p>
+        <p className="text-sm text-neutral-600 text-center mb-6 px-6">Hey, I&apos;m <Link href="/about" className="text-neutral-950 underline underline-offset-4 hover:opacity-60 transition-opacity">Eric Moore</Link> 🙋‍♂️<br className="md:hidden" /> Product Designer &amp; Founder of Pip.</p>
         <FeaturedExpand>
           <Link href={`/work/${featured.slug}`} className="group block relative rounded-2xl overflow-hidden">
             <div className="relative w-full aspect-[4/5] md:aspect-[16/9]">
@@ -154,7 +154,7 @@ export default function HomePage() {
           <div>
             <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-100 mb-2">Get started</p>
             <h2 className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] max-w-md">
-              Let&apos;s make something together.
+              Let&apos;s build something together.
             </h2>
           </div>
           <div className="flex flex-col gap-4 shrink-0">
