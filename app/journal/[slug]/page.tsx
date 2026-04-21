@@ -36,6 +36,7 @@ function formatDate(iso: string): string {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC',
   })
 }
 
@@ -77,20 +78,40 @@ export default async function JournalEntryPage({ params }: Props) {
         >
           {formatDate(entry.date)}
         </time>
-        <h1 className="mt-3 font-display text-4xl md:text-5xl leading-[1.1] tracking-[-0.02em]">
+        <h1 className="mt-3 font-display text-2xl md:text-3xl leading-[1.2] tracking-[-0.02em]">
           {entry.title}
         </h1>
       </header>
 
-      <div className="space-y-5">
-        {paragraphs.map((para, i) => (
-          <p
-            key={i}
-            className="text-neutral-800 font-light text-base md:text-lg leading-relaxed"
-          >
-            {para}
-          </p>
-        ))}
+      <div>
+        {paragraphs.map((para, i) => {
+          const isHeading = para.startsWith('## ')
+          const isFirst = i === 0
+          const prevIsHeading = paragraphs[i - 1]?.startsWith('## ')
+
+          if (isHeading) {
+            return (
+              <h2
+                key={i}
+                className={`font-display text-xl md:text-2xl leading-[1.2] tracking-[-0.02em] ${
+                  isFirst ? '' : 'mt-12 md:mt-16'
+                }`}
+              >
+                {para.slice(3)}
+              </h2>
+            )
+          }
+          return (
+            <p
+              key={i}
+              className={`text-neutral-800 font-light text-base md:text-lg leading-relaxed ${
+                isFirst ? '' : prevIsHeading ? 'mt-4' : 'mt-5'
+              }`}
+            >
+              {para}
+            </p>
+          )
+        })}
       </div>
 
       <div className="mt-20 md:mt-28 flex justify-center">
