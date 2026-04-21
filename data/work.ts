@@ -275,7 +275,7 @@ export const work: WorkItem[] = [
           layout: 'intro',
           body: [
             'Connect was being built fast, and the development team needed a system that would get the AI agents they were using to build the UI trained correctly.',
-            'The provider app that clinical staff used to approve patient requests, order prescriptions, and send follow-ups was moving quickly, and the codebase was accumulating decisions — color choices, spacing patterns, component structures — made in the moment by a development team without a shared visual language.',
+            'The provider-facing clinical app was moving quickly, and the codebase was accumulating decisions — color choices, spacing patterns, component structures — made in the moment by a development team without a shared visual language.',
             'I had been pushing for design consistency. The feedback I got back was pointed: if I wanted to influence how the UI was built, I needed to document it in a way developers and AI coding agents could actually use. It was a challenge wrapped in skepticism. I took it seriously.',
             "The question wasn't just how to design the system. It was how to write it so a person and an AI could read the same file and reach the same conclusion.",
           ],
@@ -356,7 +356,7 @@ export const work: WorkItem[] = [
       images: [],
       review: {
         role: [
-          'I wrote Script. The dev team informed what it needed to do — they needed something agents could consume reliably — and I designed the architecture, wrote every rule, and iterated on both structure and language until the system was legible to a developer, an AI, and a designer in the same reading.',
+          'I owned the design and writing of the Script design system. The dev team informed what it needed to do — they needed something agents could consume reliably — and I designed the architecture, wrote every rule, and iterated on both structure and language until the system was legible to a developer, an AI, and a designer in the same reading.',
           'It started as a response to pushback. It became something the team actually uses.',
           'Disciplines involved: Design systems · Technical writing · AI tooling · Token architecture · Multi-app design · Documentation strategy',
         ],
