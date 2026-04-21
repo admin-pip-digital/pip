@@ -72,12 +72,11 @@ export default async function JournalEntryPage({ params }: Props) {
       </Link>
 
       <header className="mb-10 md:mb-14">
-        <time
-          dateTime={entry.date}
-          className="text-[13px] tracking-[0.12em] uppercase text-neutral-400"
-        >
-          {formatDate(entry.date)}
-        </time>
+        <p className="text-[13px] tracking-[0.12em] uppercase text-neutral-400">
+          <time dateTime={entry.date}>{formatDate(entry.date)}</time>
+          <span aria-hidden="true" className="mx-2">·</span>
+          Posted by Eric Moore
+        </p>
         <h1 className="mt-3 font-display text-2xl md:text-3xl leading-[1.2] tracking-[-0.02em]">
           {entry.title}
         </h1>

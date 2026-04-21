@@ -33,17 +33,11 @@ export default function JournalPage() {
                 <h2 className="font-display text-xl md:text-2xl leading-[1.2] tracking-[-0.02em]">
                   {entry.title}
                 </h2>
-                <time
-                  dateTime={entry.date}
-                  className="mt-2 block text-[13px] tracking-[0.12em] uppercase text-neutral-400"
-                >
-                  {formatDate(entry.date)}
-                </time>
-                {entry.excerpt && (
-                  <p className="mt-3 text-neutral-600 font-light leading-relaxed">
-                    {entry.excerpt}
-                  </p>
-                )}
+                <p className="mt-2 text-[13px] tracking-[0.12em] uppercase text-neutral-400">
+                  <time dateTime={entry.date}>{formatDate(entry.date)}</time>
+                  <span aria-hidden="true" className="mx-2">·</span>
+                  Posted by Eric Moore
+                </p>
               </Link>
             </li>
           ))}
