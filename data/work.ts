@@ -81,6 +81,7 @@ export const work: WorkItem[] = [
     title: 'Building a telehealth platform from scratch',
     subtitle:
       'Architecture, design, and content infrastructure for a fully async medical practice — four weeks from concept to live.',
+    outcome: 'Live and scaling',
     tags: [
       'Product Design',
       'Frontend Development',
@@ -88,7 +89,7 @@ export const work: WorkItem[] = [
       'CMS',
     ],
     coverImage: '/images/rebl-hero.png',
-    year: '2025',
+    year: '2026',
     status: 'published',
     protected: true,
     client: 'REBL',
@@ -262,10 +263,10 @@ export const work: WorkItem[] = [
       'Multi-App Architecture',
     ],
     coverImage: '/images/script-design-system.png',
-    year: '2025',
+    year: '2026',
     status: 'published',
     protected: true,
-    client: 'Connect',
+    client: 'Refill',
     banner:
       'For user privacy, the names and data shown here are placeholders. The work and outcomes are real.',
     content: {
@@ -274,7 +275,7 @@ export const work: WorkItem[] = [
           heading: 'The situation',
           layout: 'intro',
           body: [
-            'Connect was being built fast, and the development team needed a system that would get the AI agents they were using to build the UI trained correctly.',
+            'The product was being built fast, and the development team needed a system that would get the AI agents they were using to build the UI trained correctly.',
             'The provider-facing clinical app was moving quickly, and the codebase was accumulating decisions — color choices, spacing patterns, component structures — made in the moment by a development team without a shared visual language.',
             'I had been pushing for design consistency. The feedback I got back was pointed: if I wanted to influence how the UI was built, I needed to document it in a way developers and AI coding agents could actually use. It was a challenge wrapped in skepticism. I took it seriously.',
             "The question wasn't just how to design the system. It was how to write it so a person and an AI could read the same file and reach the same conclusion.",
@@ -309,7 +310,7 @@ export const work: WorkItem[] = [
           layout: 'two-col',
           body: [
             'Script is a markdown-based design system structured in layers. At the foundation is atoms.md — every color token, typographic decision, spacing scale, motion curve, elevation level, and accessibility rule defined in one place. Built on top of that is molecules.md, which documents how atoms combine into reusable interface patterns.',
-            'The system is multi-app by design. Connect runs a provider-facing app and a patient-facing app that white-labels for partner practices. Script handles both through a brand layer: global tokens stay consistent, while app-specific files define how each surface inherits and overrides them. A new practice can be skinned without touching the underlying system.',
+            'The system is multi-app by design. Refill runs a provider-facing app and a patient-facing app that white-labels for partner practices. Script handles both through a brand layer: global tokens stay consistent, while app-specific files define how each surface inherits and overrides them. A new practice can be skinned without touching the underlying system.',
           ],
           after: {
             layout: 'full',
@@ -373,9 +374,12 @@ export const work: WorkItem[] = [
     outcome: 'Improved health outcomes through education',
     tags: ['UX Design', 'Healthcare'],
     coverImage: '/images/patient-education-placeholder.png',
-    year: '2025',
+    year: '2026',
     status: 'coming-soon',
-    client: 'Internal',
+    protected: true,
+    client: 'Refill',
+    banner:
+      'For user privacy, the names and data shown here are placeholders. The work and outcomes are real.',
     content: {
       sections: [
         {
@@ -399,7 +403,7 @@ export const work: WorkItem[] = [
     subtitle: '',
     tags: [],
     coverImage: '',
-    year: '2025',
+    year: '2026',
     status: 'coming-soon',
     client: 'Luminous Estate',
     content: {
@@ -413,9 +417,10 @@ export const work: WorkItem[] = [
     slug: 'optavia-coach-app',
     title: 'Managing a growing organization: Optavia Coach App',
     subtitle: 'Coming soon.',
+    outcome: 'Program delivery cut from months to weeks',
     tags: ['B2B SaaS'],
     coverImage: '',
-    year: '2025',
+    year: '2023',
     status: 'coming-soon',
     client: 'Optavia',
     content: {
@@ -431,7 +436,7 @@ export const work: WorkItem[] = [
     subtitle: 'Coming soon.',
     tags: ['B2B2C SaaS'],
     coverImage: '',
-    year: '2025',
+    year: '2024',
     status: 'coming-soon',
     client: 'Optavia',
     content: {
@@ -448,7 +453,7 @@ export const work: WorkItem[] = [
       'Rather than trying to accommodate every possible design variation, we built a reference library of components we actually needed.',
     tags: ['Design Systems', 'Component Library', 'Brand'],
     coverImage: '/images/optavia-design-system-1.png',
-    year: '2023',
+    year: '2024',
     status: 'coming-soon',
     client: 'Optavia',
     content: {
@@ -524,7 +529,7 @@ export const work: WorkItem[] = [
     tags: ['Mobile', 'UX Research', 'Product Design'],
     coverImage: '/images/optavia-app-screens.png',
     coverObjectPosition: 'left center',
-    year: '2023',
+    year: '2024',
     status: 'published',
     client: 'Optavia',
     content: {
@@ -972,6 +977,7 @@ export const work: WorkItem[] = [
     title: 'Multi-path e-commerce redesign for a health platform',
     subtitle:
       "Optavia's website couldn't accommodate users with different health goals beyond traditional weight loss.",
+    outcome: 'Multi-path funnel shipped',
     tags: ['UX Design', 'E-commerce', 'Information Architecture'],
     coverImage: '/images/ecommerce-desktop.png',
     coverObjectPosition: 'left center',
@@ -1064,10 +1070,10 @@ export const work: WorkItem[] = [
     title: 'Expanding into a new user segment: SimpleNexus',
     subtitle:
       'A five-day design sprint brought a new user segment into the SimpleNexus product — and earned the executive trust that opened the door to the agent strategy that followed.',
-    outcome: 'New user segment unlocked',
+    outcome: 'New user segment unlocked · contributed to $1B valuation',
     tags: ['UX Research', 'Design Sprint', 'Fintech'],
     coverImage: '/images/sn-hero.png',
-    year: '2022',
+    year: '2021',
     status: 'published',
     client: 'SimpleNexus',
     content: {
@@ -1220,7 +1226,7 @@ export const work: WorkItem[] = [
     outcome: 'Moved up-market to premium clients',
     tags: ['Branding', 'Identity', 'Web Design'],
     coverImage: '/images/epic-hero.png',
-    year: '2021',
+    year: '2019',
     status: 'published',
     client: 'Epic Marketing',
     content: {
