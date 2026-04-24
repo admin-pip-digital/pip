@@ -8,6 +8,26 @@ export type JournalEntry = {
 
 export const journal: JournalEntry[] = [
   {
+    slug: 'utilities-that-want-to-exist',
+    title: 'The utilities that want to exist',
+    date: '2026-04-23',
+    excerpt:
+      "I've been building Plainview and in the middle of it stopped to ask the question I always forget to ask first: what is this actually for? The answer surprised me.",
+    body: [
+      'Something shifted today that I want to remember.',
+      "I've been building Plainview — a civic transparency tool that takes public voting records and translates them into plain language so regular people can understand what their representatives are actually doing. We got a database live, tables seeded with real Utah data, real bills including one that's about to make 1.3 million Utahns' addresses public on May 25 — and most of them have no idea.",
+      'But somewhere in the middle of building it I stopped and asked the question I always forget to ask first: what is this actually for?',
+      'And the answer that came back surprised me.',
+      "Not accountability. Not activism. Not even transparency exactly. A utility. The iOS default app that should have always existed. Calm, clear, neutral. The kind of thing that doesn't tell you what to think — it just makes sure you can see.",
+      'That reframe changed everything about what Plainview is. And then it revealed something bigger.',
+      "I think I've been circling a personal mission for years without naming it. It's this: I build utilities that want to exist but don't yet. Things that level the playing field without taking sides. Things that trust people to think for themselves once they can actually see clearly.",
+      'REBL levels the playing field between patients and providers. Plainview levels it between citizens and legislators. Even Pip the seedling is about belonging regardless of where you start.',
+      'The restraint is the point. Anyone can build a tool with a point of view. The harder thing — the thing that actually serves everyone — is building the neutral infrastructure underneath. The door, not the argument about where it should lead.',
+      "I don't know exactly what to call this yet. A credo maybe. Not a mission statement, not a manifesto. Just what I believe, stated plainly.",
+      'But today it had a name for the first time. And that feels like something worth writing down.',
+    ],
+  },
+  {
     slug: 'coaching-college-graduate',
     title:
       "What I've learned coaching a college graduate looking for entry-level work",
