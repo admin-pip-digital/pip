@@ -38,6 +38,11 @@ export default function JournalPage() {
                   <span aria-hidden="true" className="mx-2">·</span>
                   Posted by Eric Moore
                 </p>
+                {entry.excerpt && (
+                  <p className="mt-4 text-neutral-700 font-light text-base md:text-lg leading-relaxed">
+                    {entry.excerpt}
+                  </p>
+                )}
               </Link>
             </li>
           ))}
